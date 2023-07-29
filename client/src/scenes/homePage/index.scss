@@ -1,0 +1,27 @@
+@import "../../App.scss";
+
+#home-page .container {
+  display: inline-block;
+  margin: 3rem;
+  width: 40vw;
+  border: 1px black dotted;
+}
+
+#home-page .button-purple {
+  background-color: #805ec5;
+  color: #fff;
+}
+
+#home-page .flex-column {
+  @include flex(column);
+}
+
+#home-page .flex-row {
+  @include flex(row);
+}
+
+#home-page .radio-button-form {
+  font-family: "Poppins", sans-serif;
+  margin: 1rem;
+  font-size: 1.3rem;
+}
