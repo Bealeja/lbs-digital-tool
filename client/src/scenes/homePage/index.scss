@@ -2,7 +2,7 @@
 
 #home-page .container {
   display: inline-block;
-  margin: 3rem;
+  margin: 1rem;
   width: 40vw;
   border: 1px black dotted;
 }
@@ -24,4 +24,42 @@
   font-family: "Poppins", sans-serif;
   margin: 1rem;
   font-size: 1.3rem;
+  font-weight: bold;
+}
+
+#home-page label {
+  width: 1.2rem;
+  height: 1.2rem;
+  margin: 5px;
+}
+
+#home-page .margin {
+  margin: 0rem 10rem;
+}
+
+input[type="radio"] {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  width: 1rem;
+  height: 1rem;
+  border-radius: 50%;
+  border: 2px solid #ccc;
+  outline: none;
+}
+
+/* Create custom radio button when it's checked */
+input[type="radio"]:checked {
+  background-color: #805ec5;
+  border-color: grey;
+}
+
+/* Optional: Hover effect for better user experience */
+input[type="radio"]:hover {
+  border-color: #999;
+}
+
+/* Optional: Active (when clicked) effect for better user experience */
+input[type="radio"]:active {
+  border-color: #555;
 }

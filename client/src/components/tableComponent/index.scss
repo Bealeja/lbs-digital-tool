@@ -1,0 +1,31 @@
+$chart-background: white;
+$bar-colors: #2196f3, #e91e63, #9c27b0, #4caf50, #ff9800, #607d8b;
+$bar-heights: 17rem, 17rem, 22rem, 22rem, 25rem, 25rem;
+
+.chart {
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  max-width: 100%;
+  max-height: 100%;
+  background-color: $chart-background;
+  border-left: 4px solid black;
+  border-bottom: 4px solid black;
+  margin: 3rem;
+
+  .bar {
+    width: 4rem;
+    margin: 0rem 0.5rem;
+    border-radius: 0.5rem;
+    border: 1px solid #fff;
+    transition: height 0.3s ease-in-out;
+  }
+
+  // Apply background colors to the bars
+  @for $i from 1 through length($bar-colors) {
+    .bar:nth-child(#{$i}) {
+      background-color: nth($bar-colors, $i);
+      height: nth($bar-heights, $i);
+    }
+  }
+}
