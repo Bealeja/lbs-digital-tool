@@ -1,0 +1,9 @@
+@import "../../App.scss";
+
+.card-image {
+  width: 30rem;
+}
+
+.container-statistics {
+  @include container(40rem);
+}
