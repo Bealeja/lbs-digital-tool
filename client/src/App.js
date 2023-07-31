@@ -3,7 +3,9 @@ import { BrowserRouter, Route, Switch } from "react-router-dom";
 import "./App.scss";
 
 // Scene Imports
-import HomePage from "./scenes/homePage";
+// import HomePage from "./scenes/homePage";
+// import StatisticsPage from "./scenes/statisticsPage";
+import DonationsPage from "./scenes/donationsPage";
 
 function App() {
   return (
@@ -11,7 +13,7 @@ function App() {
       <BrowserRouter>
         <Switch>
           <Route path="/">
-            <HomePage />
+            <DonationsPage />
           </Route>
         </Switch>
       </BrowserRouter>

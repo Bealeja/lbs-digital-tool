@@ -1,4 +1,5 @@
 import Banner from "../../components/bannerComponent";
+import Navbar from "../../components/navbarComponent";
 import Table from "../../components/tableComponent";
 import Footer from "../../components/footerComponent";
 import "./index.scss";
@@ -7,9 +8,10 @@ const HomePage = () => {
   return (
     <div id="home-page">
       <Banner />
+      <Navbar />
       <div class="margin">
-        <div class="flex-row">
-          <div class="flex-column">
+        <div class="flex-row center-items">
+          <div class="flex-column center-items">
             <section class="container">
               <h2>Who we are</h2>
               <p>

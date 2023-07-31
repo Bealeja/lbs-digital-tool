@@ -23,9 +23,58 @@ button {
   font-size: 1rem;
   font-weight: bold;
   padding: 1rem 1rem;
+  background-color: #805ec5;
+  color: #fff;
 }
 
 @mixin flex($direction) {
   display: flex;
   flex-direction: $direction;
+}
+
+.flex-row {
+  @include flex(row);
+}
+
+.flex-column {
+  @include flex(column);
+}
+
+.card-image {
+  display: block;
+  width: 100%;
+  margin: 1rem;
+  border-radius: 0.5rem;
+}
+
+.margin {
+  margin: 0rem 10rem;
+}
+
+.center-items {
+  align-items: space;
+  justify-content: space-evenly;
+}
+
+@mixin container($width) {
+  display: inline-block;
+  margin: 1rem;
+  width: $width;
+  border: 1px black dotted;
+  height: 100%;
+}
+
+@mixin background-colour($colour) {
+  background-color: $colour;
+}
+
+.background-purple {
+  @include background-colour(#805ec5);
+  color: white;
+}
+
+.background-white {
+  @include background-colour(#fff);
+  color: black;
+  border-radius: 0.5rem;
 }

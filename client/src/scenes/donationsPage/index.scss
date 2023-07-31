@@ -1,0 +1,13 @@
+body {
+  background-color: #805ec5;
+}
+
+.progress-bar::after {
+  content: "";
+  display: flex;
+  width: 80%;
+  margin-left: 5rem;
+  height: 8px;
+  background-color: #524fa1;
+  z-index: 1;
+}
