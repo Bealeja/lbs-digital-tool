@@ -52,7 +52,7 @@ button {
 }
 
 .center-items {
-  align-items: space;
+  align-items: space-evenly;
   justify-content: space-evenly;
 }
 
@@ -60,7 +60,6 @@ button {
   display: inline-block;
   margin: 1rem;
   width: $width;
-  border: 1px black dotted;
   height: 100%;
 }
 

@@ -1,13 +1,53 @@
+@import "../../App.scss";
+
 body {
   background-color: #805ec5;
 }
 
 .progress-bar::after {
   content: "";
-  display: flex;
-  width: 80%;
-  margin-left: 5rem;
-  height: 8px;
+  display: inline-block;
+  width: 60vw;
+  margin-left: 1rem;
+  height: 0.8rem;
   background-color: #524fa1;
   z-index: 1;
+  border-radius: 0.5rem;
+  max-width: 90%;
+}
+
+.progress-container-before::after {
+  content: "";
+  margin-top: 1.05rem;
+  margin-left: 7rem;
+  width: 1.5rem;
+  border-radius: 50%;
+  height: 1.5rem;
+  position: absolute;
+  background-color: palegreen;
+  border: black solid 0.1rem;
+}
+
+.progress-container-after::before {
+  content: "";
+  translate: 0rem -2.75rem;
+  margin-left: 6.5rem;
+  width: 1.5rem;
+  border-radius: 50%;
+  height: 1.5rem;
+  position: absolute;
+  background-color: palegreen;
+  border: black solid 0.1rem;
+}
+
+.donations-container {
+  @include container(40rem);
+  height: 100%;
+}
+
+.vl {
+  border-left: 0.3rem solid darkslategrey;
+  border-radius: 5rem;
+  height: 18rem;
+  align-self: center;
 }
