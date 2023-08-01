@@ -22,6 +22,7 @@ const HostApplication = () => {
       <div class="background-white margin">
         <div class="host-application-container">
           <form class="form">
+            <h2>Fill out the details below</h2>
             <div class="flex-row center-items">
               <div class="flex-column">
                 <label>
@@ -55,8 +56,6 @@ const HostApplication = () => {
             </div>
           </form>
         </div>
-      </div>
-      <div class="margin">
         <Footer />
       </div>
     </div>

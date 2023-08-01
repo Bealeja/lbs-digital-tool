@@ -6,7 +6,8 @@ import "./App.scss";
 // import HomePage from "./scenes/homePage";
 // import StatisticsPage from "./scenes/statisticsPage";
 // import DonationsPage from "./scenes/donationsPage";
-import HostApplication from "./scenes/hostApplicationPage";
+// import HostApplication from "./scenes/hostApplicationPage";
+import FundraiserPublicPage from "./scenes/fundraiserPublicPage";
 
 function App() {
   return (
@@ -14,7 +15,7 @@ function App() {
       <BrowserRouter>
         <Switch>
           <Route path="/">
-            <HostApplication />
+            <FundraiserPublicPage />
           </Route>
         </Switch>
       </BrowserRouter>
