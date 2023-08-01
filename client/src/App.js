@@ -5,7 +5,8 @@ import "./App.scss";
 // Scene Imports
 // import HomePage from "./scenes/homePage";
 // import StatisticsPage from "./scenes/statisticsPage";
-import DonationsPage from "./scenes/donationsPage";
+// import DonationsPage from "./scenes/donationsPage";
+import HostApplication from "./scenes/hostApplicationPage";
 
 function App() {
   return (
@@ -13,7 +14,7 @@ function App() {
       <BrowserRouter>
         <Switch>
           <Route path="/">
-            <DonationsPage />
+            <HostApplication />
           </Route>
         </Switch>
       </BrowserRouter>

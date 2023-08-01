@@ -1,0 +1,31 @@
+@import "../../App.scss";
+
+body {
+  background-color: #805ec5;
+}
+
+.form label {
+  margin: 20px;
+}
+
+.form label .input {
+  width: 100%;
+  padding: 10px;
+  outline: 0;
+  border: 1px solid black;
+  border-radius: 10px;
+}
+
+.form label .input + span {
+  position: absolute;
+  left: 10px;
+  top: 15px;
+  color: grey;
+  font-size: 0.9rem;
+  cursor: text;
+}
+
+.host-application-container {
+  @include container(80vw);
+  height: 100%;
+}
