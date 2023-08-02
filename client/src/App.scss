@@ -78,3 +78,9 @@ button {
   color: black;
   border-radius: 0.5rem;
 }
+
+.background-grey {
+  @include background-colour(lightgrey);
+  color: black;
+  border-radius: 0.5rem;
+}
