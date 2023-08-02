@@ -9,7 +9,8 @@ import "./App.scss";
 // import HostApplication from "./scenes/hostApplicationPage";
 // import FundraiserPublicPage from "./scenes/fundraiserPublicPage";
 // import ActiveFundraiserPage from "./scenes/activeFundraiserPage";
-import AdminHostPage from "./scenes/Admin/adminHomePage";
+// import AdminHostPage from "./scenes/Admin/adminHomePage";
+import AdminFundraiserPage from "./scenes/Admin/adminFundraiserPage";
 
 function App() {
   return (
@@ -17,7 +18,7 @@ function App() {
       <BrowserRouter>
         <Switch>
           <Route path="/">
-            <AdminHostPage />
+            <AdminFundraiserPage />
           </Route>
         </Switch>
       </BrowserRouter>

@@ -1,0 +1,21 @@
+@import "../../../App.scss";
+
+.progress-bar-container {
+  width: 500px;
+  height: 10px;
+  background-color: #ddd;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.progress-bar {
+  height: 100%;
+  background-color: #805ec5;
+  width: 50px; /* Initially, the width is 0 */
+  transition: width 0.3s ease-in-out;
+}
+
+.application-requirments {
+  justify-content: left;
+  align-items: center;
+}
