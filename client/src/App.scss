@@ -1,4 +1,40 @@
+/*************************************************
+!--Document Rules--!
+
+1. Order of specificty: id class subclass element.
+2. Each defintion and the defintions properties are ordered in alphabetical order.
+3. 
+**************************************************/
+
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap");
+
+/*************************************************
+!--Variables--!
+**************************************************/
+$purple-color: #805ec5;
+$white-color: #fffbfa;
+$grey-color: #c5c3c6;
+
+/*************************************************
+!--Mixins--!
+**************************************************/
+@mixin container($width) {
+  display: inline-block;
+  width: $width;
+}
+
+@mixin flex($direction) {
+  display: flex;
+  flex-direction: $direction;
+}
+
+/*************************************************
+!--General--!
+Note: Only elements allowed
+**************************************************/
+body {
+  background-color: $white-color;
+}
 
 h1,
 h2,
@@ -19,37 +55,38 @@ h2 {
 }
 
 button {
+  background-color: $purple-color;
   border: none;
   border-radius: 0.5em;
+  color: $white-color;
   font-size: 1rem;
   font-weight: bold;
   padding: 1rem 1rem;
-  background-color: #805ec5;
-  color: #fff;
 }
 
-@mixin flex($direction) {
-  display: flex;
-  flex-direction: $direction;
+/*************************************************
+!--Container Properties--!
+**************************************************/
+.background-grey {
+  background-color: $grey-color;
+  color: black;
 }
 
-.flex-row {
-  @include flex(row);
+.background-purple {
+  background-color: $purple-color;
+  color: $white-color;
 }
 
-.flex-column {
-  @include flex(column);
+.background-white {
+  background-color: $white-color;
+  color: black;
 }
 
 .card-image {
-  display: block;
-  width: 100%;
-  margin: 1rem;
   border-radius: 0.5rem;
-}
-
-.margin {
-  margin: 0rem 10rem;
+  display: block;
+  margin: 1rem;
+  width: 100%;
 }
 
 .center-items {
@@ -57,30 +94,86 @@ button {
   justify-content: space-evenly;
 }
 
-@mixin container($width) {
-  display: inline-block;
+.spread-items {
+  align-items: space-between;
+  justify-content: space-between;
+}
+
+.flex-column {
+  @include flex(column);
+}
+
+.flex-row {
+  @include flex(row);
+}
+
+.margin {
+  margin: 0rem 10rem;
+}
+
+.spacer-vertical {
+  width: 49%;
+}
+
+.spacer-horizontal {
+  height: 48%;
+}
+
+/*************************************************
+!--Home Page--!
+**************************************************/
+#home-page {
+  background-color: $white-color;
+}
+
+#home-page .container {
+  @include container(100%);
+}
+
+#home-page .radio-button-form {
+  font-family: "Poppins", sans-serif;
   margin: 1rem;
-  width: $width;
-  height: 100%;
+  font-size: 1.3rem;
+  font-weight: bold;
 }
 
-@mixin background-colour($colour) {
-  background-color: $colour;
+#home-page label {
+  width: 1.2rem;
+  height: 1.2rem;
+  margin: 5px;
 }
 
-.background-purple {
-  @include background-colour(#805ec5);
-  color: white;
+#home-page .margin {
+  margin: 0rem 10rem;
 }
 
-.background-white {
-  @include background-colour(#fff);
-  color: black;
-  border-radius: 0.5rem;
+#active-fundraisers {
+  background-color: $purple-color;
 }
 
-.background-grey {
-  @include background-colour(lightgrey);
-  color: black;
-  border-radius: 0.5rem;
+input[type="radio"] {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  width: 1rem;
+  height: 1rem;
+  border-radius: 50%;
+  border: 2px solid #ccc;
+  outline: none;
+}
+
+/* Create custom radio button when it's checked */
+input[type="radio"]:checked {
+  background-color: #805ec5;
+  border-color: grey;
+}
+
+/* Optional: Hover effect for better user experience */
+input[type="radio"]:hover {
+  border-color: #999;
+}
+
+/* Optional: Active (when clicked) effect for better user experience */
+input[type="radio"]:active {
+  border-color: #555;
 }

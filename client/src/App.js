@@ -1,11 +1,11 @@
 //Package Imports
-import { BrowserRouter, Route, Switch } from "react-router-dom";
+import { BrowserRouter as Router, Route } from "react-router-dom";
 import "./App.scss";
 
 // Scene Imports
-// import HomePage from "./scenes/homePage";
-// import StatisticsPage from "./scenes/statisticsPage";
-// import DonationsPage from "./scenes/donationsPage";
+import HomePage from "./scenes/Public/homePage";
+import StatisticsPage from "./scenes/Public/statisticsPage";
+import DonationsPage from "./scenes/Public/donationsPage";
 // import HostApplication from "./scenes/hostApplicationPage";
 // import FundraiserPublicPage from "./scenes/fundraiserPublicPage";
 // import ActiveFundraiserPage from "./scenes/activeFundraiserPage";
@@ -15,13 +15,11 @@ import AdminFundraiserPage from "./scenes/Admin/adminFundraiserPage";
 function App() {
   return (
     <div className="App">
-      <BrowserRouter>
-        <Switch>
-          <Route path="/">
-            <AdminFundraiserPage />
-          </Route>
-        </Switch>
-      </BrowserRouter>
+      <Router>
+        <Route exact path="/" component={HomePage} />
+        <Route path="/statistics" component={StatisticsPage} />
+        <Route path="/donations" component={DonationsPage} />
+      </Router>
     </div>
   );
 }

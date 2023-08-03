@@ -1,17 +1,20 @@
-import { NavLink, Link } from "react-router-dom";
-import { useState } from "react";
+import { Link } from "react-router-dom";
+import "../../App.scss";
 
 const Navbar = () => {
-  const [showNav, setShowNav] = useState(false);
-
   return (
-    <nav className={showNav ? "mobile-show" : ""}>
-      <Link to="/" onClick={() => setShowNav(false)}>
-        hello
-      </Link>
-      <NavLink to="/statistics" onClick={() => setShowNav(false)}>
-        hello
-      </NavLink>
+    <nav>
+      <ul>
+        <li>
+          <Link to="/">Home</Link>
+        </li>
+        <li>
+          <Link to="/statistics">About</Link>
+        </li>
+        <li>
+          <Link to="/donations">Donate</Link>
+        </li>
+      </ul>
     </nav>
   );
 };

@@ -2,17 +2,19 @@ import Banner from "../../../components/bannerComponent";
 import Navbar from "../../../components/navbarComponent";
 import Table from "../../../components/tableComponent";
 import Footer from "../../../components/footerComponent";
-import "./index.scss";
+import "../../../App.scss";
 
 const HomePage = () => {
   return (
     <div id="home-page">
-      <Banner />
       <Navbar />
-      <div class="margin">
-        <div class="flex-row center-items">
-          <div class="flex-column center-items">
-            <section class="container">
+      <Banner />
+      <div class="margin flex-row spread-items">
+        <div class="flex-column spacer-vertical spread-items">
+          {/* !----Who We Are----! */}
+
+          <div class="container">
+            <section>
               <h2>Who we are</h2>
               <p>
                 At Little Big Steps, we're commited to supporting those children
@@ -21,7 +23,12 @@ const HomePage = () => {
               </p>
               <button class="button-purple">Find Out More</button>
             </section>
-            <section class="container">
+          </div>
+
+          {/* !----Donate----! */}
+
+          <div class="container">
+            <section>
               <h2>Donate</h2>
               <form class="radio-button-form">
                 <input type="radio" id="$5" name="money" value="5" />
@@ -39,12 +46,24 @@ const HomePage = () => {
               <button class="button-purple">Donate</button>
             </section>
           </div>
-          <div class="flex-column">
-            <section class="container">
+        </div>
+
+        {/* !----Our Goals----! */}
+
+        <div class="flex-column spacer-vertical">
+          <div class="container">
+            <section>
               <h2>Our Goals</h2>
               <Table />
             </section>
           </div>
+        </div>
+      </div>
+
+      {/* !----Active Fundraisers----! */}
+      <div id="active-fundraisers">
+        <div class="background-purple margin">
+          <h2>Active Fundraisers</h2>
         </div>
       </div>
       <Footer />

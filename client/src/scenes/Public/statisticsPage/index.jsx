@@ -4,7 +4,7 @@ import Footer from "../../../components/footerComponent";
 
 import "./index.scss";
 
-import Photo1 from "../../assets/child.png";
+import Photo1 from "../../../assets/child.png";
 
 const StatisticsPage = () => {
   return (
