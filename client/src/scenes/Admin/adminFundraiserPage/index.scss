@@ -15,7 +15,29 @@
   transition: width 0.3s ease-in-out;
 }
 
-.application-requirments {
+.progress-container {
   justify-content: left;
   align-items: center;
+}
+
+.flex-container {
+  width: 49%;
+}
+
+.flex-around {
+  display: flex;
+  justify-content: space-between;
+}
+
+.spacer {
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.flex-vertical {
+  height: 48%;
+}
+
+.form {
+  padding: 0rem 0rem 2rem 0rem;
 }
