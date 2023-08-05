@@ -21,6 +21,7 @@ $grey-color: #c5c3c6;
 @mixin container($width) {
   display: inline-block;
   width: $width;
+  height: 100%;
 }
 
 @mixin flex($direction) {
@@ -43,7 +44,6 @@ h4,
 h5,
 h6,
 p,
-button,
 span {
   font-family: "Poppins", sans-serif;
   margin: 1rem;
@@ -54,15 +54,75 @@ h2 {
   font-weight: 600;
 }
 
-button {
-  background-color: $purple-color;
-  border: none;
-  border-radius: 0.5em;
-  color: $white-color;
-  font-size: 1rem;
-  font-weight: bold;
-  padding: 1rem 1rem;
+/*************************************************
+!--Search Box Properties--!
+**************************************************/
+
+.search-box {
+  align-self: center;
+  width: fit-content;
+  height: fit-content;
+  position: relative;
 }
+.input-search {
+  height: 50px;
+  width: 50px;
+  border-style: none;
+  font-size: 18px;
+  letter-spacing: 2px;
+  outline: none;
+  border-radius: 50%;
+  transition: all 0.5s ease-in-out;
+  background-color: $white-color;
+  color: #fff;
+}
+.input-search::placeholder {
+  color: rgba(255, 255, 255, 0.5);
+  font-size: 18px;
+  letter-spacing: 2px;
+  font-weight: 100;
+}
+.btn-search {
+  width: 50px;
+  height: 50px;
+  border-style: none;
+  font-size: 20px;
+  font-weight: bold;
+  outline: none;
+  cursor: pointer;
+  border-radius: 50%;
+  position: absolute;
+  top: 1px;
+  right: 1.5px;
+  padding: 5px;
+  color: #ffffff;
+  background-color: transparent;
+  pointer-events: painted;
+}
+.btn-search:focus ~ .input-search {
+  width: 300px;
+  border-radius: 0px;
+  background-color: transparent;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+  transition: all 500ms cubic-bezier(0, 0.11, 0.35, 2);
+}
+.input-search:focus {
+  width: 300px;
+  border-radius: 0px;
+  background-color: transparent;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+  transition: all 500ms cubic-bezier(0, 0.11, 0.35, 2);
+}
+
+.search-icon {
+  width: 100%;
+  height: 100%;
+  color: $purple-color;
+}
+
+/*************************************************
+!--End Search Box Properties--!
+**************************************************/
 
 /*************************************************
 !--Container Properties--!
@@ -82,16 +142,27 @@ button {
   color: black;
 }
 
+.button-purple {
+  background-color: $purple-color;
+  border: none;
+  border-radius: 0.2rem;
+  color: $white-color;
+  font-size: 1rem;
+  font-weight: bold;
+  padding: 1rem 1rem;
+  margin: 1rem;
+}
+
 .card-image {
-  border-radius: 0.5rem;
+  border-radius: 0.1rem;
   display: block;
   margin: 1rem;
   width: 100%;
 }
 
 .center-items {
-  align-items: space-evenly;
-  justify-content: space-evenly;
+  align-items: center;
+  justify-content: center;
 }
 
 .spread-items {
@@ -107,9 +178,87 @@ button {
   @include flex(row);
 }
 
+.label-container {
+  display: flex;
+  align-content: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-right: 2rem;
+}
+
 .margin {
   margin: 0rem 10rem;
 }
+
+/*************************************************
+!--Search Box Properties--!
+**************************************************/
+
+.search-box {
+  align-self: center;
+  width: fit-content;
+  height: fit-content;
+  position: relative;
+}
+.input-search {
+  height: 50px;
+  width: 50px;
+  border-style: none;
+  font-size: 18px;
+  letter-spacing: 2px;
+  outline: none;
+  border-radius: 50%;
+  transition: all 0.5s ease-in-out;
+  background-color: $white-color;
+  color: #fff;
+}
+.input-search::placeholder {
+  color: rgba(255, 255, 255, 0.5);
+  font-size: 18px;
+  letter-spacing: 2px;
+  font-weight: 100;
+}
+.btn-search {
+  width: 50px;
+  height: 50px;
+  border-style: none;
+  font-size: 20px;
+  font-weight: bold;
+  outline: none;
+  cursor: pointer;
+  border-radius: 50%;
+  position: absolute;
+  top: 1px;
+  right: 1.5px;
+  padding: 5px;
+  color: #ffffff;
+  background-color: transparent;
+  pointer-events: painted;
+}
+.btn-search:focus ~ .input-search {
+  width: 300px;
+  border-radius: 0px;
+  background-color: transparent;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+  transition: all 500ms cubic-bezier(0, 0.11, 0.35, 2);
+}
+.input-search:focus {
+  width: 300px;
+  border-radius: 0px;
+  background-color: transparent;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+  transition: all 500ms cubic-bezier(0, 0.11, 0.35, 2);
+}
+
+.search-icon {
+  width: 100%;
+  height: 100%;
+  color: $purple-color;
+}
+
+/*************************************************
+!--End Search Box Properties--!
+**************************************************/
 
 .spacer-vertical {
   width: 49%;
@@ -130,19 +279,6 @@ button {
   @include container(100%);
 }
 
-#home-page .radio-button-form {
-  font-family: "Poppins", sans-serif;
-  margin: 1rem;
-  font-size: 1.3rem;
-  font-weight: bold;
-}
-
-#home-page label {
-  width: 1.2rem;
-  height: 1.2rem;
-  margin: 5px;
-}
-
 #home-page .margin {
   margin: 0rem 10rem;
 }
@@ -151,29 +287,133 @@ button {
   background-color: $purple-color;
 }
 
+/*************************************************
+!--Radio Button properties--!
+**************************************************/
+
+.radio-button-form {
+  font-family: "Poppins", sans-serif;
+  font-size: 2rem;
+  font-weight: bold;
+  display: flex;
+  justify-content: flex-start;
+}
+
 input[type="radio"] {
-  appearance: none;
+  --s: 2rem; /* control the size */
+  --c: #805ec5; /* the active color */
+
+  height: var(--s);
+  width: var(--s);
+  margin: 0.45rem 0.25rem;
+  aspect-ratio: 1;
+  border: calc(var(--s) / 8) solid #939393;
+  padding: calc(var(--s) / 16);
+  background: radial-gradient(farthest-side, var(--c) 50%, #0000) 50%/0 0
+    no-repeat content-box;
+  border-radius: 50%;
   -webkit-appearance: none;
   -moz-appearance: none;
-  width: 1rem;
-  height: 1rem;
-  border-radius: 50%;
-  border: 2px solid #ccc;
-  outline: none;
+  appearance: none;
+  cursor: pointer;
+  transition: 0.3s;
 }
 
-/* Create custom radio button when it's checked */
 input[type="radio"]:checked {
-  background-color: #805ec5;
-  border-color: grey;
+  border-color: var(--c);
+  background-size: 100% 100%;
 }
 
-/* Optional: Hover effect for better user experience */
-input[type="radio"]:hover {
-  border-color: #999;
+input[type="radio"]:disabled {
+  background: linear-gradient(#939393 0 0) 50%/100% 20% no-repeat content-box;
+  opacity: 0.5;
+  cursor: not-allowed;
 }
 
-/* Optional: Active (when clicked) effect for better user experience */
-input[type="radio"]:active {
-  border-color: #555;
+@media print {
+  input[type="radio"] {
+    -webkit-appearance: auto;
+    -moz-appearance: auto;
+    appearance: auto;
+    background: none;
+  }
+}
+
+label {
+  display: inline-flex;
+  cursor: pointer;
+  justify-content: space-between;
+  font-size: 2rem;
+}
+
+/*************************************************
+!--End Radio Button Properties--!
+**************************************************/
+
+/////
+$main: $purple-color; //#008cff;
+$grey: $purple-color;
+$bezier: cubic-bezier(0.65, 0.25, 0.56, 0.96);
+
+.mcui-checkbox {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  user-select: none;
+  padding: 0.5em 0em;
+  box-sizing: border-box;
+  margin: 0rem 0rem;
+
+  input[type="checkbox"] {
+    position: absolute;
+    overflow: hidden;
+    clip: rect(1px, 1px, 1px, 1px);
+  }
+
+  input[type="checkbox"] + div {
+    border: 0.25rem solid $grey;
+    height: 1em;
+    width: 1em;
+    box-sizing: border-box;
+    border-radius: 0.2rem;
+    position: relative;
+  }
+
+  input[type="checkbox"] ~ div:last-child {
+    padding-left: 0.5em;
+  }
+
+  input[type="checkbox"]:checked + div {
+    border-color: $main;
+    transition: border-color 107ms $bezier;
+
+    .mcui-check {
+      opacity: 1;
+      transition: opacity 107ms $bezier;
+
+      polyline {
+        animation: dash-check 107ms $bezier forwards;
+      }
+    }
+  }
+
+  input[type="checkbox"]:enabled ~ div {
+    cursor: default;
+  }
+}
+
+.mcui-check {
+  height: 100%;
+  width: 100%;
+  transform: scale(1.5);
+  color: $main;
+  opacity: 0;
+
+  polyline {
+    fill: none;
+    stroke-width: 5px;
+    stroke-dasharray: 22.771367900227325;
+    stroke: currentColor;
+    transform: translateY(-0.5rem);
+  }
 }

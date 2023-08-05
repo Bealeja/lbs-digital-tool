@@ -8,10 +8,10 @@ const Card = () => {
       <div class="image-container">
         <img src={child} alt="this is a person" />
       </div>
-      <div>
+      <div class="spread-items">
         <h2>Heading</h2>
         <p>content</p>
-        <p>read more</p>
+        <h3>Read More</h3>
       </div>
     </div>
   );
