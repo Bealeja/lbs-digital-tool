@@ -7,6 +7,7 @@ import Table from "../../../components/tableComponent";
 import Footer from "../../../components/footerComponent";
 import "../../../App.scss";
 import Card from "../../../components/cardComponent";
+import NewsComponent from "../../../components/newsComponent";
 
 const HomePage = () => {
   return (
@@ -107,6 +108,21 @@ const HomePage = () => {
             <div class="flex-column container">
               <Card />
               <Card />
+            </div>
+          </div>
+        </div>
+
+        {/* !----Latest News----! */}
+        <div id="Latest News">
+          <div class="background-purple margin">
+            <div class="background-green container section-spacer">
+              <h2>Lastest News</h2>
+              <div class="flex-row spread-items">
+                <NewsComponent />
+                <NewsComponent />
+                <NewsComponent />
+                <NewsComponent />
+              </div>
             </div>
           </div>
         </div>

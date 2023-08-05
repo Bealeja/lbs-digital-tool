@@ -9,7 +9,7 @@ import {
 const Footer = () => {
   return (
     <footer>
-      <div class="flex-center background-white margin-break">
+      <div class="flex-center background-white margin-break margin">
         <h2>Contact Us</h2>
         <h3>hello@littlebigsteps.org.au</h3>
         <div>

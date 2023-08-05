@@ -14,7 +14,7 @@
 $purple-color: #805ec5;
 $white-color: #fffbfa;
 $grey-color: #c5c3c6;
-
+$green-color: #55dba2;
 /*************************************************
 !--Mixins--!
 **************************************************/
@@ -22,6 +22,7 @@ $grey-color: #c5c3c6;
   display: inline-block;
   width: $width;
   height: 100%;
+  border-radius: 0.3rem;
 }
 
 @mixin flex($direction) {
@@ -127,6 +128,11 @@ h2 {
 /*************************************************
 !--Container Properties--!
 **************************************************/
+.background-green {
+  background-color: $green-color;
+  color: $purple-color;
+}
+
 .background-grey {
   background-color: $grey-color;
   color: black;
@@ -188,6 +194,10 @@ h2 {
 
 .margin {
   margin: 0rem 10rem;
+}
+
+.section-spacer {
+  margin: 2rem 0rem;
 }
 
 /*************************************************
@@ -279,12 +289,40 @@ h2 {
   @include container(100%);
 }
 
-#home-page .margin {
-  margin: 0rem 10rem;
-}
-
 #active-fundraisers {
   background-color: $purple-color;
+}
+
+#home-page .news-image {
+  margin: 1rem;
+  width: 25%;
+  display: flex;
+}
+
+#home-page .news-image h3 {
+  color: white;
+  opacity: 0;
+  text-align: center;
+  position: absolute;
+  width: 16rem;
+  flex: 1;
+}
+
+#home-page .news-image:hover h3 {
+  transition: opacity 0.5s ease-in-out;
+  opacity: 1;
+  z-index: 1;
+}
+
+#home-page .news-image img {
+  width: 100%;
+  border-radius: 0.2rem;
+}
+
+#home-page .news-image:hover img {
+  filter: brightness(50%);
+  transition: filter 0.5s ease-in;
+  z-index: 0;
 }
 
 /*************************************************
@@ -350,7 +388,9 @@ label {
 !--End Radio Button Properties--!
 **************************************************/
 
-/////
+/*************************************************
+!--Check Box properties--!
+**************************************************/
 $main: $purple-color; //#008cff;
 $grey: $purple-color;
 $bezier: cubic-bezier(0.65, 0.25, 0.56, 0.96);
@@ -417,3 +457,6 @@ $bezier: cubic-bezier(0.65, 0.25, 0.56, 0.96);
     transform: translateY(-0.5rem);
   }
 }
+/*************************************************
+!--End Check Box properties--!
+**************************************************/
