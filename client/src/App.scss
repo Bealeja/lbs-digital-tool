@@ -131,21 +131,25 @@ h2 {
 .background-green {
   background-color: $green-color;
   color: $purple-color;
+  border-radius: 0.2rem;
 }
 
 .background-grey {
   background-color: $grey-color;
   color: black;
+  border-radius: 0.2rem;
 }
 
 .background-purple {
   background-color: $purple-color;
   color: $white-color;
+  border-radius: 0.2rem;
 }
 
 .background-white {
   background-color: $white-color;
   color: black;
+  border-radius: 0.2rem;
 }
 
 .button-purple {
@@ -161,9 +165,9 @@ h2 {
 
 .card-image {
   border-radius: 0.2rem;
-  width: 100%;
+  width: 95%;
   display: block;
-  margin: 1rem 0rem;
+  margin: 1rem auto;
 }
 
 .center-items {
@@ -469,6 +473,7 @@ $bezier: cubic-bezier(0.65, 0.25, 0.56, 0.96);
   top: 0;
   right: 0;
   margin: 0rem 1rem;
+  z-index: 999;
 }
 
 #navbar ul {

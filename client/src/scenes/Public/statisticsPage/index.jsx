@@ -13,6 +13,8 @@ const StatisticsPage = () => {
       <Navbar />
       <Banner />
       <div class="margin flex-row spread-items">
+        {/* How you have helped */}
+
         <div class="flex-column spacer-vertical spread-items">
           <section class="container">
             <h2>How you have helped</h2>
@@ -23,16 +25,16 @@ const StatisticsPage = () => {
             <img class="card-image" src={Photo1} alt="excersise treatment" />
           </section>
         </div>
+
+        {/* Children Helped */}
         <div class="flex-column spacer-vertical spread-items">
-          <div class="container">
-            <section>
-              <h2>Children Helped</h2>
-              <Table />
-            </section>
-          </div>
+          <section class="container">
+            <h2>Children Helped</h2>
+            <Table />
+          </section>
         </div>
       </div>
-      <div class="flex-column background-purple ">
+      <div class="flex-column background-purple section-spacer">
         <div class="margin">
           <h2>Follow the money trail</h2>
           <p>
@@ -41,21 +43,21 @@ const StatisticsPage = () => {
             children who need it most. Whether it’s treatment, physio sessions,
             or even a new fitbit every dollar is recorded.
           </p>
-          <div class="flex-row center-items">
-            <div class="container-statistics">
+          <div class="flex-row center-items spread-items">
+            <div class="container spacer-vertical">
               <h2>Children Helped</h2>
               <Table />
             </div>
-            <div class="container-statistics">
+            <div class="container spacer-vertical">
               <h2>Children Helped</h2>
               <Table />
             </div>
           </div>
 
-          <div class="background-white">
+          <div class="background-white section-spacer">
             <div class="flex-row center-items">
-              <div class="flex-column">
-                <section class="container-statistics">
+              <div class="flex-column spacer-vertical">
+                <section class="container">
                   <h2>Distribution of Donations</h2>
                   <p>
                     At Little Big Steps we are completely transparent with your
@@ -64,12 +66,14 @@ const StatisticsPage = () => {
                     physio sessions, or even a new fitbit every dollar is
                     recorded.
                   </p>
-                  <button>Donate</button>
-                  <button>Fundraise</button>
+                  <button class="button-purple">Donate</button>
+                  <button class="button-purple">Fundraise</button>
                 </section>
               </div>
-              <div class="container-statistics">
-                <Table />
+              <div class="flex-column spacer-vertical">
+                <div class="container">
+                  <Table />
+                </div>
               </div>
             </div>
           </div>
