@@ -5,10 +5,12 @@ import Footer from "../../../components/footerComponent";
 import "./index.scss";
 
 import Photo1 from "../../../assets/child.png";
+import Navbar from "../../../components/navbarComponent";
 
 const StatisticsPage = () => {
   return (
     <div>
+      <Navbar />
       <Banner />
       <div class="flex-row center-items background-white margin">
         <div class="flex-column">

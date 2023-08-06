@@ -1,8 +1,10 @@
+import Navbar from "../../../components/navbarComponent";
 import "./index.scss";
 
 const DonationsPage = () => {
   return (
     <div class="background-purple">
+      <Navbar />
       <div class="margin background-white">
         <div class="flex-row center-items">
           <div class="donations-container">

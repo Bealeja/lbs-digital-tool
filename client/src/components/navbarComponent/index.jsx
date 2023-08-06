@@ -1,34 +1,48 @@
 import { Link } from "react-router-dom";
-import "./index.scss";
+import "../../App.scss";
+
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faInstagram } from "@fortawesome/free-brands-svg-icons";
 
 const Navbar = () => {
   return (
-    <div>
+    <div id="navbar">
       <ul>
         <li>
-          <a href="">
+          <Link class="navbar-link" to="/">
             <span>
-              <svg
-                xmlns="http:www.w3.org/2000/svg"
-                width={192}
-                height={192}
-                fill="currentColor"
-                viewBox="0 0 256 256"
-              >
-                <rect width={256} height={256} fill="none" />
-                <circle
-                  cx={128}
-                  cy={128}
-                  r={96}
-                  fill="none"
-                  stroke="currentColor"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={16}
-                />
-              </svg>
+              <FontAwesomeIcon icon={faInstagram} />
+              <rect width={256} height={256} fill="none" />
+              Home
             </span>
-          </a>
+          </Link>
+        </li>
+        <li>
+          <Link class="navbar-link" to="/statistics">
+            <span>
+              <FontAwesomeIcon icon={faInstagram} />
+              <rect width={256} height={256} fill="none" />
+              Statistics
+            </span>
+          </Link>
+        </li>
+        <li>
+          <Link class="navbar-link" to="/donations">
+            <span>
+              <FontAwesomeIcon icon={faInstagram} />
+              <rect width={256} height={256} fill="none" />
+              Donations
+            </span>
+          </Link>
+        </li>
+        <li>
+          <Link class="navbar-link" to="/activefundraiser">
+            <span>
+              <FontAwesomeIcon icon={faInstagram} />
+              <rect width={256} height={256} fill="none" />
+              fundraisers
+            </span>
+          </Link>
         </li>
       </ul>
     </div>
