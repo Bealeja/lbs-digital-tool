@@ -1,31 +1,35 @@
 import Banner from "../../../components/bannerComponent";
-import Table from "../../../components/tableComponent";
 import Footer from "../../../components/footerComponent";
+import Navbar from "../../../components/navbarComponent";
+import Table from "../../../components/tableComponent";
 
 import "./index.scss";
 
 import Photo1 from "../../../assets/child.png";
-import Navbar from "../../../components/navbarComponent";
 
 const StatisticsPage = () => {
   return (
     <div>
       <Navbar />
       <Banner />
-      <div class="flex-row center-items background-white margin">
-        <div class="flex-column">
-          <section class="container-statistics">
+      <div class="margin flex-row spread-items">
+        <div class="flex-column spacer-vertical spread-items">
+          <section class="container">
             <h2>How you have helped</h2>
             <p>
               Jessica was provided with fifteen sessions of physio therapy due
               to a fundraiser created by our beloved community.
-              <img class="card-image" src={Photo1} alt="excersise treatment" />
             </p>
+            <img class="card-image" src={Photo1} alt="excersise treatment" />
           </section>
         </div>
-        <div class="container-statistics">
-          <h2>Children Helped</h2>
-          <Table />
+        <div class="flex-column spacer-vertical spread-items">
+          <div class="container">
+            <section>
+              <h2>Children Helped</h2>
+              <Table />
+            </section>
+          </div>
         </div>
       </div>
       <div class="flex-column background-purple ">
