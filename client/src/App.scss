@@ -176,8 +176,13 @@ h2 {
 }
 
 .spread-items {
-  align-items: space-between;
+  align-items: center;
   justify-content: space-between;
+}
+
+.space-items {
+  align-items: center;
+  justify-content: space-evenly;
 }
 
 .flex-column {

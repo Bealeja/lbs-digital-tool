@@ -50,7 +50,7 @@ const HomePage = () => {
                 </div>
               </form>
 
-              <div class="flex-row spread-items center-items">
+              <div class="flex-row spread-items">
                 <label class="mcui-checkbox">
                   <input type="checkbox" />
                   <div>

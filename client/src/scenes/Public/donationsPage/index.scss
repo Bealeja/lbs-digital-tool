@@ -40,14 +40,10 @@ body {
   border: black solid 0.1rem;
 }
 
-.donations-container {
-  @include container(40rem);
-  height: 100%;
-}
-
-.vl {
-  border-left: 0.3rem solid darkslategrey;
+.divider {
+  border-left: 0.3rem solid black;
   border-radius: 5rem;
   height: 18rem;
   align-self: center;
+  margin: 1rem 0rem;
 }
