@@ -1,6 +1,8 @@
 import express from "express";
 import mongoose from "mongoose";
 import dotenv from "dotenv";
+import cors from "cors";
+import newsRoutes from "./routes/news.js";
 
 //Allows access to dotenv file for MongoDB connection
 dotenv.config();
@@ -8,6 +10,12 @@ dotenv.config();
 //Express configuration for JSON
 const app = express();
 app.use(express.json());
+
+//Allows you to connect to external ports
+app.use(cors());
+
+/* ROUTES */
+app.use("/news", newsRoutes);
 
 const PORT = process.env.PORT || 6001;
 //These params set to true due to mongo depreciation
