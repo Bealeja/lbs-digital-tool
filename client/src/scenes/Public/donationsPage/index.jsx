@@ -70,7 +70,7 @@ const DonationsPage = () => {
       <div class="margin background-white">
         <div class="section-spacer">
           <h2>Our Goals</h2>
-          <div class="flex-row space-items">
+          <div class="flex-row">
             <div class="progress-container-before">
               <h3>$100,000 Donated</h3>
               <ul>
@@ -97,7 +97,10 @@ const DonationsPage = () => {
             </div>
           </div>
           <div class="flex-row center-items">
-            <h3 class="progress-bar">2023</h3>
+            <h2>2023</h2>
+            <div class="progress progress-moved">
+              <div class="progress-bar"></div>
+            </div>
           </div>
           <div class="flex-row space-items margin">
             <div class="progress-container-after">
