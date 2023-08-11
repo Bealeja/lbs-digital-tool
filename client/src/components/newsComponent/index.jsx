@@ -9,9 +9,9 @@ const NewsComponent = () => {
   const getNews = async () => {
     const response = await fetch(`http://localhost:3001/news`, {
       method: "GET",
-    });
-    const data = await response.json();
-    setNewsPost(data);
+    })
+      .then((response) => response.json())
+      .then((json) => setNewsPost(json));
   };
 
   useEffect(() => {
@@ -20,14 +20,14 @@ const NewsComponent = () => {
     }
   }, []);
 
-  console.log(newsPost);
-
   return (
-    <div class="news-image center-items">
-      <h3 class="flex-item">New Physio's Sign Up with Little Big Steps</h3>
+    <>
+      <div class="news-image center-items">
+        <h3 class="flex-item">{JSON.stringify(newsPost[1].heading)}</h3>
 
-      <img src={Child} alt="child" />
-    </div>
+        <img src={Child} alt="child" />
+      </div>
+    </>
   );
 };
 
