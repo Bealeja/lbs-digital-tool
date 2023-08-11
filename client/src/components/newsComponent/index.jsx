@@ -4,11 +4,10 @@ const NewsComponent = ({ heading, urlLink, picturePath }) => {
   return (
     <>
       <div class="news-image center-items">
-        <a href={urlLink}>
-          <h3 class="flex-item">{heading}</h3>
-        </a>
-
-        <img src={picturePath} alt="child" />
+        <h3 class="flex-item">
+          <a href={urlLink}>{heading}</a>
+        </h3>
+        <img src={`http://localhost:3001/assets/${picturePath}`} alt="child" />
       </div>
     </>
   );
