@@ -38,15 +38,15 @@ const HomePage = () => {
               <form class="radio-button-form">
                 <div class="label-container">
                   <input type="radio" id="5" name="money" value="5" />
-                  <label for="5">$5</label>
+                  <label>$5</label>
                 </div>
                 <div class="label-container">
                   <input type="radio" id="10" name="money" value="10" />
-                  <label for="10">$10</label>
+                  <label>$10</label>
                 </div>
                 <div class="label-container">
                   <input type="radio" id="20" name="money" value="20" />
-                  <label for="20">$20</label>
+                  <label>$20</label>
                 </div>
               </form>
 

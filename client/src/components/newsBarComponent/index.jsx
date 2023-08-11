@@ -20,8 +20,9 @@ const NewsBar = () => {
 
   return (
     <>
-      {newsPost.map(({ heading, urlLink, picturePath }) => (
+      {newsPost.map(({ _id, heading, urlLink, picturePath }) => (
         <NewsComponent
+          key={_id}
           heading={heading}
           urlLink={urlLink}
           picturePath={picturePath}
