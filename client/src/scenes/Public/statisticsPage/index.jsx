@@ -3,7 +3,7 @@ import Footer from "../../../components/footerComponent";
 import Navbar from "../../../components/navbarComponent";
 import Table from "../../../components/tableComponent";
 
-import "./index.scss";
+import "../../../App.scss";
 
 import Photo1 from "../../../assets/child.png";
 
@@ -34,7 +34,7 @@ const StatisticsPage = () => {
           </section>
         </div>
       </div>
-      <div class="flex-column background-purple section-spacer">
+      <div class="flex-column background-purple">
         <div class="margin">
           <h2>Follow the money trail</h2>
           <p>
