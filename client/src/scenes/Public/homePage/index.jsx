@@ -7,7 +7,7 @@ import Table from "../../../components/tableComponent";
 import Footer from "../../../components/footerComponent";
 import "../../../App.scss";
 import Card from "../../../components/cardComponent";
-import NewsComponent from "../../../components/newsComponent";
+import NewsBar from "../../../components/newsBarComponent";
 
 const HomePage = () => {
   return (
@@ -118,10 +118,7 @@ const HomePage = () => {
             <div class="background-green container section-spacer">
               <h2>Lastest News</h2>
               <div class="flex-row spread-items">
-                <NewsComponent />
-                <NewsComponent />
-                <NewsComponent />
-                <NewsComponent />
+                <NewsBar />
               </div>
             </div>
           </div>
