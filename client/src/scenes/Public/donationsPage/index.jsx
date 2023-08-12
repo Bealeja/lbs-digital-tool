@@ -7,7 +7,6 @@ const DonationsPage = () => {
   return (
     <div class="background-purple">
       <Navbar />
-      <Banner />
       <div class="margin background-white">
         <div class="flex-row section-spacer spread-items">
           {/* Fundraising */}
