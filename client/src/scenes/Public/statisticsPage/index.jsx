@@ -9,7 +9,7 @@ import Photo1 from "../../../assets/child.png";
 
 const StatisticsPage = () => {
   return (
-    <>
+    <div id="statistics">
       <Navbar />
       <Banner />
       <div class="margin flex-row spread-items">
@@ -30,10 +30,18 @@ const StatisticsPage = () => {
         <div class="flex-column spacer-vertical spread-items">
           <section class="container">
             <h2>Children Helped</h2>
+            <p>
+              Here at Little Big Steps we strive to achieve better outcomes for
+              our foundation every year while remaining completly transparent
+              with our supporters
+            </p>
             <Table />
           </section>
         </div>
       </div>
+
+      {/* Follow the Money Trail */}
+
       <div class="flex-column background-purple">
         <div class="margin">
           <h2>Follow the money trail</h2>
@@ -53,6 +61,8 @@ const StatisticsPage = () => {
               <Table />
             </div>
           </div>
+
+          {/* Distribution of Donations */}
 
           <div class="background-white section-spacer">
             <div class="flex-row center-items">
@@ -84,7 +94,7 @@ const StatisticsPage = () => {
           <br></br>
         </div>
       </div>
-    </>
+    </div>
   );
 };
 
