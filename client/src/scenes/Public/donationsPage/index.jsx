@@ -1,4 +1,3 @@
-import Banner from "../../../components/bannerComponent";
 import Footer from "../../../components/footerComponent";
 import Navbar from "../../../components/navbarComponent";
 import "./index.scss";

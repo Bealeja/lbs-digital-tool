@@ -343,6 +343,18 @@ h2 {
 }
 
 /*************************************************
+!--Active Fundraisers Page--!
+**************************************************/
+#activefundraisers {
+  background-color: $purple-color;
+}
+
+#activefundraisers .container {
+  @include container(95%);
+  margin: 1rem 2.5%;
+}
+
+/*************************************************
 !--Radio Button properties--!
 **************************************************/
 
