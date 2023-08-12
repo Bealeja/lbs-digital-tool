@@ -9,7 +9,7 @@ import Photo1 from "../../../assets/child.png";
 
 const StatisticsPage = () => {
   return (
-    <div>
+    <>
       <Navbar />
       <Banner />
       <div class="margin flex-row spread-items">
@@ -84,7 +84,7 @@ const StatisticsPage = () => {
           <br></br>
         </div>
       </div>
-    </div>
+    </>
   );
 };
 

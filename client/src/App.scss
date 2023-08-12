@@ -479,10 +479,15 @@ $bezier: cubic-bezier(0.65, 0.25, 0.56, 0.96);
   right: 0;
   margin: 0rem;
   z-index: 999;
+  width: 100%;
+  background-color: $purple-color;
 }
 
 #navbar ul {
   display: flex;
+  position: relative;
+  justify-content: flex-end;
+  margin: 0;
 }
 
 #navbar li {
@@ -498,8 +503,8 @@ $bezier: cubic-bezier(0.65, 0.25, 0.56, 0.96);
 }
 
 #navbar a {
-  background-color: $white-color;
-  color: purple;
+  background-color: $purple-color;
+  color: $white-color;
   display: inline-flex;
   justify-content: center;
   align-items: center;
@@ -519,8 +524,8 @@ $bezier: cubic-bezier(0.65, 0.25, 0.56, 0.96);
 a:focus,
 a:active {
   outline: 0;
-  color: plum;
-  border-color: plum;
+  color: $grey-color;
+  border-color: $grey-color;
   z-index: 1;
 }
 
