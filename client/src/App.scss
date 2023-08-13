@@ -337,6 +337,10 @@ h2 {
 /*************************************************
 !--Statistics Page--!
 **************************************************/
+#statistics {
+  background-color: $white-color;
+}
+
 #statistics .container {
   @include container(100%);
   height: fit-content;
