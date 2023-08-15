@@ -193,6 +193,10 @@ h2 {
   @include flex(row);
 }
 
+.flex-wrap {
+  flex-wrap: wrap;
+}
+
 .label-container {
   display: flex;
   align-content: center;
@@ -572,3 +576,24 @@ a:active {
 /*************************************************
 !--End Navbar Properties--!
 **************************************************/
+.image-container img {
+  width: 100%;
+  border-radius: 0.2rem;
+}
+
+.card-flex {
+  display: flex;
+  box-sizing: border-box;
+  flex: 1 1;
+}
+
+.image-container {
+  width: 15vw;
+  padding: 0.5rem;
+}
+
+.card-margin {
+  margin: 0.5rem;
+  border: 0.1rem solid black;
+  border-radius: 0.2rem;
+}

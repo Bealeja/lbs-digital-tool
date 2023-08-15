@@ -3,6 +3,7 @@ import mongoose from "mongoose";
 import dotenv from "dotenv";
 import cors from "cors";
 import newsRoutes from "./routes/news.js";
+import fundraiserRoutes from "./routes/fundraiser.js";
 import { fileURLToPath } from "url";
 import path from "path";
 import multer from "multer";
@@ -22,6 +23,7 @@ app.use(cors());
 
 /* ROUTES */
 app.use("/news", newsRoutes);
+app.use("/fundraisers", fundraiserRoutes);
 
 /*FILE STORAGE*/
 app.use("/assets", express.static(path.join(__dirname, "public/assets")));

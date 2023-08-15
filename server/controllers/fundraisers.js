@@ -1,4 +1,4 @@
-import fundraisers from "../models/fundraiser";
+import Fundraisers from "../models/fundraiser.js";
 
 export const getActiveFundraisers = async (req, res) => {
   try {

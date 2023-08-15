@@ -6,8 +6,8 @@ import Navbar from "../../../components/navbarComponent";
 import Table from "../../../components/tableComponent";
 import Footer from "../../../components/footerComponent";
 import "../../../App.scss";
-import Card from "../../../components/cardComponent";
 import NewsBar from "../../../components/newsBarComponent";
+import ActiveFundraiserBar from "../../../components/activeFundraiserBarComponent";
 
 const HomePage = () => {
   return (
@@ -100,15 +100,8 @@ const HomePage = () => {
             </div>
           </div>
 
-          <div class="flex-row">
-            <div class="flex-column container">
-              <Card />
-              <Card />
-            </div>
-            <div class="flex-column container">
-              <Card />
-              <Card />
-            </div>
+          <div class="flex-row flex-wrap">
+            <ActiveFundraiserBar />
           </div>
         </div>
 

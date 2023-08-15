@@ -1,4 +1,4 @@
-import "./index.scss";
+import "../../App.scss";
 
 import child from "../../assets/child.png";
 

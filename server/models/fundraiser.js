@@ -1,6 +1,6 @@
 import mongoose from "mongoose";
 
-const newsSchema = mongoose.Schema({
+const fundraiserSchema = mongoose.Schema({
   heading: {
     type: String,
     required: true,
@@ -11,3 +11,7 @@ const newsSchema = mongoose.Schema({
   },
   picturePath: String,
 });
+
+const Fundraisers = mongoose.model("Fundraisers", fundraiserSchema);
+
+export default Fundraisers;
