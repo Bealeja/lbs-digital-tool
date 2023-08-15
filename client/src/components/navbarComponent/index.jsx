@@ -36,7 +36,7 @@ const Navbar = () => {
           <Link class="navbar-link" to="/activefundraiser">
             <span>
               <FontAwesomeIcon icon={faInstagram} />
-              fundraisers
+              Fundraisers
             </span>
           </Link>
         </li>

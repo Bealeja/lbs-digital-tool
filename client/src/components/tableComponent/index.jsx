@@ -37,14 +37,14 @@ const Table = () => {
         </ul>
         <div class="bars">
           <div class="bar-group">
-            <div class="bar bar-1 stat-1" style={{ height: "51%" }}>
-              <span>4080</span>
+            <div class="bar bar-1 stat-1" style={{ height: "30%" }}>
+              <span>fitbit watches provided</span>
             </div>
             <div class="bar bar-2 stat-2" style={{ height: "51%" }}>
-              <span>5680</span>
+              <span>physio sessions paid</span>
             </div>
-            <div class="bar bar-3 stat-3" style={{ height: "51%" }}>
-              <span>1040</span>
+            <div class="bar bar-3 stat-3" style={{ height: "80%" }}>
+              <span>thousand for research</span>
             </div>
           </div>
           <div class="bar-group">
