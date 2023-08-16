@@ -23,11 +23,13 @@ $green-color: #55dba2;
   width: $width;
   height: 100%;
   border-radius: 0.3rem;
+  flex: 1 1;
 }
 
 @mixin flex($direction) {
   display: flex;
   flex-direction: $direction;
+  box-sizing: border-box;
 }
 
 /*************************************************

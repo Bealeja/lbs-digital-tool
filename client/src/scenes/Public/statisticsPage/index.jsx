@@ -6,6 +6,7 @@ import Table from "../../../components/tableComponent";
 import "../../../App.scss";
 
 import Photo1 from "../../../assets/child.png";
+import HorizontalTable from "../../../components/horizontalTableComponent";
 
 const StatisticsPage = () => {
   return (
@@ -29,13 +30,13 @@ const StatisticsPage = () => {
         {/* Children Helped */}
         <div class="flex-column spacer-vertical spread-items">
           <section class="container">
-            <h2>Children Helped</h2>
+            <h2>Your Contributions</h2>
             <p>
               Here at Little Big Steps we strive to achieve better outcomes for
               our foundation every year while remaining completly transparent
               with our supporters
             </p>
-            <Table />
+            <HorizontalTable />
           </section>
         </div>
       </div>
@@ -53,11 +54,11 @@ const StatisticsPage = () => {
           </p>
           <div class="flex-row center-items spread-items">
             <div class="container spacer-vertical">
-              <h2>Children Helped</h2>
+              <h2>Past Achievements</h2>
               <Table />
             </div>
             <div class="container spacer-vertical">
-              <h2>Children Helped</h2>
+              <h2>Current Statistics</h2>
               <Table />
             </div>
           </div>
