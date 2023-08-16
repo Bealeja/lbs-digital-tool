@@ -12,6 +12,6 @@ const fundraiserSchema = mongoose.Schema({
   picturePath: String,
 });
 
-const Fundraisers = mongoose.model("Fundraisers", fundraiserSchema);
+const Fundraisers = mongoose.model("fundraisers", fundraiserSchema);
 
 export default Fundraisers;

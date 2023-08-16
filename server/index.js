@@ -4,6 +4,7 @@ import dotenv from "dotenv";
 import cors from "cors";
 import newsRoutes from "./routes/news.js";
 import fundraiserRoutes from "./routes/fundraiser.js";
+import tablesRoutes from "./routes/tables.js";
 import { fileURLToPath } from "url";
 import path from "path";
 import multer from "multer";
@@ -22,8 +23,12 @@ app.use(express.json());
 app.use(cors());
 
 /* ROUTES */
+//app.use(/news, router.get("/", getNews(res, resp, next)))
 app.use("/news", newsRoutes);
+//app.use(/fundraisers, router.get("/", getFundraisers(res, resp, next)))
 app.use("/fundraisers", fundraiserRoutes);
+//app.use(/tables, router.get("/", getTables(res, resp, next)))
+app.use("/tables", tablesRoutes);
 
 /*FILE STORAGE*/
 app.use("/assets", express.static(path.join(__dirname, "public/assets")));

@@ -6,7 +6,7 @@ const Table = () => {
   const [tableData, setTableData] = useState([]);
 
   const getTableData = async () => {
-    fetch("http://localhost:3001/tabledata", {
+    await fetch(`http://localhost:3001/tables`, {
       method: "GET",
     })
       .then((response) => response.json())
@@ -16,6 +16,10 @@ const Table = () => {
       });
   };
   //insert data into table
+
+  useEffect(() => {
+    getTableData();
+  }, []);
 
   return (
     <div id="bar-chart">

@@ -12,6 +12,6 @@ const newsSchema = mongoose.Schema({
   picturePath: String,
 });
 
-const News = mongoose.model("News", newsSchema);
+const News = mongoose.model("news", newsSchema);
 
 export default News;

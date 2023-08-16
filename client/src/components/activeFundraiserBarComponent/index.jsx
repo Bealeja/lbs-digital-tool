@@ -6,7 +6,7 @@ const ActiveFundraiserBar = () => {
   const [activeFundraisers, setActiveFundraisers] = useState([]);
 
   const getFundraisers = async () => {
-    fetch(`http://localhost:3001/fundraisers`, {
+    await fetch(`http://localhost:3001/fundraisers`, {
       method: "GET",
     })
       .then((response) => response.json())

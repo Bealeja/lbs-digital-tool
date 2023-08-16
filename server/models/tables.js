@@ -5,5 +5,12 @@ const tablesSchema = mongoose.Schema({
     type: String,
     required: true,
   },
-  statistics: Array,
+  statistics: {
+    type: Array,
+    required: true,
+  },
 });
+
+const Tables = mongoose.model("Tables", tablesSchema);
+
+export default Tables;

@@ -6,7 +6,7 @@ const NewsBar = () => {
   const [newsPost, setNewsPost] = useState([]);
 
   const getNews = async () => {
-    fetch(`http://localhost:3001/news`, {
+    await fetch(`http://localhost:3001/news`, {
       method: "GET",
     })
       .then((response) => response.json())
