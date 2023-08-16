@@ -1,6 +1,22 @@
+import { React, useState, useEffect } from "react";
 import "./index.scss";
 
 const Table = () => {
+  //fetch data in accordance to heading
+  const [tableData, setTableData] = useState([]);
+
+  const getTableData = async () => {
+    fetch("http://localhost:3001/tabledata", {
+      method: "GET",
+    })
+      .then((response) => response.json())
+      .then((json) => setTableData(json))
+      .catch((error) => {
+        console.log(`failure to get JSON data for Table : ${error}`);
+      });
+  };
+  //insert data into table
+
   return (
     <div id="bar-chart">
       <div class="graph">

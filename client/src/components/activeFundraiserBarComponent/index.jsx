@@ -10,7 +10,12 @@ const ActiveFundraiserBar = () => {
       method: "GET",
     })
       .then((response) => response.json())
-      .then((json) => setActiveFundraisers(json));
+      .then((json) => setActiveFundraisers(json))
+      .catch((error) => {
+        console.log(
+          `failure to get JSON data for Active Fundraiser Bar Component : ${error}`
+        );
+      });
   };
 
   //Render only on component render

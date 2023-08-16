@@ -10,7 +10,12 @@ const NewsBar = () => {
       method: "GET",
     })
       .then((response) => response.json())
-      .then((json) => setNewsPost(json));
+      .then((json) => setNewsPost(json))
+      .catch((error) => {
+        console.log(
+          `failure to get JSON data for NewsBar Component : ${error}`
+        );
+      });
   };
 
   //Render only on component render
