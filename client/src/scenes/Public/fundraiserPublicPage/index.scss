@@ -1,16 +1,12 @@
-@import "../../App.scss";
+@import "../../../App.scss";
 
 body {
   background-color: #805ec5;
 }
 
-.public-container {
-  @include container(35vw);
-}
-
 .carousel-container {
   display: flex;
-  width: 50vw;
+  width: 40vw;
   margin: auto;
   justify-self: center;
 }

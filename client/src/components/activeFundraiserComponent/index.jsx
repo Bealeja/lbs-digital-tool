@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom/cjs/react-router-dom.min";
 import "../../App.scss";
 
 const ActiveFundraiserComponent = ({ heading, content, picturePath }) => {
@@ -12,7 +13,9 @@ const ActiveFundraiserComponent = ({ heading, content, picturePath }) => {
       <div class="spread-items">
         <h2>{heading}</h2>
         <p>{content}</p>
-        <h3>Read More</h3>
+        <Link to="/fundraiserpage">
+          <h3>Read More</h3>
+        </Link>
       </div>
     </div>
   );

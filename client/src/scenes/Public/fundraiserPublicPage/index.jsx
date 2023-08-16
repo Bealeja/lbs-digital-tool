@@ -1,16 +1,17 @@
 import "./index.scss";
-
-import Banner from "../../../components/bannerComponent";
 import DemoCarousel from "../../../components/carouselComponent";
 import Footer from "../../../components/footerComponent";
+import Navbar from "../../../components/navbarComponent";
+import Banner from "../../../components/bannerComponent";
 
 const FundraiserPublicPage = () => {
   return (
     <div>
+      <Navbar />
       <Banner />
       <div class="margin">
-        <section class="flex-row center-items background-white">
-          <div class="flex-column public-container">
+        <section class="flex-row spread-items background-white section-spacer">
+          <div class="container">
             <h2>Sarah's Fundraiser Gala</h2>
             <h3>Event Date: 12/6/2023</h3>
             <h3>Signup cut off: 12/6/2023</h3>
@@ -25,31 +26,79 @@ const FundraiserPublicPage = () => {
               So sit back, relax, and enjoy the evening. Thank you for being
               here and for your generous support.
             </p>
-          </div>
-          <div class="flex-column">
-            <aside class="public-container">
-              <h2>Milestones</h2>
-              <form>
-                <label for="option1">Option 1:</label>
-                <input type="checkbox" id="option1" name="option1" />
-                <br />
-                <label for="option2">Option 2:</label>
-                <input type="checkbox" id="option2" name="option2" />
-                <br />
-                <label for="option3">Option 3:</label>
-                <input type="checkbox" id="option3" name="option3" />
+            <div class="flex-column">
+              <h2>Donate</h2>
+              <form class="radio-button-form">
+                <div class="label-container">
+                  <input type="radio" id="5" name="money" value="5" />
+                  <label>$5</label>
+                </div>
+                <div class="label-container">
+                  <input type="radio" id="10" name="money" value="10" />
+                  <label>$10</label>
+                </div>
+                <div class="label-container">
+                  <input type="radio" id="20" name="money" value="20" />
+                  <label>$20</label>
+                </div>
+                <button class="button-purple">Donate</button>
               </form>
-            </aside>
+            </div>
           </div>
+          <aside class="container">
+            <h2>Milestones</h2>
+            <label class="mcui-checkbox">
+              <input type="checkbox" />
+              <div>
+                <svg
+                  class="mcui-check"
+                  viewBox="-2 -2 35 35"
+                  aria-hidden="true"
+                >
+                  <title>checkmark-circle</title>
+                  <polyline points="7.57 15.87 12.62 21.07 23.43 9.93" />
+                </svg>
+              </div>
+              <h5>Milestone 1</h5>
+            </label>
+            <label class="mcui-checkbox">
+              <input type="checkbox" />
+              <div>
+                <svg
+                  class="mcui-check"
+                  viewBox="-2 -2 35 35"
+                  aria-hidden="true"
+                >
+                  <title>checkmark-circle</title>
+                  <polyline points="7.57 15.87 12.62 21.07 23.43 9.93" />
+                </svg>
+              </div>
+              <h5>Milestone 2</h5>
+            </label>
+            <label class="mcui-checkbox">
+              <input type="checkbox" />
+              <div>
+                <svg
+                  class="mcui-check"
+                  viewBox="-2 -2 35 35"
+                  aria-hidden="true"
+                >
+                  <title>checkmark-circle</title>
+                  <polyline points="7.57 15.87 12.62 21.07 23.43 9.93" />
+                </svg>
+              </div>
+              <h5>Milestone 3</h5>
+            </label>
+          </aside>
         </section>
-        <div class="background-white">
+        <div class="background-white section-spacer">
           <h2>Event Photos</h2>
           <div class="carousel-container">
             <DemoCarousel />
           </div>
         </div>
-        <Footer />
       </div>
+      <Footer />
     </div>
   );
 };

@@ -381,6 +381,7 @@ a {
   font-weight: bold;
   display: flex;
   justify-content: flex-start;
+  padding: 0rem 0.8rem;
 }
 
 input[type="radio"] {
@@ -446,7 +447,7 @@ $bezier: cubic-bezier(0.65, 0.25, 0.56, 0.96);
   align-items: center;
   justify-content: center;
   user-select: none;
-  padding: 0.5em 0em;
+  padding: 0em 0.5em;
   box-sizing: border-box;
   margin: 0rem 0rem;
 
