@@ -26,7 +26,11 @@ const HomePage = () => {
                 in need of physical excersise to battle the effects of ongoing
                 cancer treatment.
               </p>
-              <button class="button-purple">Find Out More</button>
+              <button class="button-purple">
+                <a href="https://littlebigsteps.org.au/our-how/">
+                  Find Out More
+                </a>
+              </button>
             </section>
           </div>
 
