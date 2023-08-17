@@ -1,4 +1,4 @@
-import mongoose from "mongoose";
+const mongoose = require("mongoose");
 
 const fundraiserSchema = mongoose.Schema({
   heading: {
@@ -14,4 +14,4 @@ const fundraiserSchema = mongoose.Schema({
 
 const Fundraisers = mongoose.model("fundraisers", fundraiserSchema);
 
-export default Fundraisers;
+module.exports = { Fundraisers };

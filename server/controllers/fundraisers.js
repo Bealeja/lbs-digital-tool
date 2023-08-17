@@ -1,6 +1,6 @@
-import Fundraisers from "../models/fundraiser.js";
+const { Fundraisers } = require("../models/fundraiser.js");
 
-export const getActiveFundraisers = async (req, res, next) => {
+const getActiveFundraisers = async (req, res, next) => {
   try {
     const fundraisers = await Fundraisers.find();
     res.status(200).json(fundraisers);
@@ -13,3 +13,5 @@ export const getActiveFundraisers = async (req, res, next) => {
     next();
   }
 };
+
+module.exports = { getActiveFundraisers };

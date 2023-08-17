@@ -1,4 +1,4 @@
-import mongoose from "mongoose";
+const mongoose = require("mongoose");
 
 const tablesSchema = mongoose.Schema({
   heading: {
@@ -13,4 +13,4 @@ const tablesSchema = mongoose.Schema({
 
 const Tables = mongoose.model("Tables", tablesSchema);
 
-export default Tables;
+module.exports = { Tables };

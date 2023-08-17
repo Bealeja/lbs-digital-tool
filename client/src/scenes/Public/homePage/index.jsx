@@ -10,6 +10,20 @@ import NewsBar from "../../../components/newsBarComponent";
 import ActiveFundraiserBar from "../../../components/activeFundraiserBarComponent";
 
 const HomePage = () => {
+  const processPayment = async () => {
+    await fetch("http://localhost:3001/create-checkout-session", {
+      method: "POST",
+    })
+      .then((response) => response.json())
+      .then((json) => {
+        console.log("This message was returned from stripe");
+        console.log(json);
+      })
+      .catch((error) => {
+        console.log("failure to get response from stripe payment");
+      });
+  };
+
   return (
     <div id="home-page">
       <Navbar />
@@ -69,7 +83,13 @@ const HomePage = () => {
                   </div>
                   <h5>Every Month</h5>
                 </label>
-                <button class="button-purple">Donate</button>
+                <button
+                  class="button-purple"
+                  onClick={processPayment}
+                  type="submit"
+                >
+                  Checkout
+                </button>
               </div>
             </section>
           </div>

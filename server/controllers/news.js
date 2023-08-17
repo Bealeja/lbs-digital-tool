@@ -1,6 +1,6 @@
-import News from "../models/news.js";
+const { News } = require("../models/news.js");
 
-export const getNewsPosts = async (req, res, next) => {
+const getNewsPosts = async (req, res, next) => {
   try {
     const news = await News.find();
     res.status(200).json(news);
@@ -13,3 +13,5 @@ export const getNewsPosts = async (req, res, next) => {
     next();
   }
 };
+
+module.exports = { getNewsPosts };

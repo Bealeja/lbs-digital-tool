@@ -1,16 +1,13 @@
-import express from "express";
-import mongoose from "mongoose";
-import dotenv from "dotenv";
-import cors from "cors";
-import newsRoutes from "./routes/news.js";
-import fundraiserRoutes from "./routes/fundraiser.js";
-import tablesRoutes from "./routes/tables.js";
-import { fileURLToPath } from "url";
-import path from "path";
-import multer from "multer";
-
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
+const express = require("express");
+const mongoose = require("mongoose");
+const dotenv = require("dotenv");
+const cors = require("cors");
+const newsRoutes = require("./routes/news.js");
+const fundraiserRoutes = require("./routes/fundraiser.js");
+const tablesRoutes = require("./routes/tables.js");
+const paymentRoutes = require("./routes/payment.js");
+const path = require("path");
+const multer = require("multer");
 
 //Allows access to dotenv file for MongoDB connection
 dotenv.config();
@@ -19,8 +16,12 @@ dotenv.config();
 const app = express();
 app.use(express.json());
 
+/*EXTERNAL CONNECTIONS*/
 //Allows you to connect to external ports
 app.use(cors());
+
+/*STRIPE*/
+app.use("/create-checkout-session", paymentRoutes);
 
 /* ROUTES */
 //app.use(/news, router.get("/", getNews(res, resp, next)))
@@ -42,6 +43,8 @@ const storage = multer.diskStorage({
     cb(null, file.originalname);
   },
 });
+
+/*DATABASE CONNECTION*/
 const PORT = process.env.PORT || 6001;
 //These params set to true due to mongo depreciation
 //Ref: https://arunrajeevan.medium.com/understanding-mongoose-connection-options-2b6e73d96de1#:~:text=1,that%20prevents%20you%20from%20connecting.
