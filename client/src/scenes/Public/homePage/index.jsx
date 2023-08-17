@@ -8,113 +8,40 @@ import Footer from "../../../components/footerComponent";
 import "../../../App.scss";
 import NewsBar from "../../../components/newsBarComponent";
 import ActiveFundraiserBar from "../../../components/activeFundraiserBarComponent";
+import DonationComponent from "../../../components/donationComponent";
 
 const HomePage = () => {
-  const processPayment = async () => {
-    fetch("http://localhost:3001/create-checkout-session", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        items: [
-          { id: 1, quantity: 3 },
-          { id: 2, quantity: 1 },
-        ],
-      }),
-    })
-      .then((res) => {
-        if (res.ok) return res.json();
-        return res.json().then((json) => Promise.reject(json));
-      })
-      .then(({ url }) => {
-        window.location = url;
-      })
-      .catch((e) => {
-        console.error(e.error);
-      });
-  };
-
   return (
-    <div id="home-page">
+    <>
       <Navbar />
       <Banner />
-      <div class="margin flex-row spread-items">
-        <div class="flex-column spacer-vertical spread-items">
-          {/* !----Who We Are----! */}
-
-          <div class="container">
-            <section>
-              <h2>Who we are</h2>
-              <p>
-                At Little Big Steps, we're commited to supporting those children
-                in need of physical excersise to battle the effects of ongoing
-                cancer treatment.
-              </p>
-              <button class="button-purple">
-                <a href="https://littlebigsteps.org.au/our-how/">
-                  Find Out More
-                </a>
-              </button>
-            </section>
-          </div>
-
-          {/* !----Donate----! */}
-
-          <div class="container">
-            <section>
-              <h2>Donate</h2>
-              <form class="radio-button-form">
-                <div class="label-container">
-                  <input type="radio" id="5" name="money" value="5" />
-                  <label>$5</label>
-                </div>
-                <div class="label-container">
-                  <input type="radio" id="10" name="money" value="10" />
-                  <label>$10</label>
-                </div>
-                <div class="label-container">
-                  <input type="radio" id="20" name="money" value="20" />
-                  <label>$20</label>
-                </div>
-              </form>
-
-              <div class="flex-row spread-items">
-                <label class="mcui-checkbox">
-                  <input type="checkbox" />
-                  <div>
-                    <svg
-                      class="mcui-check"
-                      viewBox="-2 -2 35 35"
-                      aria-hidden="true"
-                    >
-                      <title>checkmark-circle</title>
-                      <polyline points="7.57 15.87 12.62 21.07 23.43 9.93" />
-                    </svg>
-                  </div>
-                  <h5>Every Month</h5>
-                </label>
-                <button
-                  class="button-purple"
-                  onClick={processPayment}
-                  type="submit"
-                >
-                  Checkout
-                </button>
-              </div>
-            </section>
-          </div>
+      <div class="grid-container background-white">
+        {/* !----Who We Are----! */}
+        <div class="grid-item">
+          <section>
+            <h2>Who we are</h2>
+            <p>
+              At Little Big Steps, we're commited to supporting those children
+              in need of physical excersise to battle the effects of ongoing
+              cancer treatment.
+            </p>
+            <button class="button-purple">
+              <a href="https://littlebigsteps.org.au/our-how/">Find Out More</a>
+            </button>
+          </section>
         </div>
 
         {/* !----Our Goals----! */}
+        <div class="grid-item grid-table">
+          <section>
+            <h2>Our Goals</h2>
+            <Table />
+          </section>
+        </div>
 
-        <div class="flex-column spacer-vertical center-items">
-          <div class="container">
-            <section>
-              <h2>Our Goals</h2>
-              <Table />
-            </section>
-          </div>
+        {/* !----Donate----! */}
+        <div class="grid-item">
+          <DonationComponent />
         </div>
       </div>
 
@@ -153,7 +80,7 @@ const HomePage = () => {
         </div>
       </div>
       <Footer />
-    </div>
+    </>
   );
 };
 

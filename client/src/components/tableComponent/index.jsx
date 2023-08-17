@@ -15,7 +15,6 @@ const Table = () => {
         console.log(`failure to get JSON data for Table : ${error}`);
       });
   };
-  //insert data into table
 
   useEffect(() => {
     getTableData();
