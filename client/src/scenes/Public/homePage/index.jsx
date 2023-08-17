@@ -11,16 +11,27 @@ import ActiveFundraiserBar from "../../../components/activeFundraiserBarComponen
 
 const HomePage = () => {
   const processPayment = async () => {
-    await fetch("http://localhost:3001/create-checkout-session", {
+    fetch("http://localhost:3001/create-checkout-session", {
       method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        items: [
+          { id: 1, quantity: 3 },
+          { id: 2, quantity: 1 },
+        ],
+      }),
     })
-      .then((response) => response.json())
-      .then((json) => {
-        console.log("This message was returned from stripe");
-        console.log(json);
+      .then((res) => {
+        if (res.ok) return res.json();
+        return res.json().then((json) => Promise.reject(json));
       })
-      .catch((error) => {
-        console.log("failure to get response from stripe payment");
+      .then(({ url }) => {
+        window.location = url;
+      })
+      .catch((e) => {
+        console.error(e.error);
       });
   };
 
