@@ -24,7 +24,7 @@ const ActiveFundraiserBar = () => {
   }, []);
 
   return (
-    <>
+    <div class="flex-row">
       {activeFundraisers
         .slice(0, 4)
         .map(({ _id, heading, content, picturePath }) => (
@@ -35,7 +35,7 @@ const ActiveFundraiserBar = () => {
             picturePath={picturePath}
           />
         ))}
-    </>
+    </div>
   );
 };
 

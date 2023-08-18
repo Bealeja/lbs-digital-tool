@@ -24,7 +24,7 @@ const NewsBar = () => {
   }, []);
 
   return (
-    <>
+    <div class="flex-row">
       {newsPost.slice(0, 4).map(({ _id, heading, urlLink, picturePath }) => (
         <NewsComponent
           key={_id}
@@ -33,7 +33,7 @@ const NewsBar = () => {
           picturePath={picturePath}
         />
       ))}
-    </>
+    </div>
   );
 };
 

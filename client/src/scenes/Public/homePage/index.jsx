@@ -12,12 +12,12 @@ import DonationComponent from "../../../components/donationComponent";
 
 const HomePage = () => {
   return (
-    <>
+    <div>
       <Navbar />
       <Banner />
       <div class="grid-container background-white">
         {/* !----Who We Are----! */}
-        <div class="grid-item">
+        <div>
           <section>
             <h2>Who we are</h2>
             <p>
@@ -31,25 +31,26 @@ const HomePage = () => {
           </section>
         </div>
 
+        {/* !----Donate----! */}
+        <div>
+          <DonationComponent />
+        </div>
+
         {/* !----Our Goals----! */}
-        <div class="grid-item grid-table">
+        <div class="grid-col-str-2">
           <section>
             <h2>Our Goals</h2>
             <Table />
           </section>
         </div>
-
-        {/* !----Donate----! */}
-        <div class="grid-item">
-          <DonationComponent />
-        </div>
       </div>
 
       {/* !----Active Fundraisers----! */}
-      <div id="active-fundraisers">
-        <div class="background-purple margin">
+      <div class="grid-container background-purple">
+        <div class="grid-row-str-1">
           <div class="flex-row spread-items">
             <h2>Active Fundraisers</h2>
+
             <div class="search-box">
               <button class="btn-search">
                 <FontAwesomeIcon icon={faInstagram} class="search-icon" />
@@ -61,26 +62,22 @@ const HomePage = () => {
               />
             </div>
           </div>
-
-          <div class="flex-row flex-wrap">
-            <ActiveFundraiserBar />
-          </div>
         </div>
+        <div class="grid-row-str-1">
+          <ActiveFundraiserBar />
+        </div>
+      </div>
 
-        {/* !----Latest News----! */}
-        <div id="Latest News">
-          <div class="background-purple margin">
-            <div class="background-green container section-spacer">
-              <h2>Lastest News</h2>
-              <div class="flex-row spread-items">
-                <NewsBar />
-              </div>
-            </div>
-          </div>
+      <div class="grid-container background-green margin">
+        <div class="grid-row-str-1">
+          <h2>Lastest News</h2>
+        </div>
+        <div class="grid-row-str-1">
+          <NewsBar />
         </div>
       </div>
       <Footer />
-    </>
+    </div>
   );
 };
 

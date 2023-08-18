@@ -1,4 +1,4 @@
-import "./index.scss";
+import "../../App.scss";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faFacebook,
@@ -9,7 +9,7 @@ import {
 const Footer = () => {
   return (
     <footer>
-      <div class="flex-center background-white margin-break margin">
+      <div class="background-white center-items flex-column margin">
         <h2>Contact Us</h2>
         <h3>hello@littlebigsteps.org.au</h3>
         <div>
