@@ -1,5 +1,6 @@
 import Navbar from "../../../components/navbarComponent";
 import "./index.scss";
+import Form from "../../../components/formComponent";
 
 const LoginPage = () => {
   return (
@@ -11,7 +12,8 @@ const LoginPage = () => {
             <div class="main">
               <input type="checkbox" id="chk" aria-hidden="true" />
               <div class="signup">
-                <form>
+                <Form />
+                {/* <form>
                   <label for="chk" aria-hidden="true">
                     Sign up
                   </label>
@@ -55,7 +57,7 @@ const LoginPage = () => {
                     required=""
                   />
                   <button>Login</button>
-                </form>
+                </form> */}
               </div>
             </div>
           </div>
