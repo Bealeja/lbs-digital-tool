@@ -32,14 +32,6 @@ const Navbar = () => {
             </span>
           </Link>
         </li>
-        <li>
-          <Link class="navbar-link" to="/activefundraiser">
-            <span>
-              <FontAwesomeIcon icon={faInstagram} />
-              Fundraisers
-            </span>
-          </Link>
-        </li>
       </ul>
     </div>
   );
