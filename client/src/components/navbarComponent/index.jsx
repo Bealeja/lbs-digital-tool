@@ -32,6 +32,14 @@ const Navbar = () => {
             </span>
           </Link>
         </li>
+        <li>
+          <Link class="navbar-link" to="/login">
+            <span>
+              <FontAwesomeIcon icon={faInstagram} />
+              Login
+            </span>
+          </Link>
+        </li>
       </ul>
     </div>
   );

@@ -11,6 +11,7 @@ import FundraiserPublicPage from "./scenes/Public/fundraiserPublicPage";
 import ActiveFundraiserPage from "./scenes/Public/activeFundraiserPage";
 // import AdminHostPage from "./scenes/Admin/adminHomePage";
 // import AdminFundraiserPage from "./scenes/Admin/adminFundraiserPage";
+import LoginPage from "./scenes/Public/loginPage";
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
         <Route path="/donations" component={DonationsPage} />
         <Route path="/activefundraiser" component={ActiveFundraiserPage} />
         <Route path="/fundraiserpage" component={FundraiserPublicPage} />
+        <Route path="/login" component={LoginPage} />
       </Router>
     </div>
   );

@@ -37,7 +37,7 @@ $green-color: #55dba2;
 Note: Only elements allowed
 **************************************************/
 body {
-  background-color: $white-color;
+  background-color: $purple-color;
   margin: 1.5em 0 0 0;
 }
 
@@ -327,9 +327,6 @@ footer {
 /*************************************************
 !--Statistics Page--!
 **************************************************/
-#statistics {
-  background-color: $white-color;
-}
 
 #statistics .container {
   @include container(100%);
@@ -634,4 +631,11 @@ a:active {
 
 .grid-row-str-1 {
   grid-column: 1/3;
+}
+
+.carousel-container {
+  display: flex;
+  width: 40vw;
+  margin: auto;
+  justify-self: center;
 }
