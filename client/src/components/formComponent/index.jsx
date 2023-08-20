@@ -1,7 +1,6 @@
 import { Formik } from "formik";
 import * as yup from "yup";
 import { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
 
 //Create register and login schemas for yup validation
 const registerSchema = yup.object().shape({
@@ -36,8 +35,6 @@ const Form = () => {
   //Define states that will set the page to either login or register
   const isLogin = pageType === "login";
   const isRegister = pageType === "register";
-
-  const navigate = useNavigate();
 
   const register = async (values, onSubmitProps) => {
     //create new from
@@ -86,7 +83,6 @@ const Form = () => {
       });
 
       //Navigate to home
-      navigate("/");
     }
   };
 
