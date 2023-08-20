@@ -78,12 +78,12 @@ const Form = () => {
         }) => (
           <form onSubmit={handleSubmit}>
             {/* IF State:pageType === "register" -> display register details ELSE display login details */}
-            {isRegister && (
-              <>
-                <div class="signup">
-                  <label for="chk" aria-hidden="true">
-                    Sign up
-                  </label>
+            <div class="signup">
+              <label for="chk" aria-hidden="true">
+                {isLogin ? "LOGIN" : "SIGN UP"}
+              </label>
+              {isRegister && (
+                <>
                   <input
                     placeholder="First Name"
                     label="First Name"
@@ -108,63 +108,38 @@ const Form = () => {
                     }
                     helperText={touched.lastName && errors.lastName}
                   />
-                  <input
-                    type="email"
-                    name="email"
-                    placeholder="Email"
-                    required=""
-                  />
-                  <input
-                    type="password"
-                    name="pswd"
-                    placeholder="Password"
-                    required=""
-                  />
-                  <button type="submit">
-                    {isLogin ? "REGISTER" : "LOGIN"}
-                  </button>
-                  <h6
-                    onClick={() => {
-                      setPageType(isLogin ? "register" : "login");
-                    }}
-                  >
-                    {isLogin
-                      ? "Don't have an account? Sign Up here."
-                      : "Already have an account? Login here."}
-                  </h6>
-                </div>
-              </>
-            )}
+                </>
+              )}
 
-            {isLogin && (
-              <>
-                <label for="chk" aria-hidden="true">
-                  Login
-                </label>
-                <input
-                  type="email"
-                  name="email"
-                  placeholder="Email"
-                  required=""
-                />
-                <input
-                  type="password"
-                  name="pswd"
-                  placeholder="Password"
-                  required=""
-                />
-                <button type="submit">{isLogin ? "LOGIN" : "REGISTER"}</button>
-                <h6
-                  onClick={() => {
-                    setPageType(isLogin ? "register" : "login");
-                  }}
-                >
-                  {isLogin
-                    ? "Don't have an account? Sign Up here."
-                    : "Already have an account? Login here."}
-                </h6>
-              </>
-            )}
+              <input
+                placeholder="Email"
+                onBlur={handleBlur}
+                onChange={handleChange}
+                value={values.email}
+                name="email"
+                error={Boolean(touched.email) && Boolean(errors.email)}
+                helperText={touched.email && errors.email}
+              />
+              <input
+                placeholder="Password"
+                onBlur={handleBlur}
+                onChange={handleChange}
+                value={values.password}
+                name="password"
+                error={Boolean(touched.password) && Boolean(errors.password)}
+                helperText={touched.password && errors.password}
+              />
+              <button type="submit">{isLogin ? "LOGIN" : "REGISTER"}</button>
+              <h6
+                onClick={() => {
+                  setPageType(isLogin ? "register" : "login");
+                }}
+              >
+                {isLogin
+                  ? "Don't have an account? Sign Up here."
+                  : "Already have an account? Login here."}
+              </h6>
+            </div>
           </form>
         )}
       </Formik>
