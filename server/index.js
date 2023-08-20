@@ -62,6 +62,9 @@ app.use("/fundraisers", fundraiserRoutes);
 //app.use(/tables, router.get("/", getTables(res, resp, next)))
 app.use("/tables", tablesRoutes);
 
+/*AUTHENTICATION*/
+app.use("/auth", authRoutes);
+
 /*FILE STORAGE*/
 app.use("/assets", express.static(path.join(__dirname, "public/assets")));
 

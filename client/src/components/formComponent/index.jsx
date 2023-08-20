@@ -1,6 +1,7 @@
 import { Formik } from "formik";
 import * as yup from "yup";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 //Create register and login schemas for yup validation
 const registerSchema = yup.object().shape({
@@ -30,29 +31,69 @@ const initialValueLogin = {
 const Form = () => {
   //Create State that alters the page for login or register
   const [pageType, setPageType] = useState("login");
+  const [userlogin, setLogin] = useState(null);
 
   //Define states that will set the page to either login or register
   const isLogin = pageType === "login";
   const isRegister = pageType === "register";
 
-  const register = async () => {
+  const navigate = useNavigate();
+
+  const register = async (values, onSubmitProps) => {
     //create new from
+    const formData = new FormData();
+
     //store submitted values in form
+    for (let value in values) {
+      formData.append(value, values[value]);
+    }
+
     //POST form to backend for authentication
-    //Reset the form
+    const savedUserResponse = await fetch(
+      "http://localhost:3001/auth/register",
+      {
+        method: "POST",
+        body: formData,
+      }
+    );
+    //Await POST response, clear form
+    const savedUser = await savedUserResponse;
+    onSubmitProps.resetForm();
+
     //If the user already exists, set page to login
+    if (savedUser) {
+      setPageType("login");
+    }
   };
 
-  const login = async () => {
+  const login = async (values, onSubmitProps) => {
     //Post values to backend for comparison
-    //Reset the form
+    const loggedInResponse = await fetch("http://localhost:3001/auth/login", {
+      method: "POST",
+      headers: { "Content Type": "application/json" },
+      body: JSON.stringify(values),
+    });
+
+    //Await POST response, clear form
+    const loggedIn = await loggedInResponse.json();
+    onSubmitProps.resetForm();
+
     //Set user login state
-    //Navigate to home
+    if (loggedIn) {
+      setLogin({
+        user: loggedIn.user,
+        token: loggedIn.token,
+      });
+
+      //Navigate to home
+      navigate("/");
+    }
   };
 
-  const handleFormSubmit = async () => {
-    //if on login page await response from login fetch
-    //if on register page await response from register fetch
+  //Handle Login or Register Function based on page state
+  const handleFormSubmit = async (values, onSubmitProps) => {
+    if (isLogin) await login(values, onSubmitProps);
+    if (isRegister) await register(values, onSubmitProps);
   };
 
   return (
