@@ -5,13 +5,12 @@ const register = async (req, res) => {
   try {
     const { firstName, lastName, email, password } = req.body;
 
-    // const adminCheck = false;
-    // const mailServer = email.slice(email.indexOf("@"));
+    const adminCheck = false;
+    const mailServer = email.slice(email.indexOf("@"));
 
-    // if (mailServer === "@littlebigsteps.org") {
-    //   adminCheck = true;
-    // }
-    //send out an email verification before proceeding
+    if (mailServer === "@littlebigsteps.org") {
+      adminCheck = true;
+    }
 
     //Recommendation from Bcrypt is to Salt then Hash Asynchronously
     const salt = await bcrypt.genSalt(process.env.SALT_ROUNDS);
@@ -22,7 +21,7 @@ const register = async (req, res) => {
       lastName,
       email,
       password: passwordHash,
-      // admin: adminCheck,
+      admin: adminCheck,
     });
 
     //Save new user document to the database

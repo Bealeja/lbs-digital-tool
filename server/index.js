@@ -69,8 +69,8 @@ app.use("/fundraisers", fundraiserRoutes);
 //app.use(/tables, router.get("/", getTables(res, resp, next)))
 app.use("/tables", tablesRoutes);
 
-app.use(upload.array());
 /*AUTHENTICATION*/
+app.use(upload.array());
 app.post("/auth/register", register);
 // app.use("/auth", authRoutes);
 
