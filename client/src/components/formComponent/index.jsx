@@ -1,6 +1,6 @@
 import { Formik } from "formik";
 import * as yup from "yup";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 //Create register and login schemas for yup validation
 const registerSchema = yup.object().shape({
