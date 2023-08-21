@@ -1,9 +1,12 @@
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
+const { User } = require("../models/user.js");
 
 const register = async (req, res) => {
   try {
     const { firstName, lastName, email, password } = req.body;
+
+    console.log(firstName);
 
     const adminCheck = false;
     const mailServer = email.slice(email.indexOf("@"));
