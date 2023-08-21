@@ -5,9 +5,13 @@ const cors = require("cors");
 const newsRoutes = require("./routes/news.js");
 const fundraiserRoutes = require("./routes/fundraiser.js");
 const tablesRoutes = require("./routes/tables.js");
+const authRoutes = require("./routes/auth.js");
+const { register } = require("./controllers/auth.js");
+
 // const paymentRoutes = require("./routes/payment.js");
 const path = require("path");
 const multer = require("multer");
+const upload = multer();
 
 //Allows access to dotenv file for MongoDB connection
 dotenv.config();
@@ -15,6 +19,9 @@ dotenv.config();
 //Express configuration for JSON
 const app = express();
 app.use(express.json());
+
+//Body parse for Fetches with body: {object} calls
+app.use(express.urlencoded({ extended: true }));
 
 /*EXTERNAL CONNECTIONS*/
 //Allows you to connect to external ports
@@ -62,8 +69,10 @@ app.use("/fundraisers", fundraiserRoutes);
 //app.use(/tables, router.get("/", getTables(res, resp, next)))
 app.use("/tables", tablesRoutes);
 
+app.use(upload.array());
 /*AUTHENTICATION*/
-app.use("/auth", authRoutes);
+app.post("/auth/register", register);
+// app.use("/auth", authRoutes);
 
 /*FILE STORAGE*/
 app.use("/assets", express.static(path.join(__dirname, "public/assets")));

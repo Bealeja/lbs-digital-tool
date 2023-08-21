@@ -30,14 +30,14 @@ const initialValueLogin = {
 const Form = () => {
   //Create State that alters the page for login or register
   const [pageType, setPageType] = useState("login");
-  const [userlogin, setLogin] = useState(null);
+  const [userlogin, setLogin] = useState({});
 
   //Define states that will set the page to either login or register
   const isLogin = pageType === "login";
   const isRegister = pageType === "register";
 
   const register = async (values, onSubmitProps) => {
-    //create new from
+    //create new from - values aquired
     const formData = new FormData();
 
     //store submitted values in form
@@ -128,10 +128,6 @@ const Form = () => {
                     onChange={handleChange}
                     value={values.firstName}
                     name="firstName"
-                    error={
-                      Boolean(touched.firstName) && Boolean(errors.firstName)
-                    }
-                    helperText={touched.firstName && errors.firstName}
                   />
                   <input
                     placeholder="Last Name"
@@ -140,10 +136,6 @@ const Form = () => {
                     onChange={handleChange}
                     value={values.lastName}
                     name="lastName"
-                    error={
-                      Boolean(touched.lastName) && Boolean(errors.lastName)
-                    }
-                    helperText={touched.lastName && errors.lastName}
                   />
                 </>
               )}
@@ -154,8 +146,6 @@ const Form = () => {
                 onChange={handleChange}
                 value={values.email}
                 name="email"
-                error={Boolean(touched.email) && Boolean(errors.email)}
-                helperText={touched.email && errors.email}
               />
               <input
                 placeholder="Password"
@@ -163,8 +153,6 @@ const Form = () => {
                 onChange={handleChange}
                 value={values.password}
                 name="password"
-                error={Boolean(touched.password) && Boolean(errors.password)}
-                helperText={touched.password && errors.password}
               />
               <button type="submit">{isLogin ? "LOGIN" : "REGISTER"}</button>
               <h6
