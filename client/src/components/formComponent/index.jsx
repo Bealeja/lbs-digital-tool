@@ -1,6 +1,7 @@
 import { Formik } from "formik";
 import * as yup from "yup";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 //Create register and login schemas for yup validation
 const registerSchema = yup.object().shape({
@@ -31,6 +32,8 @@ const Form = () => {
   //Create State that alters the page for login or register
   const [pageType, setPageType] = useState("login");
   const [userlogin, setLogin] = useState({});
+
+  const navigate = useNavigate();
 
   //Define states that will set the page to either login or register
   const isLogin = pageType === "login";
@@ -66,7 +69,6 @@ const Form = () => {
   const login = async (values, onSubmitProps) => {
     console.log("Login function triggered");
 
-    console.log(typeof data, JSON.stringify(values));
     //Post values to backend for comparison
     const loggedInResponse = await fetch("http://localhost:3001/auth/login", {
       method: "POST",
@@ -88,6 +90,7 @@ const Form = () => {
       });
 
       //Navigate to home
+      navigate("/");
     }
   };
 

@@ -61,7 +61,7 @@ app.use("/tables", tablesRoutes);
 /*AUTHENTICATION*/
 app.post("/auth/register", register);
 //app.use(/auth, router.get("/login", login(res, resp)), middleware: verifytoken(req, res, next))
-app.use("/auth/login", login);
+app.use("/auth", authRoutes);
 
 /*STRIPE*/
 const storeItems = new Map([
