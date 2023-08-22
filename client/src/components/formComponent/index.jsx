@@ -89,6 +89,8 @@ const Form = () => {
         token: loggedIn.token,
       });
 
+      console.log(userlogin);
+
       //Navigate to home
       navigate("/");
     }

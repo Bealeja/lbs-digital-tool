@@ -16,6 +16,10 @@ const ActiveFundraiserBar = () => {
           `failure to get JSON data for Active Fundraiser Bar Component : ${error}`
         );
       });
+
+    console.log(
+      "This is activeFundraisers: " + JSON.stringify(activeFundraisers)
+    );
   };
 
   //Render only on component render

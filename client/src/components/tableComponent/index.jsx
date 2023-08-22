@@ -14,6 +14,7 @@ const Table = () => {
       .catch((error) => {
         console.log(`failure to get JSON data for Table : ${error}`);
       });
+    console.log(tableData);
   };
 
   useEffect(() => {

@@ -28,12 +28,7 @@ app.use(bodyParser.urlencoded({ extended: true })); // for parsing application/x
 /*EXTERNAL CONNECTIONS*/
 //Allows you to connect to external ports
 
-var corsOptions = {
-  origin: true,
-  methods: "GET,PUT,POST",
-};
-
-app.use(cors(corsOptions));
+app.use(cors());
 
 /*FILE STORAGE - MULTER*/
 app.use("/assets", express.static(path.join(__dirname, "public/assets")));
