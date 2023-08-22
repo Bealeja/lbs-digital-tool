@@ -46,23 +46,26 @@ const login = async (req, res) => {
   try {
     //parse email and password from request
     const { email, password } = req.body;
+    console.log("login form submitted");
+    console.log(JSON.stringify(email), JSON.stringify(password));
 
     //find email in database
-    const user = await User.findOne({ email: email }, { admin: true });
-
-    console.log(user);
+    const user = await User.findOne({ email: email });
 
     if (!user) return res.status(400).json({ msg: "User does not exist. " });
 
     //Check if password matches using Bcrypt
     const isMatch = await bcrypt.compare(password, user.password);
+
     if (!isMatch) return res.status(400).json({ msg: "Invalid credentials. " });
 
     const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET);
     delete user.password;
+    console.log("User Logged In ");
     res.status(200).json({ token, user });
   } catch (err) {
     res.status(500).json({ error: err.message });
+    console.log("Login Error at controller");
   }
 };
 

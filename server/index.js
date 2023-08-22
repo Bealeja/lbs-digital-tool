@@ -1,31 +1,60 @@
 const express = require("express");
-const mongoose = require("mongoose");
-const dotenv = require("dotenv");
-const cors = require("cors");
-const newsRoutes = require("./routes/news.js");
-const fundraiserRoutes = require("./routes/fundraiser.js");
-const tablesRoutes = require("./routes/tables.js");
 const authRoutes = require("./routes/auth.js");
-const { register } = require("./controllers/auth.js");
-
-// const paymentRoutes = require("./routes/payment.js");
-const path = require("path");
+const bodyParser = require("body-parser");
+const cors = require("cors");
+const dotenv = require("dotenv");
+const fundraiserRoutes = require("./routes/fundraiser.js");
+const mongoose = require("mongoose");
 const multer = require("multer");
-const upload = multer();
+const newsRoutes = require("./routes/news.js");
+const path = require("path");
+const { register } = require("./controllers/auth.js");
+const tablesRoutes = require("./routes/tables.js");
 
-//Allows access to dotenv file for MongoDB connection
-dotenv.config();
-
+/*CONFIGURATION*/
 //Express configuration for JSON
 const app = express();
 app.use(express.json());
 
+//Allows access to dotenv file for MongoDB connection
+dotenv.config();
+
+/*REQ.BODY PARSING*/
 //Body parse for Fetches with body: {object} calls
-app.use(express.urlencoded({ extended: true }));
+app.use(bodyParser.json()); // for parsing application/json
+app.use(bodyParser.urlencoded({ extended: true })); // for parsing application/x-www-form-urlencoded
 
 /*EXTERNAL CONNECTIONS*/
 //Allows you to connect to external ports
 app.use(cors());
+
+/*FILE STORAGE - MULTER*/
+app.use("/assets", express.static(path.join(__dirname, "public/assets")));
+
+//Need Multer to upload asset folder to the server and make it accessible for the frontend
+const storage = multer.diskStorage({
+  destination: function (req, file, cb) {
+    cb(null, "public/assets");
+  },
+  filename: function (req, file, cb) {
+    cb(null, file.originalname);
+  },
+});
+const upload = multer();
+app.use(upload.array());
+
+/* ROUTES */
+//app.use(/news, router.get("/", getNews(res, resp, next)))
+app.use("/news", newsRoutes);
+//app.use(/fundraisers, router.get("/", getFundraisers(res, resp, next)))
+app.use("/fundraisers", fundraiserRoutes);
+//app.use(/tables, router.get("/", getTables(res, resp, next)))
+app.use("/tables", tablesRoutes);
+
+/*AUTHENTICATION*/
+app.post("/auth/register", register);
+//app.use(/auth, router.get("/login", login(res, resp)), middleware: verifytoken(req, res, next))
+app.use("/auth", authRoutes);
 
 /*STRIPE*/
 const storeItems = new Map([
@@ -59,32 +88,6 @@ app.post("/create-checkout-session", async (req, res) => {
   } catch (e) {
     res.status(500).json({ error: e.message });
   }
-});
-
-/* ROUTES */
-//app.use(/news, router.get("/", getNews(res, resp, next)))
-app.use("/news", newsRoutes);
-//app.use(/fundraisers, router.get("/", getFundraisers(res, resp, next)))
-app.use("/fundraisers", fundraiserRoutes);
-//app.use(/tables, router.get("/", getTables(res, resp, next)))
-app.use("/tables", tablesRoutes);
-
-/*AUTHENTICATION*/
-app.use(upload.array());
-app.post("/auth/register", register);
-// app.use("/auth", authRoutes);
-
-/*FILE STORAGE*/
-app.use("/assets", express.static(path.join(__dirname, "public/assets")));
-
-//Need Multer to upload asset folder to the server and make it accessible for the frontend
-const storage = multer.diskStorage({
-  destination: function (req, file, cb) {
-    cb(null, "public/assets");
-  },
-  filename: function (req, file, cb) {
-    cb(null, file.originalname);
-  },
 });
 
 /*DATABASE CONNECTION*/

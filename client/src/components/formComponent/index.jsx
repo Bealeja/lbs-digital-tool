@@ -11,8 +11,8 @@ const registerSchema = yup.object().shape({
 });
 
 const loginSchema = yup.object().shape({
-  firstName: yup.string().required("required"),
-  lastName: yup.string().required("required"),
+  email: yup.string().required("required"),
+  password: yup.string().required("required"),
 });
 
 const initialValuesRegister = {
@@ -64,6 +64,7 @@ const Form = () => {
   };
 
   const login = async (values, onSubmitProps) => {
+    console.log("Login function triggered");
     //Post values to backend for comparison
     const loggedInResponse = await fetch("http://localhost:3001/auth/login", {
       method: "POST",
