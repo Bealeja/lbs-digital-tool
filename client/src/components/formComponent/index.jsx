@@ -11,7 +11,7 @@ const registerSchema = yup.object().shape({
 });
 
 const loginSchema = yup.object().shape({
-  email: yup.string().required("required"),
+  email: yup.string().email("invalid email").required("required"),
   password: yup.string().required("required"),
 });
 
@@ -22,7 +22,7 @@ const initialValuesRegister = {
   password: "",
 };
 
-const initialValueLogin = {
+const initialValuesLogin = {
   email: "",
   password: "",
 };
@@ -65,10 +65,14 @@ const Form = () => {
 
   const login = async (values, onSubmitProps) => {
     console.log("Login function triggered");
+
+    console.log(typeof data, JSON.stringify(values));
     //Post values to backend for comparison
     const loggedInResponse = await fetch("http://localhost:3001/auth/login", {
       method: "POST",
-      headers: { "Content Type": "application/json" },
+      headers: {
+        "Content-Type": "application/json",
+      },
       body: JSON.stringify(values),
     });
 
@@ -97,7 +101,7 @@ const Form = () => {
     <>
       <Formik
         onSubmit={handleFormSubmit}
-        initialValues={isLogin ? initialValueLogin : initialValuesRegister}
+        initialValues={isLogin ? initialValuesLogin : initialValuesRegister}
         validationSchema={isLogin ? loginSchema : registerSchema}
       >
         {/* handleBlur: handles what has been touched

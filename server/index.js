@@ -4,11 +4,12 @@ const bodyParser = require("body-parser");
 const cors = require("cors");
 const dotenv = require("dotenv");
 const fundraiserRoutes = require("./routes/fundraiser.js");
+const helmet = require("helmet");
 const mongoose = require("mongoose");
 const multer = require("multer");
 const newsRoutes = require("./routes/news.js");
 const path = require("path");
-const { register } = require("./controllers/auth.js");
+const { register, login } = require("./controllers/auth.js");
 const tablesRoutes = require("./routes/tables.js");
 
 /*CONFIGURATION*/
@@ -26,7 +27,13 @@ app.use(bodyParser.urlencoded({ extended: true })); // for parsing application/x
 
 /*EXTERNAL CONNECTIONS*/
 //Allows you to connect to external ports
-app.use(cors());
+
+var corsOptions = {
+  origin: true,
+  methods: "GET,PUT,POST",
+};
+
+app.use(cors(corsOptions));
 
 /*FILE STORAGE - MULTER*/
 app.use("/assets", express.static(path.join(__dirname, "public/assets")));
@@ -54,7 +61,7 @@ app.use("/tables", tablesRoutes);
 /*AUTHENTICATION*/
 app.post("/auth/register", register);
 //app.use(/auth, router.get("/login", login(res, resp)), middleware: verifytoken(req, res, next))
-app.use("/auth", authRoutes);
+app.use("/auth/login", login);
 
 /*STRIPE*/
 const storeItems = new Map([
