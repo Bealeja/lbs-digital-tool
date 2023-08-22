@@ -1,5 +1,5 @@
 //Package Imports
-import { BrowserRouter as Router, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import "./App.scss";
 
 // Scene Imports
@@ -16,14 +16,16 @@ import LoginPage from "./scenes/Public/loginPage";
 function App() {
   return (
     <div className="App">
-      <Router>
-        <Route exact path="/" component={HomePage} />
-        <Route path="/statistics" component={StatisticsPage} />
-        <Route path="/donations" component={DonationsPage} />
-        <Route path="/activefundraiser" component={ActiveFundraiserPage} />
-        <Route path="/fundraiserpage" component={FundraiserPublicPage} />
-        <Route path="/login" component={LoginPage} />
-      </Router>
+      <BrowserRouter>
+        <Routes>
+          <Route exact path="/" element={<HomePage />} />
+          <Route path="/statistics" element={<StatisticsPage />} />
+          <Route path="/donations" element={<DonationsPage />} />
+          <Route path="/activefundraiser" element={<ActiveFundraiserPage />} />
+          <Route path="/fundraiserpage" element={<FundraiserPublicPage />} />
+          <Route path="/login" element={<LoginPage />} />
+        </Routes>
+      </BrowserRouter>
     </div>
   );
 }
