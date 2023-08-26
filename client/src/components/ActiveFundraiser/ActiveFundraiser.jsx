@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import "../../App.scss";
 
-const ActiveFundraiserComponent = ({ heading, content, picturePath }) => {
+const ActiveFundraiser = ({ heading, content, picturePath }) => {
   return (
     <div class="card-flex card-margin card-border background-white black-link">
       <Link to="/fundraiserpage">

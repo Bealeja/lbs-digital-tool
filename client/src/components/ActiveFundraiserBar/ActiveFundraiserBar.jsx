@@ -1,6 +1,6 @@
 import { React, useState, useEffect } from "react";
 
-import ActiveFundraiserComponent from "../activeFundraiserComponent";
+import ActiveFundraiser from "../ActiveFundraiser";
 
 const ActiveFundraiserBar = () => {
   const [activeFundraisers, setActiveFundraisers] = useState([]);
@@ -32,7 +32,7 @@ const ActiveFundraiserBar = () => {
       {activeFundraisers
         .slice(0, 4)
         .map(({ _id, heading, content, picturePath }) => (
-          <ActiveFundraiserComponent
+          <ActiveFundraiser
             key={_id}
             heading={heading}
             content={content}

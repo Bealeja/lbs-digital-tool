@@ -1,4 +1,3 @@
-import Banner from "../../../components/bannerComponent";
 import Footer from "../../../components/footerComponent";
 import Navbar from "../../../components/navbarComponent";
 import Table from "../../../components/tableComponent";
@@ -7,6 +6,7 @@ import "../../../App.scss";
 
 import Photo1 from "../../../assets/child.png";
 import HorizontalTable from "../../../components/horizontalTableComponent";
+import Banner from "../../../components/banner/banner";
 
 const StatisticsPage = () => {
   return (

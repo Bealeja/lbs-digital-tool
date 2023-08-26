@@ -1,6 +1,7 @@
 //Package Imports
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import "./App.scss";
+import React from "react";
 
 // Scene Imports
 import HomePage from "./scenes/Public/homePage";

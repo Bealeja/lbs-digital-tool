@@ -2,9 +2,9 @@ import "../../../App.scss";
 import DemoCarousel from "../../../components/carouselComponent";
 import Footer from "../../../components/footerComponent";
 import Navbar from "../../../components/navbarComponent";
-import Banner from "../../../components/bannerComponent";
 import DonationComponent from "../../../components/donationComponent";
 import MilestoneListComponent from "../../../components/milestoneListComponent";
+import Banner from "../../../components/banner/banner";
 
 const FundraiserPublicPage = () => {
   return (

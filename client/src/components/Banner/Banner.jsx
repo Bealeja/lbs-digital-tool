@@ -1,6 +1,6 @@
 import banner from "../../assets/banner.png";
 
-import "./index.scss";
+import "./Banner.scss";
 
 const Banner = () => {
   return (
