@@ -4,7 +4,7 @@ import Footer from "../../../components/footerComponent";
 import Navbar from "../../../components/navbarComponent";
 import DonationComponent from "../../../components/donationComponent";
 import MilestoneListComponent from "../../../components/milestoneListComponent";
-import Banner from "../../../components/banner/banner";
+import Banner from "../../../components/Banner/Banner";
 
 const FundraiserPublicPage = () => {
   return (

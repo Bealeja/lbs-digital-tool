@@ -6,7 +6,7 @@ import "../../../App.scss";
 
 import Photo1 from "../../../assets/child.png";
 import HorizontalTable from "../../../components/horizontalTableComponent";
-import Banner from "../../../components/banner/banner";
+import Banner from "../../../components/Banner/Banner";
 
 const StatisticsPage = () => {
   return (

@@ -1,13 +1,13 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faInstagram } from "@fortawesome/free-brands-svg-icons";
 
-import Banner from "../../../components/Banner";
+import Banner from "../../../components/Banner/Banner";
 import Navbar from "../../../components/navbarComponent";
 import Table from "../../../components/tableComponent";
 import Footer from "../../../components/footerComponent";
 import "../../../App.scss";
 import NewsBar from "../../../components/newsBarComponent";
-import ActiveFundraiserBar from "../../../components/ActiveFundraiserBar";
+import ActiveFundraiserBar from "../../../components/ActiveFundraiserBar/ActiveFundraiserBar";
 import DonationComponent from "../../../components/donationComponent";
 
 const HomePage = () => {

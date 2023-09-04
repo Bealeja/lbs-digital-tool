@@ -1,6 +1,6 @@
 import { React, useState, useEffect } from "react";
 
-import ActiveFundraiser from "../ActiveFundraiser";
+import ActiveFundraiser from "../ActiveFundraiser/ActiveFundraiser";
 
 const ActiveFundraiserBar = () => {
   const [activeFundraisers, setActiveFundraisers] = useState([]);
