@@ -1,4 +1,4 @@
-import MileStone from "../../widgets/mileStoneComponent";
+import MileStone from "../MileStone/MileStone";
 
 const MilestoneListComponent = () => {
   const labels = ["10 Volunteers", "20 Tickets Bought", "Gary Has A Dance"];

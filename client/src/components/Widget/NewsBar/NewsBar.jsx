@@ -1,6 +1,6 @@
 import { React, useState, useEffect } from "react";
 
-import NewsComponent from "../newsComponent";
+import NewsComponent from "../News/News";
 
 const NewsBar = () => {
   const [newsPost, setNewsPost] = useState([]);

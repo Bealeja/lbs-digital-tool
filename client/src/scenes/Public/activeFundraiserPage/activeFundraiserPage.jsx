@@ -3,9 +3,9 @@ import "../../../App.scss";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faInstagram } from "@fortawesome/free-brands-svg-icons";
 
-import Card from "../../../components/cardComponent";
-import Footer from "../../../components/footerComponent";
-import Navbar from "../../../components/navbarComponent";
+import Card from "../../../components/Core/Card/Card";
+import Footer from "../../../components/Core/Footer/Footer";
+import Navbar from "../../../components/Core/Navbar";
 
 const ActiveFundraiserPage = () => {
   return (

@@ -1,12 +1,12 @@
-import Footer from "../../../components/footerComponent";
-import Navbar from "../../../components/navbarComponent";
-import Table from "../../../components/tableComponent";
+import Footer from "../../../components/Core/Footer/Footer";
+import Navbar from "../../../components/Core/Navbar";
+import Table from "../../../components/Widget/Table/Table";
 
 import "../../../App.scss";
 
 import Photo1 from "../../../assets/child.png";
-import HorizontalTable from "../../../components/horizontalTableComponent";
-import Banner from "../../../components/Banner/Banner";
+import HorizontalTable from "../../../components/Widget/HorizontalTable/HorizontalTable";
+import Banner from "../../../components/Core/Banner/Banner";
 
 const StatisticsPage = () => {
   return (

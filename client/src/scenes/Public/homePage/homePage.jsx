@@ -1,14 +1,14 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faInstagram } from "@fortawesome/free-brands-svg-icons";
 
-import Banner from "../../../components/Banner/Banner";
-import Navbar from "../../../components/navbarComponent";
-import Table from "../../../components/tableComponent";
-import Footer from "../../../components/footerComponent";
+import Banner from "../../../components/Core/Banner/Banner";
+import Navbar from "../../../components/Core/Navbar";
+import Table from "../../../components/Widget/Table/Table";
+import Footer from "../../../components/Core/Footer/Footer";
 import "../../../App.scss";
-import NewsBar from "../../../components/newsBarComponent";
-import ActiveFundraiserBar from "../../../components/ActiveFundraiserBar/ActiveFundraiserBar";
-import DonationComponent from "../../../components/donationComponent";
+import NewsBar from "../../../components/Widget/NewsBar/NewsBar";
+import ActiveFundraiserBar from "../../../components/Widget/ActiveFundraiserBar/ActiveFundraiserBar";
+import DonationComponent from "../../../components/Widget/Donations/Donations";
 
 const HomePage = () => {
   return (
