@@ -1,6 +1,6 @@
-import Navbar from "../../../components/Core";
-import "./index.scss";
-import Form from "../../../components/formComponent";
+import { Navbar } from "../../../components/Core/index";
+import "./loginPage.scss";
+import LoginForm from "../../../components/Forms/LoginForm/LoginForm";
 
 const LoginPage = () => {
   return (
@@ -11,7 +11,7 @@ const LoginPage = () => {
           <div class="flex-row center-items">
             <div class="main">
               <input type="checkbox" id="chk" aria-hidden="true" />
-              <Form />
+              <LoginForm />
             </div>
           </div>
         </div>

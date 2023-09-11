@@ -1,4 +1,4 @@
-const DonationComponent = () => {
+const Donations = () => {
   const processPayment = async () => {
     fetch("http://localhost:3001/create-checkout-session", {
       method: "POST",
@@ -61,4 +61,4 @@ const DonationComponent = () => {
   );
 };
 
-export default DonationComponent;
+export default Donations;

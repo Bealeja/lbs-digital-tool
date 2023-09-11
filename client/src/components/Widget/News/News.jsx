@@ -1,6 +1,6 @@
-import "../../App.scss";
+import "../../../App.scss";
 
-const NewsComponent = ({ heading, urlLink, picturePath }) => {
+const News = ({ heading, urlLink, picturePath }) => {
   return (
     <>
       <div class="card-flex card-margin center-items image-filter white-link">
@@ -13,4 +13,4 @@ const NewsComponent = ({ heading, urlLink, picturePath }) => {
   );
 };
 
-export default NewsComponent;
+export default News;

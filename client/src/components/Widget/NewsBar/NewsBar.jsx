@@ -1,6 +1,6 @@
 import { React, useState, useEffect } from "react";
 
-import NewsComponent from "../News/News";
+import News from "../News/News";
 
 const NewsBar = () => {
   const [newsPost, setNewsPost] = useState([]);
@@ -26,7 +26,7 @@ const NewsBar = () => {
   return (
     <div class="flex-row">
       {newsPost.slice(0, 4).map(({ _id, heading, urlLink, picturePath }) => (
-        <NewsComponent
+        <News
           key={_id}
           heading={heading}
           urlLink={urlLink}

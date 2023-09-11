@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import "../../App.scss";
+import "../../../App.scss";
 
 const ActiveFundraiser = ({ heading, content, picturePath }) => {
   return (
@@ -16,4 +16,4 @@ const ActiveFundraiser = ({ heading, content, picturePath }) => {
   );
 };
 
-export default ActiveFundraiserComponent;
+export default ActiveFundraiser;

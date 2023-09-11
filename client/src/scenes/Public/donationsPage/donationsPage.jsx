@@ -1,5 +1,5 @@
 import { Footer, Navbar } from "../../../components/Core";
-import { Donation, ProgressBar } from "../../../components/Widget";
+import { Donations, ProgressBar } from "../../../components/Widget/index";
 import "../../../App.scss";
 
 const DonationsPage = () => {
@@ -21,7 +21,7 @@ const DonationsPage = () => {
         </div>
         <div class="background-white">
           {/* Donate */}
-          <Donation />
+          <Donations />
         </div>
 
         {/* Our Goals */}

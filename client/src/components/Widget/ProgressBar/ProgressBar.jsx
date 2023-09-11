@@ -1,4 +1,4 @@
-import "./index.scss";
+import "./ProgressBar.scss";
 
 const ProgressBar = () => {
   return (
