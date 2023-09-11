@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import "../../App.scss";
+import "../../../App.scss";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faInstagram } from "@fortawesome/free-brands-svg-icons";

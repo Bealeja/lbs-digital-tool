@@ -1,4 +1,4 @@
-import "./index.scss";
+import "./HorizontalTable.scss";
 
 const HorizontalTable = () => {
   return (

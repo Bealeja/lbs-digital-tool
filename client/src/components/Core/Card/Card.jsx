@@ -1,6 +1,6 @@
-import "../../App.scss";
+import "../../../App.scss";
 
-import child from "../../assets/child.png";
+import child from "../../../assets/child.png";
 
 const Card = () => {
   return (

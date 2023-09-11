@@ -1,4 +1,4 @@
-import "../../App.scss";
+import "../../../App.scss";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faFacebook,

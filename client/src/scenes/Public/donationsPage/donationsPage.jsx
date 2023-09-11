@@ -1,7 +1,5 @@
-import DonationComponent from "../../../components/donationComponent";
-import Footer from "../../../components/footerComponent";
-import Navbar from "../../../components/navbarComponent";
-import ProgressBar from "../../../widgets/progressBarComponent";
+import { Footer, Navbar } from "../../../components/Core";
+import { Donation, ProgressBar } from "../../../components/Widget";
 import "../../../App.scss";
 
 const DonationsPage = () => {
@@ -23,7 +21,7 @@ const DonationsPage = () => {
         </div>
         <div class="background-white">
           {/* Donate */}
-          <DonationComponent />
+          <Donation />
         </div>
 
         {/* Our Goals */}

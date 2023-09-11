@@ -1,5 +1,5 @@
 import Footer from "../../../components/Core/Footer/Footer";
-import Navbar from "../../../components/Core/Navbar";
+import Navbar from "../../../components/Core/Navbar/Navbar";
 import Table from "../../../components/Widget/Table/Table";
 
 import "../../../App.scss";

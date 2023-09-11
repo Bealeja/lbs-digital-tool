@@ -33,7 +33,7 @@ const HomePage = () => {
 
         {/* !----Donate----! */}
         <div>
-          <DonationComponent />
+          <Donations />
         </div>
 
         {/* !----Our Goals----! */}

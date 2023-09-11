@@ -1,4 +1,4 @@
-import Navbar from "../../../components/navbarComponent";
+import Navbar from "../../../components/Core";
 import "./index.scss";
 import Form from "../../../components/formComponent";
 

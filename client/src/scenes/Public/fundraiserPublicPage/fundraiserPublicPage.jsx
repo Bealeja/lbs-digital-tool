@@ -1,7 +1,7 @@
 import "../../../App.scss";
 import DemoCarousel from "../../../components/Widget/Carousel/Carousel";
 import Footer from "../../../components/Core/Footer/Footer";
-import Navbar from "../../../components/Core/Navbar";
+import Navbar from "../../../components/Core/Navbar/Navbar";
 import DonationComponent from "../../../components/Widget/Donations/Donations";
 import MilestoneListComponent from "../../../components/Widget/MileStoneList/MileStoneList";
 import Banner from "../../../components/Core/Banner/Banner";
