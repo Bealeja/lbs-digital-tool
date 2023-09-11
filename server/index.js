@@ -9,8 +9,8 @@ const mongoose = require("mongoose");
 const multer = require("multer");
 const newsRoutes = require("./routes/news.js");
 const path = require("path");
-const { register, login } = require("./controllers/auth.js");
 const tablesRoutes = require("./routes/tables.js");
+const verifyToken = require("./middleware/auth.js");
 
 /*CONFIGURATION*/
 //Express configuration for JSON
@@ -54,9 +54,7 @@ app.use("/fundraisers", fundraiserRoutes);
 app.use("/tables", tablesRoutes);
 
 /*AUTHENTICATION*/
-app.post("/auth/register", register);
-//app.use(/auth, router.get("/login", login(res, resp)), middleware: verifytoken(req, res, next))
-app.use("/auth", authRoutes);
+app.use("/auth", verifyToken, authRoutes);
 
 /*STRIPE*/
 const storeItems = new Map([
