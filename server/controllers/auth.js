@@ -4,9 +4,8 @@ const { User } = require("../models/user.js");
 
 const register = async (req, res, next) => {
   try {
-    const { firstName, lastName, email, password } = req.body;
-
     let adminCheck = false;
+    const { firstName, lastName, email, password } = req.body;
     const mailServer = email.slice(email.indexOf("@"));
 
     if (mailServer === "@littlebigsteps") {
