@@ -10,7 +10,6 @@ const multer = require("multer");
 const newsRoutes = require("./routes/news.js");
 const path = require("path");
 const tablesRoutes = require("./routes/tables.js");
-const verifyToken = require("./middleware/auth.js");
 
 /*CONFIGURATION*/
 //Express configuration for JSON
@@ -54,7 +53,7 @@ app.use("/fundraisers", fundraiserRoutes);
 app.use("/tables", tablesRoutes);
 
 /*AUTHENTICATION*/
-app.use("/auth", verifyToken, authRoutes);
+app.use("/auth", authRoutes);
 
 /*STRIPE*/
 const storeItems = new Map([

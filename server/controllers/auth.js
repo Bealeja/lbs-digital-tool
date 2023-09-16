@@ -2,7 +2,7 @@ const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 const { User } = require("../models/user.js");
 
-const register = async (req, res, next) => {
+const register = async (req, res) => {
   try {
     let adminCheck = false;
     const { firstName, lastName, email, password } = req.body;
@@ -11,11 +11,6 @@ const register = async (req, res, next) => {
     if (mailServer === "@littlebigsteps") {
       adminCheck = true;
     }
-
-    console.log(`This is firstName: ${typeof firstName}, ${firstName}`);
-    console.log(`This is lastName: ${typeof lastName}, ${lastName}`);
-    console.log(`This is email: ${typeof email}, ${email}`);
-    console.log(`This is password: ${typeof password}, ${password}`);
 
     // Recommendation from Bcrypt is to Salt then Hash Asynchronously
     const salt = await bcrypt.genSalt();
@@ -33,10 +28,8 @@ const register = async (req, res, next) => {
     const savedUser = await newUser.save();
     console.log("User Registered");
     res.status(201).json(savedUser);
-    next();
   } catch (err) {
     res.status(500).json({ error: err.message });
-    next();
   }
 };
 
@@ -55,16 +48,16 @@ const login = async (req, res) => {
 
     //Check if password matches using Bcrypt
     const isMatch = await bcrypt.compare(password, user.password);
-
     if (!isMatch) return res.status(400).json({ msg: "Invalid credentials. " });
 
-    const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET);
     delete user.password;
+
+    const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET);
     console.log("User Logged In ");
-    res.status(200).json({ token, user });
+    res.status(200).json({ token, id });
   } catch (err) {
     res.status(500).json({ error: err.message });
-    console.log("Login Error at controller");
+    console.log(`Error at login controller: ${err}`);
   }
 };
 

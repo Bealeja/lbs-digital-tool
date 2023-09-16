@@ -56,6 +56,7 @@ const Form = () => {
         body: formData,
       }
     );
+
     //Await POST response, clear form
     const savedUser = await savedUserResponse;
     onSubmitProps.resetForm();
@@ -81,9 +82,9 @@ const Form = () => {
     //Await POST response, clear form
     const loggedIn = await loggedInResponse.json();
     onSubmitProps.resetForm();
-
+    console.log(`loggedIn is : ${JSON.stringify(loggedIn)}`);
     //Set user login state
-    if (loggedIn) {
+    if (loggedIn.user.email) {
       setLogin({
         user: loggedIn.user,
         token: loggedIn.token,
