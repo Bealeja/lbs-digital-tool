@@ -68,3 +68,13 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 ### `npm run build` fails to minify
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+
+#########################################
+
+TO DO:
+
+- Style Buttons
+- Replace Graph with Material UI
+- Replace Buttons with material UI
+- Replace Headings and Buttons with material UI
+- Replace Radio Buttons

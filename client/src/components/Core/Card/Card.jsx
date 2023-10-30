@@ -1,5 +1,4 @@
 import "../../../App.scss";
-
 import child from "../../../assets/child.png";
 
 const Card = () => {
