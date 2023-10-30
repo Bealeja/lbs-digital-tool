@@ -1,15 +1,14 @@
 import banner from "../../../assets/banner.png";
-
-import "./Banner.scss";
+import Box from "@mui/material/Box";
 
 const Banner = () => {
   return (
-    <header id="banner">
-      <img
-        src={banner}
-        alt="banner with quote helping kids with cancer to get moving"
-      />
-    </header>
+    <Box
+      component="img"
+      sx={{ width: "100vw", height: "30vh" }}
+      alt="banner"
+      src={banner}
+    />
   );
 };
 
