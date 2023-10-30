@@ -6,51 +6,129 @@ import {
   NewsBar,
   ActiveFundraiserBar,
   Donations,
+  RadioButtons,
 } from "../../../components/Widget";
 import "../../../App.scss";
 import { Navbar, Banner, Footer } from "../../../components/Core";
+import {
+  Container,
+  Box,
+  Grid,
+  Button,
+  Autocomplete,
+  TextField,
+} from "@mui/material";
+import { purple } from "@mui/material/colors";
+import HorizontalBar from "../../../components/Widget/BarChart/BarChart";
 
 const HomePage = () => {
   return (
     <div>
       <Navbar />
       <Banner />
-      <div class="grid-container background-white">
-        {/* !----Who We Are----! */}
-        <div>
-          <section>
-            <h2>Who we are</h2>
-            <p>
-              At Little Big Steps, we're commited to supporting those children
-              in need of physical excersise to battle the effects of ongoing
-              cancer treatment.
-            </p>
-            <button class="button-purple">
-              <a href="https://littlebigsteps.org.au/our-how/">Find Out More</a>
-            </button>
-          </section>
-        </div>
+      <Container fixed sx={{ bgcolor: "#ffffff" }}>
+        <Grid container spacing={2}>
+          <Grid item xs={5}>
+            <Box component="section" sx={{ p: 0 }}>
+              <Box
+                sx={{
+                  fontSize: "h2.fontSize",
+                  m: 1,
+                  fontFamily: "poppins",
+                  fontWeight: "bold",
+                }}
+              >
+                Who we are
+              </Box>
+              <Box
+                sx={{ fontSize: "h6.fontSize", m: 1, fontFamily: "poppins" }}
+              >
+                At Little Big Steps, we're commited to supporting those children
+                in need of physical excersise to battle the effects of ongoing
+                cancer treatment.
+              </Box>
+              <Button
+                variant="contained"
+                sx={{
+                  bgcolor: "#805ec5",
+                  m: 1,
+                  fontFamily: "Poppins",
+                  fontSize: "h6.fontSize",
+                }}
+              >
+                Learn More
+              </Button>
+            </Box>
+            <Box component="section" sx={{ p: 0 }}>
+              <Box
+                sx={{
+                  fontSize: "h2.fontSize",
+                  m: 1,
+                  fontFamily: "poppins",
+                  fontWeight: "bold",
+                }}
+              >
+                Donate
+              </Box>
+              <RadioButtons />
+              <Button
+                variant="contained"
+                sx={{
+                  bgcolor: "#805ec5",
+                  m: 1,
+                  fontFamily: "Poppins",
+                  fontSize: "h6.fontSize",
+                }}
+              >
+                Donate
+              </Button>
+            </Box>
+          </Grid>
+          <Grid item xs={5}>
+            <HorizontalBar />
+          </Grid>
+        </Grid>
+      </Container>
 
-        {/* !----Donate----! */}
-        <div>
-          <Donations />
-        </div>
-
-        {/* !----Our Goals----! */}
-        <div class="grid-col-str-2">
-          <section>
-            <h2>Our Goals</h2>
-            <Table />
-          </section>
-        </div>
-      </div>
+      <Container fixed sx={{ bgcolor: "#805ec5" }}>
+        <Grid container spacing={2}>
+          <Grid item xs={9}>
+            <Box
+              sx={{
+                fontSize: "h2.fontSize",
+                m: 1,
+                fontFamily: "poppins",
+                fontWeight: "bold",
+                color: "#ffffff",
+              }}
+            >
+              Active Fundraisers
+            </Box>
+          </Grid>
+          <Grid item xs={3}>
+            <Autocomplete
+              freeSolo
+              id="free-solo-2-demo"
+              disableClearable
+              renderInput={(params) => (
+                <TextField
+                  {...params}
+                  label="Search input"
+                  InputProps={{
+                    ...params.InputProps,
+                    type: "search",
+                  }}
+                />
+              )}
+            />
+          </Grid>
+        </Grid>
+      </Container>
 
       {/* !----Active Fundraisers----! */}
       <div class="grid-container background-purple">
         <div class="grid-row-str-1">
           <div class="flex-row spread-items">
-            <h2>Active Fundraisers</h2>
-
             <div class="search-box">
               <button class="btn-search">
                 <FontAwesomeIcon icon={faInstagram} class="search-icon" />

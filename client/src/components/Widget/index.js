@@ -9,6 +9,7 @@ import News from "./News/News";
 import NewsBar from "./NewsBar/NewsBar";
 import PieChart from "./PieChart/PieChart";
 import ProgressBar from "./ProgressBar/ProgressBar";
+import RadioButtons from "./RadioButtons/RadioButtons";
 import Table from "./Table/Table";
 
 export {
@@ -23,5 +24,6 @@ export {
   NewsBar,
   PieChart,
   ProgressBar,
+  RadioButtons,
   Table,
 };
