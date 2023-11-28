@@ -13,18 +13,17 @@ import ActiveFundraiserPage from "./scenes/Public/activeFundraiserPage/activeFun
 // import AdminHostPage from "./scenes/Admin/adminHomePage";
 // import AdminFundraiserPage from "./scenes/Admin/adminFundraiserPage";
 import LoginPage from "./scenes/Public/loginPage/loginPage";
+import Layout from "./scenes/Public/Layout/Layout";
 
 function App() {
   return (
     <div className="App">
       <BrowserRouter>
         <Routes>
-          <Route exact path="/" element={<HomePage />} />
-          <Route path="/statistics" element={<StatisticsPage />} />
-          <Route path="/donations" element={<DonationsPage />} />
-          <Route path="/activefundraiser" element={<ActiveFundraiserPage />} />
-          <Route path="/fundraiserpage" element={<FundraiserPublicPage />} />
-          <Route path="/login" element={<LoginPage />} />
+          <Route path="Layout" element={<Layout />}>
+            <Route path="Home" element={<HomePage />} />
+            <Route path="Stats" element={<StatisticsPage />} />
+          </Route>
         </Routes>
       </BrowserRouter>
     </div>

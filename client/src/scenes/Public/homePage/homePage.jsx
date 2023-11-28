@@ -22,100 +22,93 @@ import {
 } from "@mui/material";
 
 import HorizontalBar from "../../../components/Widget/BarChart/BarChart";
+import ResponsiveAppBar from "../../../components/Core/ToolBar/Toolbar";
 const HomePage = () => {
   return (
     <div>
-      <Navbar />
-
       <Container fixed>
-        <Grid container spacing={0}>
-          <Grid item xs={4.5}>
-            <Box
-              component="section"
-              sx={{
-                m: 1,
-                p: 2,
-                backgroundColor: "white",
-                borderRadius: "8px",
-              }}
-            >
-              <Typography
-                sx={{
-                  fontSize: "h2.fontSize",
-                  fontFamily: "poppins",
-                  fontWeight: "bold",
-                }}
-              >
-                Who we are
-              </Typography>
-              <Typography
-                sx={{ fontSize: "h6.fontSize", fontFamily: "poppins" }}
-              >
-                At Little Big Steps, we're commited to supporting those children
-                in need of physical excersise to battle the effects of ongoing
-                cancer treatment.
-              </Typography>
-              <Button
-                variant="contained"
-                sx={{
-                  bgcolor: "#805ec5",
-                  fontFamily: "Poppins",
-                  fontSize: "h6.fontSize",
-                }}
-              >
-                Learn More
-              </Button>
-            </Box>
-            <Box
-              component="section"
-              sx={{
-                m: 1,
-                p: 2,
-                backgroundColor: "white",
-                borderRadius: "8px",
-              }}
-            >
-              <Typography
-                sx={{
-                  fontSize: "h2.fontSize",
-                  fontFamily: "poppins",
-                  fontWeight: "bold",
-                }}
-              >
-                Donate
-              </Typography>
-              <RadioButtons />
-              <Button
-                variant="contained"
-                sx={{
-                  bgcolor: "#805ec5",
-                  fontFamily: "Poppins",
-                  fontSize: "h6.fontSize",
-                }}
-              >
-                Donate
-              </Button>
-            </Box>
-          </Grid>
-          <Grid item xs={7.5}>
-            <Box
-              sx={{ m: 1, p: 2, backgroundColor: "white", borderRadius: "8px" }}
-            >
-              <Typography
-                sx={{
-                  fontSize: "h2.fontSize",
-                  fontFamily: "poppins",
-                  fontWeight: "bold",
-                }}
-              >
-                Our Goals
-              </Typography>
-              <Box>
-                <HorizontalBar />
-              </Box>
-            </Box>
-          </Grid>
-        </Grid>
+        <Box
+          component="section"
+          sx={{
+            backgroundColor: "white",
+            borderRadius: "8px",
+          }}
+        >
+          <Typography
+            sx={{
+              fontSize: "h2.fontSize",
+              fontFamily: "figtree",
+              fontWeight: "bold",
+            }}
+          >
+            Our Mission
+          </Typography>
+          <Typography
+            sx={{
+              fontSize: "h6.fontSize",
+              fontFamily: "Figtree",
+            }}
+          >
+            At Little Big Steps, we're commited to supporting those children in
+            need of physical excersise to battle the effects of ongoing cancer
+            treatment.
+          </Typography>
+          <Button
+            variant="contained"
+            sx={{
+              bgcolor: "#a99ed1",
+              fontFamily: "Figtree",
+              fontSize: "h6.fontSize",
+            }}
+          >
+            Learn More
+          </Button>
+        </Box>
+        <Box
+          component="section"
+          sx={{
+            m: 1,
+            p: 2,
+            backgroundColor: "white",
+            borderRadius: "8px",
+          }}
+        >
+          <Typography
+            sx={{
+              fontSize: "h2.fontSize",
+              fontFamily: "poppins",
+              fontWeight: "bold",
+            }}
+          >
+            Donate
+          </Typography>
+          <RadioButtons />
+          <Button
+            variant="contained"
+            sx={{
+              bgcolor: "#805ec5",
+              fontFamily: "Poppins",
+              fontSize: "h6.fontSize",
+            }}
+          >
+            Donate
+          </Button>
+        </Box>
+
+        <Box sx={{ m: 1, p: 2, backgroundColor: "white", borderRadius: "8px" }}>
+          <Typography
+            sx={{
+              fontSize: "h2.fontSize",
+              fontFamily: "poppins",
+              fontWeight: "bold",
+            }}
+          >
+            Our Goals
+          </Typography>
+          <Box>
+            <HorizontalBar />
+          </Box>
+        </Box>
       </Container>
 
       <Container fixed sx={{ bgcolor: "#805ec5" }}>

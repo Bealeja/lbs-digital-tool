@@ -12,54 +12,6 @@ import { Box, Container, Grid, Typography } from "@mui/material";
 const StatisticsPage = () => {
   return (
     <>
-      <Navbar />
-      <Banner />
-      <Container>
-        <Grid container spacing={2  } backgroundColor="white">
-          <Grid item xs={6}>
-            {/* How you have helped */}
-            <Box component="section" sx={{ p: 0 }}>
-              <Typography
-                sx={{
-                  fontSize: "h4.fontSize",
-                  m: 1,
-                  fontFamily: "poppins",
-                  fontWeight: "bold",
-                }}
-              >
-                How you have helped
-              </Typography>
-              <Typography>
-                Jessica was provided with fifteen sessions of physio therapy due
-                to a fundraiser created by our beloved community.
-              </Typography>
-              <img class="card-image" src={Photo1} alt="excersise treatment" />
-            </Box>
-          </Grid>
-          <Grid item xs={6}>
-            {/* Children Helped */}
-            <Box component="section" sx={{ p: 0 }}>
-              <Typography
-                sx={{
-                  fontSize: "h4.fontSize",
-                  m: 1,
-                  fontFamily: "poppins",
-                  fontWeight: "bold",
-                }}
-              >
-                Your Contributions
-              </Typography>
-              <Typography>
-                Here at Little Big Steps we strive to achieve better outcomes
-                for our foundation every year while remaining completly
-                transparent with our supporters
-              </Typography>
-              <HorizontalTable />
-            </Box>
-          </Grid>
-        </Grid>
-      </Container>
-
       {/* Follow the Money Trail */}
 
       <div class="grid-container background-purple">
