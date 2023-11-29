@@ -3,15 +3,19 @@ const mongoose = require("mongoose");
 const fundraiserSchema = mongoose.Schema({
   heading: {
     type: String,
-    required: true,
   },
   content: {
     type: String,
-    required: true,
   },
-  picturePath: String,
+  goal: {
+    type: Number,
+  },
+  raised: {
+    type: Number,
+  },
+  photo: String,
 });
 
-const Fundraisers = mongoose.model("fundraisers", fundraiserSchema);
+const Fundraisers = mongoose.model("Fundraisers", fundraiserSchema);
 
 module.exports = { Fundraisers };

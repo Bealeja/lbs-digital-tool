@@ -20,9 +20,13 @@ function App() {
     <div className="App">
       <BrowserRouter>
         <Routes>
-          <Route path="Layout" element={<Layout />}>
+          <Route path="/" element={<Layout />}>
             <Route path="Home" element={<HomePage />} />
-            <Route path="Stats" element={<StatisticsPage />} />
+            <Route path="Events" element={<StatisticsPage />} />
+            <Route path="Messages" element={<StatisticsPage />} />
+            <Route path="Jobs" element={<StatisticsPage />} />
+            <Route path="About Us" element={<StatisticsPage />} />
+            <Route path="Settings" element={<StatisticsPage />} />
           </Route>
         </Routes>
       </BrowserRouter>

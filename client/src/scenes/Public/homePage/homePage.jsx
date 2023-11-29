@@ -25,93 +25,8 @@ import HorizontalBar from "../../../components/Widget/BarChart/BarChart";
 import ResponsiveAppBar from "../../../components/Core/ToolBar/Toolbar";
 const HomePage = () => {
   return (
-    <div>
+    <>
       <Container fixed>
-        <Box
-          component="section"
-          sx={{
-            backgroundColor: "white",
-            borderRadius: "8px",
-          }}
-        >
-          <Typography
-            sx={{
-              fontSize: "h2.fontSize",
-              fontFamily: "figtree",
-              fontWeight: "bold",
-            }}
-          >
-            Our Mission
-          </Typography>
-          <Typography
-            sx={{
-              fontSize: "h6.fontSize",
-              fontFamily: "Figtree",
-            }}
-          >
-            At Little Big Steps, we're commited to supporting those children in
-            need of physical excersise to battle the effects of ongoing cancer
-            treatment.
-          </Typography>
-          <Button
-            variant="contained"
-            sx={{
-              bgcolor: "#a99ed1",
-              fontFamily: "Figtree",
-              fontSize: "h6.fontSize",
-            }}
-          >
-            Learn More
-          </Button>
-        </Box>
-        <Box
-          component="section"
-          sx={{
-            m: 1,
-            p: 2,
-            backgroundColor: "white",
-            borderRadius: "8px",
-          }}
-        >
-          <Typography
-            sx={{
-              fontSize: "h2.fontSize",
-              fontFamily: "poppins",
-              fontWeight: "bold",
-            }}
-          >
-            Donate
-          </Typography>
-          <RadioButtons />
-          <Button
-            variant="contained"
-            sx={{
-              bgcolor: "#805ec5",
-              fontFamily: "Poppins",
-              fontSize: "h6.fontSize",
-            }}
-          >
-            Donate
-          </Button>
-        </Box>
-
-        <Box sx={{ m: 1, p: 2, backgroundColor: "white", borderRadius: "8px" }}>
-          <Typography
-            sx={{
-              fontSize: "h2.fontSize",
-              fontFamily: "poppins",
-              fontWeight: "bold",
-            }}
-          >
-            Our Goals
-          </Typography>
-          <Box>
-            <HorizontalBar />
-          </Box>
-        </Box>
-      </Container>
-
-      <Container fixed sx={{ bgcolor: "#805ec5" }}>
         <Grid container spacing={2}>
           <Grid item sx={{ width: "100%" }}>
             <Box
@@ -120,6 +35,9 @@ const HomePage = () => {
                 justifyContent: "space-between",
                 alignItems: "center",
                 width: "100%",
+                bgcolor: "#a99ed1",
+                p: 2,
+                borderRadius: 3,
               }}
             >
               <Typography
@@ -146,38 +64,12 @@ const HomePage = () => {
               />
             </Box>
           </Grid>
-          <Grid item xs={3}></Grid>
-          <Grid item xs={3}>
+          <Grid item xs={12}>
             <ActiveFundraiserBar />
           </Grid>
         </Grid>
       </Container>
-
-      <Container fixed sx={{ bgcolor: "#805ec5" }}>
-        <Grid container spacing={2}>
-          <Grid item xs={9}>
-            <Box
-              sx={{
-                fontSize: "h2.fontSize",
-                m: 1,
-                fontFamily: "poppins",
-                fontWeight: "bold",
-                color: "#ffffff",
-              }}
-            >
-              Lastest News
-            </Box>
-          </Grid>
-          <Grid item xs={3}>
-            <NewsBar />
-          </Grid>
-        </Grid>
-      </Container>
-
-      <Container fixed sx={{ bgcolor: "#805ec5" }}>
-        <Footer />
-      </Container>
-    </div>
+    </>
   );
 };
 

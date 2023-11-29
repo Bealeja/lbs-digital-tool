@@ -18,10 +18,7 @@ import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
 import InboxIcon from "@mui/icons-material/MoveToInbox";
 import MailIcon from "@mui/icons-material/Mail";
-import NotificationsIcon from "@mui/icons-material/Mail";
-import HomePage from "../../../scenes/Public/homePage/homePage";
-import MenuItem from "@mui/material/MenuItem";
-import Badge from "@mui/material/Badge";
+
 
 import {
   BrowserRouter,
@@ -36,7 +33,14 @@ import StatisticsPage from "../../../scenes/Public/statisticsPage/statisticsPage
 
 const drawerWidth = 240;
 
-const PageLinks = ["Home", "Stats"];
+const PageLinks = [
+  "Home",
+  "Events",
+  "Messages",
+  "Jobs",
+  "About Us",
+  "Settings",
+];
 
 const openedMixin = (theme) => ({
   width: drawerWidth,

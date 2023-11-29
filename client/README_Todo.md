@@ -1,17 +1,12 @@
 //To do
 
-//Convert all scss components into material UI
-    //Fix Banner
-    //Fix Search Box
-    //White background with light purple border, take inspiration from renaldo
-    //Curve buttons with better on hover purpose
-    //Fix Search Input
-    //Get rid of the green
-    //Set up a linter
+1. Replace all components with Material UI
+2. Convert to Type Script
+3. Add News Feed Fundraisers
+4. Add Latest News
 
+5. Implement My Events Section
+6. Create Fundraiser Button and Function
+7. 
 
-//Convert all javascript to type script
-
-//Implement indexing in the backend
-
-//Define user roles using CASL or any other tool
+Later: implement caching
