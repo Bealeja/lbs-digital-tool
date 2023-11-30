@@ -4,29 +4,32 @@ import { Typography, Box } from "@mui/material";
 
 const ActiveFundraiser = ({ heading, content, picturePath }) => {
   return (
-    <div class="card-flex card-margin card-border background-white black-link">
-      <Link to="/fundraiserpage">
-        <Box
-          sx={{
-            p: 5,
-            m: 2,
-            borderRadius: 2,
-            backgroundColor: "#D3D3D3",
-          }}
-        >
-          <Box>
-            <Box sx={{ p: 1, backgroundColor: "#FFFFFF", borderRadius: 1 }}>
-              <img
-                src={`http://localhost:3001/public/assets/${picturePath}`}
-                alt="fundraiser display"
-              />
-            </Box>
-          </Box>
-          <Typography>{heading}</Typography>
-          <Typography>{content}</Typography>
+    <Box
+      sx={{
+        p: 3,
+        borderRadius: 3,
+        backgroundColor: "#FFFFFF",
+        boxShadow: "0px 4px 10px rgba(0, 0, 0, 0.2)",
+        border: 0.1,
+        width: "100%",
+      }}
+    >
+      <Box>
+        <Box sx={{ p: 2, borderRadius: 4, overflow: "hidden" }}>
+          <img
+            src={`http://localhost:3001/public/assets/${picturePath}`}
+            alt="fundraiser display"
+            style={{ width: "100%", height: "auto", borderRadius: "4px" }}
+          />
         </Box>
-      </Link>
-    </div>
+      </Box>
+      <Typography variant="h5" sx={{ mt: 2, mb: 1, fontWeight: 600 }}>
+        {heading}
+      </Typography>
+      <Typography sx={{ color: "#555", fontSize: "0.9rem" }}>
+        {content}
+      </Typography>
+    </Box>
   );
 };
 

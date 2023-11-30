@@ -27,7 +27,7 @@ const HomePage = () => {
   return (
     <>
       <Container fixed>
-        <Grid container spacing={2}>
+        <Grid container spacing={1}>
           <Grid item sx={{ width: "100%" }}>
             <Box
               sx={{
@@ -38,6 +38,8 @@ const HomePage = () => {
                 bgcolor: "#a99ed1",
                 p: 2,
                 borderRadius: 3,
+                border: 0.1,
+                boxShadow: "0px 4px 10px rgba(0, 0, 0, 0.5)",
               }}
             >
               <Typography
@@ -64,7 +66,7 @@ const HomePage = () => {
               />
             </Box>
           </Grid>
-          <Grid item xs={12}>
+          <Grid item sx={{ width: "100%", m: 1 }}>
             <ActiveFundraiserBar />
           </Grid>
         </Grid>

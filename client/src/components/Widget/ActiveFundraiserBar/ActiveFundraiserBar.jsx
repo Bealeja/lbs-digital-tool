@@ -1,7 +1,7 @@
 import { React, useState, useEffect } from "react";
 
 import ActiveFundraiser from "../ActiveFundraiser/ActiveFundraiser";
-import { Box, Container, Grid, Typography } from "@mui/material";
+import { Box, Container, Grid } from "@mui/material";
 
 const ActiveFundraiserBar = () => {
   const [activeFundraisers, setActiveFundraisers] = useState([]);
@@ -30,28 +30,21 @@ const ActiveFundraiserBar = () => {
 
   return (
     <>
-      <Container>
-        {activeFundraisers && (
-          <Box>
-            {activeFundraisers
-              .slice(0, 4)
-              .map(({ _id, heading, content, picturePath }) => (
+      {activeFundraisers && (
+        <Grid container spacing={2} sx={{ width: "100%" }}>
+          {activeFundraisers
+            .slice(0, 4)
+            .map(({ _id, heading, content, picturePath }) => (
+              <Grid item key={_id} xs={6}>
                 <ActiveFundraiser
-                  key={_id}
                   heading={heading}
                   content={content}
                   picturePath={picturePath}
                 />
-              ))}
-          </Box>
-        )}
-
-        {activeFundraisers == [] && (
-          <Box>
-            <Typography>No Events Found</Typography>
-          </Box>
-        )}
-      </Container>
+              </Grid>
+            ))}
+        </Grid>
+      )}
     </>
   );
 };
