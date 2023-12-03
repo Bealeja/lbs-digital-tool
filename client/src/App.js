@@ -14,6 +14,7 @@ import ActiveFundraiserPage from "./scenes/Public/activeFundraiserPage/activeFun
 // import AdminFundraiserPage from "./scenes/Admin/adminFundraiserPage";
 import LoginPage from "./scenes/Public/loginPage/loginPage";
 import Layout from "./scenes/Public/Layout/Layout";
+import MessagePage from "./scenes/Public/messagePage/messagePage";
 
 function App() {
   return (
@@ -23,7 +24,7 @@ function App() {
           <Route path="/" element={<Layout />}>
             <Route path="Home" element={<HomePage />} />
             <Route path="Events" element={<StatisticsPage />} />
-            <Route path="Messages" element={<StatisticsPage />} />
+            <Route path="Messages" element={<MessagePage />} />
             <Route path="Jobs" element={<StatisticsPage />} />
             <Route path="About Us" element={<StatisticsPage />} />
             <Route path="Settings" element={<StatisticsPage />} />

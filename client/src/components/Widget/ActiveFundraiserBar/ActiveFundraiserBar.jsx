@@ -31,7 +31,7 @@ const ActiveFundraiserBar = () => {
   return (
     <>
       {activeFundraisers && (
-        <Grid container spacing={2} sx={{ width: "100%" }}>
+        <Grid container spacing={2} sx={{ width: "auto" }}>
           {activeFundraisers
             .slice(0, 4)
             .map(({ _id, heading, content, picturePath }) => (

@@ -11,7 +11,7 @@ const ActiveFundraiser = ({ heading, content, picturePath }) => {
         backgroundColor: "#FFFFFF",
         boxShadow: "0px 4px 10px rgba(0, 0, 0, 0.2)",
         border: 0.1,
-        width: "100%",
+        width: "auto",
       }}
     >
       <Box>
@@ -19,7 +19,7 @@ const ActiveFundraiser = ({ heading, content, picturePath }) => {
           <img
             src={`http://localhost:3001/public/assets/${picturePath}`}
             alt="fundraiser display"
-            style={{ width: "100%", height: "auto", borderRadius: "4px" }}
+            style={{ width: "auto", height: "auto", borderRadius: "4px" }}
           />
         </Box>
       </Box>
