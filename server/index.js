@@ -12,7 +12,6 @@ const path = require("path");
 const tablesRoutes = require("./routes/tables.js");
 const { createServer } = require("http");
 const { Server } = require("socket.io");
-const { messageRoom } = require("./chat/chat.js");
 
 /*CONFIGURATION*/
 //Express configuration for JSON
