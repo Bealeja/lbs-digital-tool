@@ -10,6 +10,9 @@ const multer = require("multer");
 const newsRoutes = require("./routes/news.js");
 const path = require("path");
 const tablesRoutes = require("./routes/tables.js");
+const { createServer } = require("http");
+const { Server } = require("socket.io");
+const { messageRoom } = require("./chat/chat.js");
 
 /*CONFIGURATION*/
 //Express configuration for JSON
@@ -28,6 +31,29 @@ app.use(bodyParser.urlencoded({ extended: true })); // for parsing application/x
 //Allows you to connect to external ports
 
 app.use(cors());
+
+//Message
+const http = require("http").Server(app);
+const socketIO = require("socket.io")(http, {
+  cors: {
+    origin: "http://localhost:3000",
+  },
+});
+socketIO.on("connection", (socket) => {
+  console.log(`⚡: ${socket.id} user just connected!`);
+  socket.on("disconnect", () => {
+    console.log("🔥: A user disconnected");
+  });
+});
+app.get("/", (req, res) => {
+  res.json({
+    message: "hello world",
+  });
+  console.log("hello");
+});
+http.listen("3002", () => {
+  console.log("server listening");
+});
 
 /*FILE STORAGE - MULTER*/
 app.use("/assets", express.static(path.join(__dirname, "public/assets")));
@@ -99,7 +125,7 @@ mongoose
     useUnifiedTopology: true,
   })
   .then(() => {
-    app.listen(PORT, () => console.log(`Server Port: ${PORT}`));
+    app.listen(PORT, () => console.log(`Database Port: ${PORT}`));
   })
   .catch((error) =>
     console.log(`${error} did not connect to mongoDB database`)
