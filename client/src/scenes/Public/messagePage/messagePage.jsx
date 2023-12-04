@@ -1,7 +1,7 @@
 import React from "react";
+import { useState } from "react";
 import Paper from "@mui/material/Paper";
 import Grid from "@mui/material/Grid";
-import Box from "@mui/material/Box";
 import Divider from "@mui/material/Divider";
 import TextField from "@mui/material/TextField";
 import Typography from "@mui/material/Typography";
@@ -14,17 +14,23 @@ import Fab from "@mui/material/Fab";
 import SendIcon from "@mui/icons-material/Send";
 
 const MessagePage = () => {
+  const sendMessage = async () => {
+    await fetch(`http://localhost:3002/`, {
+      method: "GET",
+    }).catch((error) => {
+      console.log(`failure to get data for messages : ${error}`);
+    });
+  };
+
   return (
     <div>
       <Grid container>
         <Grid item xs={12}>
-          <Typography variant="h5" className="header-message">
-            Chat
-          </Typography>
+          <Typography variant="h5">Chat</Typography>
         </Grid>
       </Grid>
       <Grid container component={Paper} sx={{ width: "100%", height: "80vh" }}>
-        <Grid item xs={3} sx={{ borderRight: "1px solid #e0e0e0" }}>
+        <Grid item xs={3} style={{ borderRight: "1px solid #e0e0e0" }}>
           <List>
             <ListItem button key="RemySharp">
               <ListItemIcon>
@@ -47,7 +53,7 @@ const MessagePage = () => {
           </Grid>
           <Divider />
           <List>
-            <ListItem button key="RemySharp">
+            <ListItem key="RemySharp">
               <ListItemIcon>
                 <Avatar
                   alt="Remy Sharp"
@@ -57,7 +63,7 @@ const MessagePage = () => {
               <ListItemText primary="Remy Sharp">Remy Sharp</ListItemText>
               <ListItemText secondary="online" align="right"></ListItemText>
             </ListItem>
-            <ListItem button key="Alice">
+            <ListItem key="Alice">
               <ListItemIcon>
                 <Avatar
                   alt="Alice"
@@ -66,7 +72,7 @@ const MessagePage = () => {
               </ListItemIcon>
               <ListItemText primary="Alice">Alice</ListItemText>
             </ListItem>
-            <ListItem button key="CindyBaker">
+            <ListItem key="CindyBaker">
               <ListItemIcon>
                 <Avatar
                   alt="Cindy Baker"
@@ -128,9 +134,9 @@ const MessagePage = () => {
                 fullWidth
               />
             </Grid>
-            <Grid xs={1} align="right">
+            <Grid item xs={1} style={{ align: "right" }}>
               <Fab color="primary" aria-label="add">
-                <SendIcon />
+                <SendIcon onClick={sendMessage} />
               </Fab>
             </Grid>
           </Grid>
@@ -141,3 +147,4 @@ const MessagePage = () => {
 };
 
 export default MessagePage;
+
