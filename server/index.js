@@ -5,6 +5,7 @@ const cors = require("cors");
 const dotenv = require("dotenv");
 const fundraiserRoutes = require("./routes/fundraiser.js");
 const helmet = require("helmet");
+const http = require("http");
 const mongoose = require("mongoose");
 const multer = require("multer");
 const newsRoutes = require("./routes/news.js");
@@ -32,26 +33,56 @@ app.use(bodyParser.urlencoded({ extended: true })); // for parsing application/x
 app.use(cors());
 
 //Message
-const http = require("http").Server(app);
-const socketIO = require("socket.io")(http, {
+const server = http.createServer(app, {
+  connectionStateRecovery: {},
+});
+
+const io = new Server(server, {
   cors: {
     origin: "http://localhost:3000",
+    methods: ["GET", "POST"],
   },
 });
-socketIO.on("connection", (socket) => {
-  console.log(`⚡: ${socket.id} user just connected!`);
-  socket.on("disconnect", () => {
-    console.log("🔥: A user disconnected");
+
+io.on("connection", (socket) => {
+  // Connection Message
+  console.log(`${socket.id} just connected!`);
+
+  //Room Join
+  socket.on("join_room", (data) => {
+    const { username, room } = data;
+    socket.join(room);
+
+    let __createdtime__ = Date.now(); // Current timestamp
+
+    socket.to(room).emit("receive_message", {
+      message: `${username} has joined the chat room`,
+      __createdtime__,
+    });
+
+    // Save user information
+    chatRoom = room;
+    allUsers.push({ id: socket.id, username, room });
+    chatRoomUsers = allUsers.filter((user = user.room === room));
+    socket.to(room).emit("chatroom_users", chatRoomUsers);
+    socket.emit("chatroom_users", chatRoomUsers);
+  });
+
+  socket.on("send_message", (data) => {
+    const { message } = data;
+    io.emit("receive_message", data); // Send to all users in room, including sender
+    // harperSaveMessage(message, username, room, __createdtime__) // Save message in db
+    //   .then((response) => console.log(response))
+    //   .catch((err) => console.log(err));
   });
 });
+
 app.get("/", (req, res) => {
-  res.json({
-    message: "hello world",
-  });
-  console.log("hello");
+  res.send("hello world");
 });
-http.listen("3002", () => {
-  console.log("server listening");
+
+server.listen("3002", () => {
+  console.log("Message Port: 3002");
 });
 
 /*FILE STORAGE - MULTER*/

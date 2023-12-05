@@ -1,25 +1,56 @@
-import React from "react";
-import { useState } from "react";
-import Paper from "@mui/material/Paper";
-import Grid from "@mui/material/Grid";
-import Divider from "@mui/material/Divider";
-import TextField from "@mui/material/TextField";
-import Typography from "@mui/material/Typography";
-import List from "@mui/material/List";
-import ListItem from "@mui/material/ListItem";
-import ListItemIcon from "@mui/material/ListItemIcon";
-import ListItemText from "@mui/material/ListItemText";
-import Avatar from "@mui/material/Avatar";
-import Fab from "@mui/material/Fab";
+import { React, useState, useEffect } from "react";
+import {
+  Paper,
+  Grid,
+  Divider,
+  TextField,
+  Typography,
+  List,
+  ListItem,
+  ListItemIcon,
+  ListItemText,
+  Avatar,
+  Fab,
+} from "@mui/material";
 import SendIcon from "@mui/icons-material/Send";
+import io from "socket.io-client";
+
+const socket = io.connect("http://localhost:3002");
 
 const MessagePage = () => {
-  const sendMessage = async () => {
-    await fetch(`http://localhost:3002/`, {
-      method: "GET",
-    }).catch((error) => {
-      console.log(`failure to get data for messages : ${error}`);
+  const [message, setMessage] = useState("");
+  const [messagesRecieved, setMessagesReceived] = useState([]);
+
+  const joinRoom = async () => {
+    if (room !== "" && username !== "") {
+      socket.emit("join_room", { username, room });
+    }
+  };
+
+  // Runs whenever a socket event is recieved from the server
+  useEffect(() => {
+    socket.on("receive_message", (data) => {
+      setMessagesReceived((state) => [...state, { message: data.message }]);
     });
+
+    // Remove event listener on component unmount
+    return () => socket.off("receive_message");
+  }, [socket]);
+
+  const sendMessage = async () => {
+    try {
+      if (message !== "") {
+        const __createdtime__ = Date.now();
+        // Send message to server. We can't specify who we send the message to from the frontend. We can only send to server. Server can then send message to rest of users in room
+        socket.emit("send_message", {
+          message,
+        });
+        setMessage("");
+      }
+      document.getElementById("textMessage").value = "";
+    } catch (error) {
+      console.log(`failed to send message: ${error.message}`);
+    }
   };
 
   return (
@@ -32,7 +63,7 @@ const MessagePage = () => {
       <Grid container component={Paper} sx={{ width: "100%", height: "80vh" }}>
         <Grid item xs={3} style={{ borderRight: "1px solid #e0e0e0" }}>
           <List>
-            <ListItem button key="RemySharp">
+            <ListItem key="RemySharp">
               <ListItemIcon>
                 <Avatar
                   alt="Remy Sharp"
@@ -63,74 +94,32 @@ const MessagePage = () => {
               <ListItemText primary="Remy Sharp">Remy Sharp</ListItemText>
               <ListItemText secondary="online" align="right"></ListItemText>
             </ListItem>
-            <ListItem key="Alice">
-              <ListItemIcon>
-                <Avatar
-                  alt="Alice"
-                  src="https://material-ui.com/static/images/avatar/3.jpg"
-                />
-              </ListItemIcon>
-              <ListItemText primary="Alice">Alice</ListItemText>
-            </ListItem>
-            <ListItem key="CindyBaker">
-              <ListItemIcon>
-                <Avatar
-                  alt="Cindy Baker"
-                  src="https://material-ui.com/static/images/avatar/2.jpg"
-                />
-              </ListItemIcon>
-              <ListItemText primary="Cindy Baker">Cindy Baker</ListItemText>
-            </ListItem>
           </List>
         </Grid>
         <Grid item xs={9}>
           <List sx={{ height: "70vh", overflowY: "auto" }}>
-            <ListItem key="1">
-              <Grid container>
-                <Grid item xs={12}>
-                  <ListItemText
-                    align="right"
-                    primary="Hey man, What's up ?"
-                  ></ListItemText>
+            {messagesRecieved.map((msg, i) => (
+              <ListItem key={i}>
+                <Grid container>
+                  <Grid item xs={12}>
+                    <ListItemText
+                      align="right"
+                      primary={msg.message}
+                    ></ListItemText>
+                  </Grid>
                 </Grid>
-                <Grid item xs={12}>
-                  <ListItemText align="right" secondary="09:30"></ListItemText>
-                </Grid>
-              </Grid>
-            </ListItem>
-            <ListItem key="2">
-              <Grid container>
-                <Grid item xs={12}>
-                  <ListItemText
-                    align="left"
-                    primary="Hey, Iam Good! What about you ?"
-                  ></ListItemText>
-                </Grid>
-                <Grid item xs={12}>
-                  <ListItemText align="left" secondary="09:31"></ListItemText>
-                </Grid>
-              </Grid>
-            </ListItem>
-            <ListItem key="3">
-              <Grid container>
-                <Grid item xs={12}>
-                  <ListItemText
-                    align="right"
-                    primary="Cool. i am good, let's catch up!"
-                  ></ListItemText>
-                </Grid>
-                <Grid item xs={12}>
-                  <ListItemText align="right" secondary="10:30"></ListItemText>
-                </Grid>
-              </Grid>
-            </ListItem>
+              </ListItem>
+            ))}
           </List>
           <Divider />
           <Grid container style={{ padding: "20px" }}>
             <Grid item xs={11}>
               <TextField
-                id="outlined-basic-email"
+                id="textMessage"
                 label="Type Something"
+                onChange={(event) => {
+                  setMessage(event.target.value);
+                }}
                 fullWidth
               />
             </Grid>
@@ -147,4 +136,3 @@ const MessagePage = () => {
 };
 
 export default MessagePage;
-
