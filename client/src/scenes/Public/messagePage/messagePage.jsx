@@ -30,6 +30,15 @@ const MessagePage = (UserName) => {
     }
   };
 
+  const fetchMessagesFromDataBase = async () => {
+    try {
+      const response = await fetch("http://localhost:3001/messages");
+      console.log(response);
+    } catch (error) {
+      return `fetch messages from database returned with error: ${error.message}`;
+    }
+  };
+
   // Runs whenever a socket event is recieved from the server
   useEffect(() => {
     socket.on("receive_message", (data) => {
@@ -42,10 +51,10 @@ const MessagePage = (UserName) => {
 
     // Remove event listener on component unmount
     return () => socket.off("receive_message");
-    ß;
   }, [socket]);
 
   const sendMessage = async () => {
+    let room = "1";
     try {
       if (message !== "") {
         const __createdtime__ = Date.now();
@@ -53,6 +62,7 @@ const MessagePage = (UserName) => {
         socket.emit("send_message", {
           message,
           userName,
+          room,
         });
         setMessage("");
       }
@@ -66,7 +76,7 @@ const MessagePage = (UserName) => {
     <div>
       <Grid container>
         <Grid item xs={12}>
-          <Typography variant="h5">Chat</Typography>
+          <Typography variant="h5">Messages</Typography>
         </Grid>
       </Grid>
       <Grid container component={Paper} sx={{ width: "100%", height: "80vh" }}>
@@ -96,18 +106,18 @@ const MessagePage = (UserName) => {
           <Divider />
           <List>
             {/* Message Rooms */}
-            {rooomsRecieved.map((room, i) => {
-              <ListItem key="RemySharp">
-                <ListItemIcon>
-                  <Avatar
-                    alt="Remy Sharp"
-                    src="https://material-ui.com/static/images/avatar/1.jpg"
-                  />
-                </ListItemIcon>
-                <ListItemText primary="Remy Sharp">Remy Sharp</ListItemText>
-                <ListItemText secondary="online" align="right"></ListItemText>
-              </ListItem>;
-            })}
+            {/* {rooomsRecieved.map((room, i) => { */}
+            <ListItem key="RemySharp" onClick={joinRoom}>
+              <ListItemIcon>
+                <Avatar
+                  alt="Remy Sharp"
+                  src="https://material-ui.com/static/images/avatar/1.jpg"
+                />
+              </ListItemIcon>
+              <ListItemText primary="Remy Sharp">Remy Sharp</ListItemText>
+              <ListItemText secondary="online" align="right"></ListItemText>
+            </ListItem>
+            {/* })} */}
           </List>
         </Grid>
         <Grid item xs={9}>

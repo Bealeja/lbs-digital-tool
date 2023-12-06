@@ -11,9 +11,10 @@ const multer = require("multer");
 const newsRoutes = require("./routes/news.js");
 const path = require("path");
 const tablesRoutes = require("./routes/tables.js");
+const messageRoutes = require("./routes/messages.js");
 const { createServer } = require("http");
 const { Server } = require("socket.io");
-
+const Messages = require("../server/models/message.js");
 /*CONFIGURATION*/
 //Express configuration for JSON
 const app = express();
@@ -69,15 +70,34 @@ io.on("connection", (socket) => {
   });
 
   socket.on("send_message", (data) => {
-    const { message, userName } = data;
-    console.log(message);
-    console.log(userName);
-    io.emit("receive_message", data); // Send to all users in room, including sender
+    io.emit("receive_message", data);
+    const { room, message, userName } = data;
+    storeMessageInDataBase(room, message, userName);
+    // Send to all users in room, including sender
     // harperSaveMessage(message, username, room, __createdtime__) // Save message in db
     //   .then((response) => console.log(response))
     //   .catch((err) => console.log(err));
   });
 });
+
+const storeMessageInDataBase = async (room, message, userName) => {
+  try {
+    const newMessage = new Messages({
+      // Assuming you have the necessary data for the message
+      roomId: room, // replace with the actual room ID
+      messages: [
+        {
+          sender: userName, // replace with the actual user ID
+          content: message,
+        },
+      ],
+    });
+    const savedMessage = await newMessage.save();
+    console.log("Message saved:", savedMessage);
+  } catch (error) {
+    console.error("Error saving message:", error);
+  }
+};
 
 app.get("/", (req, res) => {
   res.send("hello world");
@@ -109,6 +129,8 @@ app.use("/news", newsRoutes);
 app.use("/fundraisers", fundraiserRoutes);
 //app.use(/tables, router.get("/", getTables(res, resp, next)))
 app.use("/tables", tablesRoutes);
+//app.use(/messages, router.get("/", getmessages(res, resp, next)))
+app.use("/messages", messageRoutes);
 
 /*AUTHENTICATION*/
 app.use("/auth", authRoutes);
