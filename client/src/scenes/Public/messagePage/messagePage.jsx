@@ -1,5 +1,6 @@
 import { React, useState, useEffect } from "react";
 import {
+  Box,
   Paper,
   Grid,
   Divider,
@@ -36,7 +37,7 @@ const MessagePage = (UserName) => {
         ...state,
         { message: data.message, userName: data.userName },
       ]);
-      console.log(messagesRecieved);
+      console.log(messagesRecieved.message);
     });
 
     // Remove event listener on component unmount
@@ -112,11 +113,26 @@ const MessagePage = (UserName) => {
         <Grid item xs={9}>
           <List sx={{ height: "70vh", overflowY: "auto" }}>
             {messagesRecieved.map((msg, i) => (
-              <ListItem key={i}>
+              <ListItem
+                key={i}
+                sx={{ display: "flex", justifyContent: "flex-end" }}
+              >
                 <Grid container>
-                  <Grid item xs={12}>
+                  <Grid item xs={12} sx={{ display: "inline-block" }}>
                     <ListItemText
-                      align={msg.userName == userName ? "right" : "left"}
+                      sx={{
+                        float:
+                          msg.userName == userName
+                            ? "inline-end"
+                            : "inline-start",
+                        backgroundColor: "#a99ed1",
+                        borderRadius: "5px",
+                        padding: "10px",
+                        width: "fit-content",
+                        maxWidth: "40%",
+                        wordWrap: "break-word",
+                        textAlign: msg.userName == userName ? "right" : "left",
+                      }}
                       primary={msg.message}
                     ></ListItemText>
                   </Grid>
