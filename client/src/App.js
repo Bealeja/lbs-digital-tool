@@ -16,6 +16,8 @@ import LoginPage from "./scenes/Public/loginPage/loginPage";
 import Layout from "./scenes/Public/Layout/Layout";
 import MessagePage from "./scenes/Public/messagePage/messagePage";
 
+const userName = "Jack";
+
 function App() {
   return (
     <div className="App">
@@ -24,7 +26,10 @@ function App() {
           <Route path="/" element={<Layout />}>
             <Route path="Home" element={<HomePage />} />
             <Route path="Events" element={<StatisticsPage />} />
-            <Route path="Messages" element={<MessagePage />} />
+            <Route
+              path="Messages"
+              element={<MessagePage userName={userName} />}
+            />
             <Route path="Jobs" element={<StatisticsPage />} />
             <Route path="About Us" element={<StatisticsPage />} />
             <Route path="Settings" element={<StatisticsPage />} />
