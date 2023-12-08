@@ -6,27 +6,20 @@ const messageSchema = mongoose.Schema({
     required: true,
     ref: "Room",
   },
-  users: [
-    {
-      type: String,
-      ref: "User",
-    },
-  ],
-  messages: [
-    {
-      sender: {
-        type: String,
-        ref: "User",
-        required: true,
-      },
-      content: {
-        type: String,
-        required: true,
-      },
-    },
-  ],
+  sender: {
+    type: String,
+    required: true,
+  },
+  message: {
+    type: String,
+    required: true,
+  },
+  timeStamp: {
+    type: String,
+    requried: true,
+  },
 });
 
 const Messages = mongoose.model("Messages", messageSchema);
 
-module.exports = Messages;
+module.exports = { Messages };

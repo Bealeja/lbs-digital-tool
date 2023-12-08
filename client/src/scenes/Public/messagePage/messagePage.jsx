@@ -1,5 +1,6 @@
 import { React, useState, useEffect } from "react";
 import {
+  Autocomplete,
   Box,
   Paper,
   Grid,
@@ -14,55 +15,100 @@ import {
   Fab,
 } from "@mui/material";
 import SendIcon from "@mui/icons-material/Send";
-import io from "socket.io-client";
 
-const socket = io.connect("http://localhost:3002");
-
-const MessagePage = (UserName) => {
-  const userName = UserName.userName;
+const MessagePage = ({ userName, socket }) => {
+  const [roomsRecieved, setRoomsReceived] = useState([]);
   const [message, setMessage] = useState("");
   const [messagesRecieved, setMessagesReceived] = useState([]);
-  const [rooomsRecieved, setRoomsReceived] = useState([]);
+  const [currentRoom, setCurrentRoom] = useState();
+  const [friendList, setFriendList] = useState([]);
+  const [selectedFriend, setSelectedFriend] = useState([]);
 
-  const joinRoom = async () => {
-    if (room !== "" && userName !== "") {
-      socket.emit("join_room", { userName, room });
-    }
-  };
+  //Fetch list of rooms for user to display on message list
+  useEffect(() => {
+    const fetchChatRoomsofUser = async () => {
+      try {
+        const response = await fetch("http://localhost:3001/rooms");
+        const responseJSON = await response.json();
+        let chatRooms = responseJSON.map((room) => {
+          let objStorage = {
+            userArray: room.userArray.filter((user) => user !== userName),
+            roomId: room.roomID,
+          };
+          return objStorage;
+        });
 
-  const fetchMessagesFromDataBase = async () => {
+        setRoomsReceived(chatRooms);
+      } catch (error) {
+        console.log(
+          `Unable to fetch chatrooms from database collection ChatRooms in message.jsx: ${error.message}`
+        );
+      }
+    };
+
+    fetchChatRoomsofUser();
+  }, []);
+
+  // Fetch List of Friends for Search Bar
+  useEffect(() => {
+    const fetchFriendsofUser = async () => {
+      try {
+        const response = await fetch("http://localhost:3001/friends");
+        const friendsListJSON = await response.json();
+        setFriendList(friendsListJSON[0].friendList);
+      } catch (error) {
+        console.log(
+          `Unable to fetch friends from database collection Friends in message.jsx: ${error.message}`
+        );
+      }
+    };
+
+    fetchFriendsofUser();
+  }, []);
+
+  // Fetch Messages from database for specific room
+  const fetchMessagesForRoomFromDataBase = async (roomID) => {
     try {
-      const response = await fetch("http://localhost:3001/messages");
-      console.log(response);
+      const response = await fetch(
+        `http://localhost:3001/messages?roomID=${roomID}`
+      );
+      const responseJSON = await response.json();
+      console.log(`These are the messages: ${JSON.stringify(responseJSON)}`);
+      setMessagesReceived(responseJSON);
     } catch (error) {
-      return `fetch messages from database returned with error: ${error.message}`;
+      console.log(
+        `fetch messages from database returned with error: ${error.message}`
+      );
     }
   };
 
-  // Runs whenever a socket event is recieved from the server
+  const joinRoom = async (roomID) => {
+    if (userName !== "" && roomID !== "") {
+      console.log(userName);
+      socket.emit("join_room", { userName, roomID });
+      setCurrentRoom(roomID);
+    }
+    await fetchMessagesForRoomFromDataBase(roomID);
+  };
+
   useEffect(() => {
     socket.on("receive_message", (data) => {
       setMessagesReceived((state) => [
         ...state,
-        { message: data.message, userName: data.userName },
+        { message: data.message, sender: data.userName },
       ]);
-      console.log(messagesRecieved.message);
     });
-
-    // Remove event listener on component unmount
     return () => socket.off("receive_message");
   }, [socket]);
 
-  const sendMessage = async () => {
-    let room = "1";
+  // Runs whenever a socket event is recieved from the server
+  const sendMessage = () => {
     try {
       if (message !== "") {
-        const __createdtime__ = Date.now();
-        // Send message to server. We can't specify who we send the message to from the frontend. We can only send to server. Server can then send message to rest of users in room
         socket.emit("send_message", {
           message,
           userName,
-          room,
+          currentRoom,
         });
         setMessage("");
       }
@@ -71,6 +117,26 @@ const MessagePage = (UserName) => {
       console.log(`failed to send message: ${error.message}`);
     }
   };
+
+  const handleSelection = async (req, res, value) => {
+    const generatedRoomID = Math.random();
+    const data = { roomID: generatedRoomID, userArray: [userName, value] };
+    //create new room
+    const response = await fetch("http://localhost:3001/rooms", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: data,
+    });
+    //refresh room
+    //trigger room join
+
+    //create new room
+    setSelectedFriend(value);
+  };
+
+  //// You're up to here
 
   return (
     <div>
@@ -96,28 +162,31 @@ const MessagePage = (UserName) => {
           <Divider />
           {/* Search Box */}
           <Grid item xs={12} style={{ padding: "10px" }}>
-            <TextField
-              id="outlined-basic-email"
-              label="Search"
-              variant="outlined"
-              fullWidth
+            <Autocomplete
+              disablePortal
+              id="combo-box-demo"
+              options={friendList}
+              sx={{ width: "100%" }}
+              getOptionLabel={(option) => option}
+              value={selectedFriend}
+              onChange={handleSelection}
+              renderInput={(params) => <TextField {...params} label="Search" />}
             />
           </Grid>
           <Divider />
           <List>
-            {/* Message Rooms */}
-            {/* {rooomsRecieved.map((room, i) => { */}
-            <ListItem key="RemySharp" onClick={joinRoom}>
-              <ListItemIcon>
-                <Avatar
-                  alt="Remy Sharp"
-                  src="https://material-ui.com/static/images/avatar/1.jpg"
-                />
-              </ListItemIcon>
-              <ListItemText primary="Remy Sharp">Remy Sharp</ListItemText>
-              <ListItemText secondary="online" align="right"></ListItemText>
-            </ListItem>
-            {/* })} */}
+            {roomsRecieved.map((room, i) => (
+              <ListItem key={i} onClick={() => joinRoom(room.roomId)}>
+                <ListItemIcon>
+                  <Avatar
+                    alt="Remy Sharp"
+                    src="https://material-ui.com/static/images/avatar/1.jpg"
+                  />
+                </ListItemIcon>
+                <ListItemText primary={room.userArray}></ListItemText>
+                <ListItemText secondary="online" align="right"></ListItemText>
+              </ListItem>
+            ))}
           </List>
         </Grid>
         <Grid item xs={9}>
@@ -132,16 +201,17 @@ const MessagePage = (UserName) => {
                     <ListItemText
                       sx={{
                         float:
-                          msg.userName == userName
+                          msg.sender == userName
                             ? "inline-end"
                             : "inline-start",
-                        backgroundColor: "#a99ed1",
+                        backgroundColor:
+                          msg.sender == userName ? "#a99ed1" : "#b2b2b2",
                         borderRadius: "5px",
                         padding: "10px",
                         width: "fit-content",
-                        maxWidth: "40%",
-                        wordWrap: "break-word",
-                        textAlign: msg.userName == userName ? "right" : "left",
+                        maxWidth: "50%",
+                        wordWrap: "normal",
+                        textAlign: "left",
                       }}
                       primary={msg.message}
                     ></ListItemText>
@@ -150,24 +220,28 @@ const MessagePage = (UserName) => {
               </ListItem>
             ))}
           </List>
-          <Divider />
-          <Grid container style={{ padding: "20px" }}>
-            <Grid item xs={11}>
-              <TextField
-                id="textMessage"
-                label="Type Something"
-                onChange={(event) => {
-                  setMessage(event.target.value);
-                }}
-                fullWidth
-              />
-            </Grid>
-            <Grid item xs={1} style={{ align: "right" }}>
-              <Fab color="primary" aria-label="add">
-                <SendIcon onClick={sendMessage} />
-              </Fab>
-            </Grid>
-          </Grid>
+          {currentRoom && (
+            <>
+              <Divider />
+              <Grid container style={{ padding: "20px" }}>
+                <Grid item xs={11}>
+                  <TextField
+                    id="textMessage"
+                    label="Type Something"
+                    onChange={(event) => {
+                      setMessage(event.target.value);
+                    }}
+                    fullWidth
+                  />
+                </Grid>
+                <Grid item xs={1} style={{ align: "right" }}>
+                  <Fab color="primary" aria-label="add">
+                    <SendIcon onClick={sendMessage} />
+                  </Fab>
+                </Grid>
+              </Grid>
+            </>
+          )}
         </Grid>
       </Grid>
     </div>

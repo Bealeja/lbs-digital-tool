@@ -15,8 +15,10 @@ import ActiveFundraiserPage from "./scenes/Public/activeFundraiserPage/activeFun
 import LoginPage from "./scenes/Public/loginPage/loginPage";
 import Layout from "./scenes/Public/Layout/Layout";
 import MessagePage from "./scenes/Public/messagePage/messagePage";
+import io from "socket.io-client";
 
 const userName = "Jack";
+const socket = io.connect("http://localhost:3002");
 
 function App() {
   return (
@@ -28,7 +30,7 @@ function App() {
             <Route path="Events" element={<StatisticsPage />} />
             <Route
               path="Messages"
-              element={<MessagePage userName={userName} />}
+              element={<MessagePage userName={userName} socket={socket} />}
             />
             <Route path="Jobs" element={<StatisticsPage />} />
             <Route path="About Us" element={<StatisticsPage />} />

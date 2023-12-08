@@ -2,12 +2,16 @@ const { Messages } = require("../models/message.js");
 
 const getMessages = async (req, res) => {
   try {
-    const messages = await Messages.find(); //Need to add room, userID
+    const parsedRoomID = req.query.roomID;
+    const messages = await Messages.find({ roomId: parsedRoomID }).sort({
+      timeStamp: 1,
+    });
     res.status(200).json(messages);
     console.log("messages retrieved successfully");
-    return messages;
   } catch (error) {
-    return `Attempting to get messages from database in server controller caused error: ${error.message}`;
+    res.status(500).json({
+      error: `Attempting to get messages from database in server controller caused error: ${error.message}`,
+    });
   }
 };
 

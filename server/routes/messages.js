@@ -4,6 +4,6 @@ const { storeMessages } = require("../controllers/messages.js");
 
 const router = express.Router();
 
-router.get("/get", getMessages);
+router.get("/", getMessages);
 
 module.exports = router;

@@ -1,20 +1,25 @@
 const express = require("express");
-const authRoutes = require("./routes/auth.js");
 const bodyParser = require("body-parser");
 const cors = require("cors");
 const dotenv = require("dotenv");
-const fundraiserRoutes = require("./routes/fundraiser.js");
 const helmet = require("helmet");
 const http = require("http");
 const mongoose = require("mongoose");
 const multer = require("multer");
-const newsRoutes = require("./routes/news.js");
 const path = require("path");
-const tablesRoutes = require("./routes/tables.js");
+
+const authRoutes = require("./routes/auth.js");
+const friendsRoutes = require("./routes/friends.js");
+const fundraiserRoutes = require("./routes/fundraiser.js");
 const messageRoutes = require("./routes/messages.js");
+const newsRoutes = require("./routes/news.js");
+const tablesRoutes = require("./routes/tables.js");
+const roomsRoutes = require("./routes/rooms.js");
+
+const { Messages } = require("./models/message.js");
 const { createServer } = require("http");
 const { Server } = require("socket.io");
-const Messages = require("../server/models/message.js");
+
 /*CONFIGURATION*/
 //Express configuration for JSON
 const app = express();
@@ -51,46 +56,37 @@ io.on("connection", (socket) => {
 
   //Room Join
   socket.on("join_room", (data) => {
-    const { username, room } = data;
-    socket.join(room);
+    const { userName, roomID } = data;
+    socket.join(roomID);
 
-    let __createdtime__ = Date.now(); // Current timestamp
+    // Check if the socket is in the room
+    if (socket.rooms[roomID]) {
+      console.log(`${socket.id} is in room ${roomID}`);
+    } else {
+      console.log(`${socket.id} failed to join room ${roomID}`);
+    }
 
-    socket.to(room).emit("receive_message", {
-      message: `${username} has joined the chat room`,
-      __createdtime__,
-    });
-
-    // Save user information
-    chatRoom = room;
-    allUsers.push({ id: socket.id, username, room });
-    chatRoomUsers = allUsers.filter((user = user.room === room));
-    socket.to(room).emit("chatroom_users", chatRoomUsers);
-    socket.emit("chatroom_users", chatRoomUsers);
+    // io.to(roomID).emit("receive_message", {
+    //   message: `has joined the chat room`,
+    // });
   });
 
   socket.on("send_message", (data) => {
-    io.emit("receive_message", data);
-    const { room, message, userName } = data;
-    storeMessageInDataBase(room, message, userName);
-    // Send to all users in room, including sender
-    // harperSaveMessage(message, username, room, __createdtime__) // Save message in db
-    //   .then((response) => console.log(response))
-    //   .catch((err) => console.log(err));
+    const { message, userName, currentRoom } = data;
+    io.to(currentRoom).emit("receive_message", data);
+    let createdTime = Date.now();
+    storeMessageInDataBase(currentRoom, message, userName, createdTime);
   });
 });
 
-const storeMessageInDataBase = async (room, message, userName) => {
+const storeMessageInDataBase = async (room, message, userName, createdTime) => {
   try {
     const newMessage = new Messages({
       // Assuming you have the necessary data for the message
       roomId: room, // replace with the actual room ID
-      messages: [
-        {
-          sender: userName, // replace with the actual user ID
-          content: message,
-        },
-      ],
+      sender: userName, // replace with the actual user ID
+      message: message,
+      timeStamp: createdTime,
     });
     const savedMessage = await newMessage.save();
     console.log("Message saved:", savedMessage);
@@ -131,6 +127,10 @@ app.use("/fundraisers", fundraiserRoutes);
 app.use("/tables", tablesRoutes);
 //app.use(/messages, router.get("/", getmessages(res, resp, next)))
 app.use("/messages", messageRoutes);
+
+app.use("/friends", friendsRoutes);
+
+app.use("/rooms", roomsRoutes);
 
 /*AUTHENTICATION*/
 app.use("/auth", authRoutes);
