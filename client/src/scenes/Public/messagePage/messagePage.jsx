@@ -24,20 +24,23 @@ const MessagePage = ({ userName, socket }) => {
   const [friendList, setFriendList] = useState([]);
   const [selectedFriend, setSelectedFriend] = useState([]);
 
-  //Fetch list of rooms for user to display on message list
+  //Fetch list of chat rooms to display on message list
   useEffect(() => {
     const fetchChatRoomsofUser = async () => {
       try {
         const response = await fetch("http://localhost:3001/rooms");
         const responseJSON = await response.json();
+        // For each room, only have ID and Users in room except current user
         let chatRooms = responseJSON.map((room) => {
           let objStorage = {
-            userArray: room.userArray.filter((user) => user !== userName),
-            roomId: room.roomID,
+            // Store room ID
+            roomID: room.roomID,
+            // Remove current user from the user list to display only other users in chat room
+            users: room.users.filter((user) => user !== userName),
           };
           return objStorage;
         });
-
+        // Provide a state change for the passed rooms for re-render
         setRoomsReceived(chatRooms);
       } catch (error) {
         console.log(
@@ -118,20 +121,31 @@ const MessagePage = ({ userName, socket }) => {
     }
   };
 
-  const handleSelection = async (req, res, value) => {
-    const generatedRoomID = Math.random();
-    const data = { roomID: generatedRoomID, userArray: [userName, value] };
-    //create new room
-    const response = await fetch("http://localhost:3001/rooms", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: data,
+  const handleSelection = async (value) => {
+    // Does the room already exist? If so go into that room
+    const roomExists = roomsRecieved.forEach((room) => {
+      if (room.userArray.includes(value)) {
+        joinRoom(room.roomId);
+      }
     });
-    //refresh room
-    //trigger room join
 
+    if (!roomExists) {
+      const generatedRoomID = Math.floor(Math.random() * 90000).toString();
+      const data = { roomID: generatedRoomID, userArray: [userName, value] };
+      const JSONdata = JSON.stringify(data);
+      try {
+        const response = await fetch("http://localhost:3001/rooms", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSONdata,
+        });
+        const responseJSON = response.json();
+      } catch (error) {
+        console.log(`failed to post room to the databse: ${error.message}`);
+      }
+    }
     //create new room
     setSelectedFriend(value);
   };
@@ -168,22 +182,21 @@ const MessagePage = ({ userName, socket }) => {
               options={friendList}
               sx={{ width: "100%" }}
               getOptionLabel={(option) => option}
-              value={selectedFriend}
-              onChange={handleSelection}
+              onChange={(event, newValue) => handleSelection(newValue)}
               renderInput={(params) => <TextField {...params} label="Search" />}
             />
           </Grid>
           <Divider />
           <List>
             {roomsRecieved.map((room, i) => (
-              <ListItem key={i} onClick={() => joinRoom(room.roomId)}>
+              <ListItem key={i} onClick={() => joinRoom(room.roomID)}>
                 <ListItemIcon>
                   <Avatar
                     alt="Remy Sharp"
                     src="https://material-ui.com/static/images/avatar/1.jpg"
                   />
                 </ListItemIcon>
-                <ListItemText primary={room.userArray}></ListItemText>
+                <ListItemText primary={room.users}>{room.users}</ListItemText>
                 <ListItemText secondary="online" align="right"></ListItemText>
               </ListItem>
             ))}
