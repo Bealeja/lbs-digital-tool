@@ -36,7 +36,7 @@ app.use(bodyParser.urlencoded({ extended: true })); // for parsing application/x
 /*EXTERNAL CONNECTIONS*/
 //Allows you to connect to external ports
 
-app.use(cors());
+app.use(cors({ origin: "http://localhost:3000" }));
 
 //Message
 const server = http.createServer(app, {
