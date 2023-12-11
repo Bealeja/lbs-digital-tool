@@ -5,6 +5,8 @@ import React from "react";
 
 // Scene Imports
 import HomePage from "./scenes/Public/homePage/homePage";
+import MessagePage from "./scenes/Public/messagePage/messagePage";
+import EventsPage from "./scenes/Public/eventsPage/eventsPage";
 import StatisticsPage from "./scenes/Public/statisticsPage/statisticsPage";
 import DonationsPage from "./scenes/Public/donationsPage/donationsPage";
 // import HostApplication from "./scenes/hostApplicationPage";
@@ -14,7 +16,7 @@ import ActiveFundraiserPage from "./scenes/Public/activeFundraiserPage/activeFun
 // import AdminFundraiserPage from "./scenes/Admin/adminFundraiserPage";
 import LoginPage from "./scenes/Public/loginPage/loginPage";
 import Layout from "./scenes/Public/Layout/Layout";
-import MessagePage from "./scenes/Public/messagePage/messagePage";
+
 import io from "socket.io-client";
 
 const userName = "Jack";
@@ -27,7 +29,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Layout />}>
             <Route path="Home" element={<HomePage />} />
-            <Route path="Events" element={<StatisticsPage />} />
+            <Route path="Events" element={<EventsPage />} />
             <Route
               path="Messages"
               element={<MessagePage userName={userName} socket={socket} />}
