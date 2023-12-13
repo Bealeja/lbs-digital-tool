@@ -1,5 +1,5 @@
-import ActiveFundraiser from "./ActiveFundraiser/ActiveFundraiser";
-import ActiveFundraiserBar from "./ActiveFundraiserBar/ActiveFundraiserBar";
+import Fundraiser from "./Fundraiser/Fundraiser";
+import FundraisersContainer from "./FundraisersContainer/FundraisersContainer";
 import Carousel from "./Carousel/Carousel";
 import Donations from "./Donations/Donations";
 import HorizontalTable from "./HorizontalTable/HorizontalTable";
@@ -13,8 +13,8 @@ import RadioButtons from "./RadioButtons/RadioButtons";
 import Table from "./Table/Table";
 
 export {
-  ActiveFundraiser,
-  ActiveFundraiserBar,
+  Fundraiser,
+  FundraisersContainer,
   Carousel,
   Donations,
   HorizontalTable,

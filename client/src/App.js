@@ -37,6 +37,7 @@ function App() {
             <Route path="Jobs" element={<StatisticsPage />} />
             <Route path="About Us" element={<StatisticsPage />} />
             <Route path="Settings" element={<StatisticsPage />} />
+            <Route path="Fundraiser" element={<ActiveFundraiserPage />} />
           </Route>
         </Routes>
       </BrowserRouter>

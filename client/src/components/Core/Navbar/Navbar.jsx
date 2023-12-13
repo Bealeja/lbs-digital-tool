@@ -19,15 +19,7 @@ import ListItemText from "@mui/material/ListItemText";
 import InboxIcon from "@mui/icons-material/MoveToInbox";
 import MailIcon from "@mui/icons-material/Mail";
 
-
-import {
-  BrowserRouter,
-  Routes,
-  Route,
-  Link,
-  Switch,
-  Outlet,
-} from "react-router-dom";
+import { Route, Link, Outlet } from "react-router-dom";
 
 import StatisticsPage from "../../../scenes/Public/statisticsPage/statisticsPage";
 
@@ -186,7 +178,16 @@ export default function MiniDrawer() {
           )}
         </List>
       </Drawer>
-      <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
+      <Box
+        component="main"
+        sx={{
+          flexGrow: 1,
+          paddingLeft: 3,
+          paddingRight: 3,
+          paddingTop: 3,
+          paddingBottom: 3,
+        }}
+      >
         <DrawerHeader />
         <Outlet />
       </Box>

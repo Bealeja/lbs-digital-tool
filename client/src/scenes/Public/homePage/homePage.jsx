@@ -1,25 +1,8 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faInstagram } from "@fortawesome/free-brands-svg-icons";
 
-import {
-  Table,
-  NewsBar,
-  ActiveFundraiserBar,
-  Donations,
-  RadioButtons,
-} from "../../../components/Widget";
 import { Navbar, Banner, Footer } from "../../../components/Core";
-import {
-  Container,
-  Box,
-  Grid,
-  Button,
-  Autocomplete,
-  TextField,
-  Typography,
-  InputBase,
-  FlexEnd,
-} from "@mui/material";
+import { Box, Grid, Typography, InputBase } from "@mui/material";
 
 import HorizontalBar from "../../../components/Widget/BarChart/BarChart";
 import ResponsiveAppBar from "../../../components/Core/ToolBar/Toolbar";
