@@ -1,19 +1,48 @@
 const mongoose = require("mongoose");
 
 const fundraiserSchema = mongoose.Schema({
-  heading: {
+  eventname: {
+    type: String,
+    required: true,
+  },
+  description: {
+    type: String,
+    required: true,
+  },
+  photo: {
+    type: String,
+    required: true,
+  },
+  members: {
+    type: Array,
+  },
+  suburb: {
     type: String,
   },
-  content: {
+  latitude: {
     type: String,
+    required: true,
+  },
+  longitude: {
+    type: String,
+    required: true,
+  },
+  owner: {
+    type: String,
+    required: true,
   },
   goal: {
-    type: Number,
+    type: String,
+    required: true,
   },
-  raised: {
-    type: Number,
+  moneyraised: {
+    type: String,
+    required: true,
   },
-  photo: String,
+  date: {
+    type: Array,
+    required: true,
+  },
 });
 
 const Fundraisers = mongoose.model("Fundraisers", fundraiserSchema);

@@ -1,6 +1,6 @@
 const { Fundraisers } = require("../models/fundraiser.js");
 
-const getActiveFundraisers = async (req, res) => {
+const getFundraisersWithin5km = async (req, res) => {
   try {
     const fundraisers = await Fundraisers.find();
     res.status(200).json(fundraisers);
@@ -12,4 +12,4 @@ const getActiveFundraisers = async (req, res) => {
   }
 };
 
-module.exports = { getActiveFundraisers };
+module.exports = { getFundraisersWithin5km };
