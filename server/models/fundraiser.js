@@ -20,11 +20,11 @@ const fundraiserSchema = mongoose.Schema({
     type: String,
   },
   latitude: {
-    type: String,
+    type: Number,
     required: true,
   },
   longitude: {
-    type: String,
+    type: Number,
     required: true,
   },
   owner: {
@@ -32,11 +32,11 @@ const fundraiserSchema = mongoose.Schema({
     required: true,
   },
   goal: {
-    type: String,
+    type: Number,
     required: true,
   },
   moneyraised: {
-    type: String,
+    type: Number,
     required: true,
   },
   date: {

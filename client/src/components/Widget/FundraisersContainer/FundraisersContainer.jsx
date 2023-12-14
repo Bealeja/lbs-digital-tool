@@ -5,13 +5,20 @@ import { Box, Grid, Typography } from "@mui/material";
 import DropDown from "../../../components/Widget/DropDown/DropDown";
 import Fundraiser from "../Fundraiser/Fundraiser";
 
-const FundraisersContainer = () => {
+const FundraisersContainer = ({ latitude, longitude }) => {
   const [fetchedFundraisers, setFetchedFundraisers] = useState([]);
+  const [filter, setFilter] = useState("");
+
+  const updateFilterState = (newValue) => {
+    setFilter(newValue);
+  };
 
   useEffect(() => {
     const getFundraiserEvents = async () => {
       try {
-        const response = await fetch("http://localhost:3001/fundraisers");
+        const response = await fetch(
+          `http://localhost:3001/fundraisers/${filter}?lat=${latitude}&lon=${longitude}`
+        );
         const responseJSON = await response.json();
         setFetchedFundraisers(responseJSON);
       } catch (error) {
@@ -20,11 +27,10 @@ const FundraisersContainer = () => {
     };
 
     getFundraiserEvents();
-  }, []);
+  }, [filter]);
 
   return (
     <>
-      {" "}
       <Box
         sx={{
           backgroundColor: "white",
@@ -78,7 +84,7 @@ const FundraisersContainer = () => {
               >
                 Select
               </Typography>
-              <DropDown />
+              <DropDown updateFilterState={updateFilterState} filter={filter} />
             </Box>
           </Grid>
         </Grid>
@@ -86,11 +92,12 @@ const FundraisersContainer = () => {
           <>
             {fetchedFundraisers
               .slice(0, 3)
-              .map(({ eventname, description, photo }) => (
+              .map(({ eventname, description, photo }, i) => (
                 <Fundraiser
                   eventname={eventname}
                   description={description}
                   photo={photo}
+                  key={i}
                 />
               ))}
           </>

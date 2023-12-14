@@ -1,7 +1,15 @@
+import { useState, useEffect } from "react";
 import { Avatar, Box, Typography, LinearProgress } from "@mui/material";
 import DonationPhoto from "../../../assets/child.png";
 
-const MyFundraiser = ({ eventname, photo, date }) => {
+const MyFundraiser = ({ eventname, photo, date, moneyraised, goal }) => {
+  const [sumProgressBar, setSumProgressBar] = useState(null);
+
+  useEffect(() => {
+    let percentage = (moneyraised / goal) * 100;
+    setSumProgressBar(percentage);
+  }, []);
+
   // Convert Date String into required day
   const getSuffixOfDate = (date) => {
     const dayNumber = Number(date[0]); //1
@@ -92,7 +100,7 @@ const MyFundraiser = ({ eventname, photo, date }) => {
         </Box>
 
         <LinearProgress
-          value={20}
+          value={sumProgressBar}
           variant="determinate"
           sx={{
             height: "10px",
@@ -100,31 +108,60 @@ const MyFundraiser = ({ eventname, photo, date }) => {
             backgroundColor: "#b2b2b2",
           }}
         />
-        <Typography
-          sx={{
-            color: "#a99ed1",
-            fontSize: "14pt",
-            fontFamily: "sans-serif",
-            fontWeight: "bold",
-            textShadow: "1px 1px 0px rgba(0, 0, 0, 0.5)",
-            paddingBottom: "5px",
-            paddingTop: "5px",
-          }}
-        >
-          Amount Raised
-        </Typography>
-        <Typography
-          sx={{
-            color: "#9ed1a9",
-            fontSize: "14pt",
-            fontFamily: "sans-serif",
-            fontWeight: "bold",
-            textShadow: "1px 1px 0px rgba(0, 0, 0, 0.5)",
-            paddingBottom: "5px",
-          }}
-        >
-          Goal
-        </Typography>
+        <Box sx={{ display: "flex", justifyContent: "space-between" }}>
+          <Typography
+            sx={{
+              color: "#a99ed1",
+              fontSize: "14pt",
+              fontFamily: "sans-serif",
+              fontWeight: "bold",
+              textShadow: "1px 1px 0px rgba(0, 0, 0, 0.5)",
+              paddingBottom: "5px",
+              paddingTop: "5px",
+            }}
+          >
+            Amount Raised
+          </Typography>
+          <Typography
+            sx={{
+              color: "#a99ed1",
+              fontSize: "14pt",
+              fontFamily: "sans-serif",
+              fontWeight: "bold",
+              textShadow: "1px 1px 0px rgba(0, 0, 0, 0.5)",
+              paddingBottom: "5px",
+              paddingTop: "5px",
+            }}
+          >
+            {moneyraised}
+          </Typography>
+        </Box>
+        <Box sx={{ display: "flex", justifyContent: "space-between" }}>
+          <Typography
+            sx={{
+              color: "#9ed1a9",
+              fontSize: "14pt",
+              fontFamily: "sans-serif",
+              fontWeight: "bold",
+              textShadow: "1px 1px 0px rgba(0, 0, 0, 0.5)",
+              paddingBottom: "5px",
+            }}
+          >
+            Goal
+          </Typography>
+          <Typography
+            sx={{
+              color: "#9ed1a9",
+              fontSize: "14pt",
+              fontFamily: "sans-serif",
+              fontWeight: "bold",
+              textShadow: "1px 1px 0px rgba(0, 0, 0, 0.5)",
+              paddingBottom: "5px",
+            }}
+          >
+            {goal}
+          </Typography>
+        </Box>
       </Box>
     </>
   );

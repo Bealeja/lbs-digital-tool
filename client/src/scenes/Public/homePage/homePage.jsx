@@ -48,9 +48,7 @@ const HomePage = () => {
             />
           </Box>
         </Grid>
-        <Grid item sx={{ width: "100%", m: 1 }}>
-          <ActiveFundraiserBar />
-        </Grid>
+        <Grid item sx={{ width: "100%", m: 1 }}></Grid>
       </Grid>
     </>
   );

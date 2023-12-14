@@ -16,9 +16,9 @@ import { FundraisersContainer } from "../../../components/Widget";
 
 const EventsPage = () => {
   const profileAttributes = ["Make It Rain", "Shindig sorcerer", "Job Juggler"];
-  const [suburbLatLong, setSuburbLatLong] = useState([]);
 
-  if (suburbLatLong == []) setSuburbLatLong(["-37.840935", "144.946457"]);
+  const suburbLatLong = ["-37.840935", "144.946457"];
+  const userID = "Jack";
 
   return (
     <>
@@ -37,13 +37,16 @@ const EventsPage = () => {
             }}
           ></Box>
           {/* fundraisers Container */}
-          <FundraisersContainer />
+          <FundraisersContainer
+            latitude={suburbLatLong[0]}
+            longitude={suburbLatLong[1]}
+          />
         </Grid>
 
         {/* Menu Filter */}
         <Grid item sx={{ width: "30%" }}>
           <ProfileCard />
-          <MyFundRaiserContainer />
+          <MyFundRaiserContainer userID={userID} />
         </Grid>
       </Grid>
     </>

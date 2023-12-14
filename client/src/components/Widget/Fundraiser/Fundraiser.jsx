@@ -1,10 +1,8 @@
 import { Link } from "react-router-dom";
 import "../../../App.scss";
 import { Typography, Box, Button } from "@mui/material";
-import DonationPhoto from "../../../assets/child.png";
 
 const Fundraiser = ({ eventname, description, photo }) => {
-  console.log(photo);
   return (
     <Box
       sx={{

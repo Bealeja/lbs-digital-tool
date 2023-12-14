@@ -1,11 +1,9 @@
 import { useState } from "react";
 import { InputLabel, Select, FormControl, MenuItem } from "@mui/material";
 
-const DropDown = () => {
-  const [age, setAge] = useState("");
-
+const DropDown = ({ updateFilterState, filter }) => {
   const handleChange = (event) => {
-    setAge(event.target.value);
+    updateFilterState(event.target.value);
   };
 
   return (
@@ -19,7 +17,7 @@ const DropDown = () => {
       <Select
         labelId="demo-select-small-label"
         id="demo-select-small"
-        value={age}
+        value={filter}
         label="Filter"
         onChange={handleChange}
         sx={{
@@ -32,12 +30,9 @@ const DropDown = () => {
           boxShadow: "1px 1px 0px rgba(0, 0, 0, 0.5)",
         }}
       >
-        <MenuItem value="">
-          <em>None</em>
-        </MenuItem>
-        <MenuItem value="Alphabetical">Alphabetical</MenuItem>
-        <MenuItem value="Money Raised">Money Raised</MenuItem>
-        <MenuItem value="Money Goal">Money Goal</MenuItem>
+        <MenuItem value="5km">5km</MenuItem>
+        <MenuItem value="10km">10km</MenuItem>
+        <MenuItem value="15km">15km</MenuItem>
       </Select>
     </FormControl>
   );
