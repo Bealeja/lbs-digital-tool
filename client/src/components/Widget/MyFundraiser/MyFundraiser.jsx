@@ -33,7 +33,6 @@ const MyFundraiser = ({ eventname, photo, date, moneyraised, goal }) => {
   };
 
   const dateString = getSuffixOfDate(date);
-  console.log(dateString);
 
   return (
     <>

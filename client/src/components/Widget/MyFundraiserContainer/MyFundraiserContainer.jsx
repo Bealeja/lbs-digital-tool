@@ -2,14 +2,14 @@ import { useState, useEffect } from "react";
 import { Box, Typography } from "@mui/material";
 import MyFundraiser from "../MyFundraiser/MyFundraiser";
 
-const MyFundRaiserContainer = ({ userID }) => {
+const MyFundRaiserContainer = ({ username }) => {
   const [myFundraisers, setMyFundraisers] = useState([]);
 
   useEffect(() => {
     const getMyFundraiserEvents = async () => {
       try {
         const response = await fetch(
-          `http://localhost:3001/fundraisers/myFundraisers?userID=${userID}`
+          `http://localhost:3001/fundraisers/myFundraisers?userID=${username}`
         );
         const responseJSON = await response.json();
         setMyFundraisers(responseJSON);
@@ -52,13 +52,14 @@ const MyFundRaiserContainer = ({ userID }) => {
         {myFundraisers && (
           <>
             {myFundraisers.map(
-              ({ eventname, photo, date, moneyraised, goal }) => (
+              ({ eventname, photo, date, moneyraised, goal }, i) => (
                 <MyFundraiser
                   eventname={eventname}
                   photo={photo}
                   date={date}
                   moneyraised={moneyraised}
                   goal={goal}
+                  key={i}
                 />
               )
             )}

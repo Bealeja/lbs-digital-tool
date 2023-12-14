@@ -15,6 +15,7 @@ const messageRoutes = require("./routes/messages.js");
 const newsRoutes = require("./routes/news.js");
 const tablesRoutes = require("./routes/tables.js");
 const roomsRoutes = require("./routes/rooms.js");
+const userRoutes = require("./routes/user.js");
 
 const { Messages } = require("./models/message.js");
 const { createServer } = require("http");
@@ -131,6 +132,8 @@ app.use("/messages", messageRoutes);
 app.use("/friends", friendsRoutes);
 
 app.use("/rooms", roomsRoutes);
+
+app.use("/user", userRoutes);
 
 /*AUTHENTICATION*/
 app.use("/auth", authRoutes);

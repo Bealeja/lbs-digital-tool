@@ -19,7 +19,7 @@ const userSchema = mongoose.Schema({
   },
   eventlist: {
     type: Array,
-    required: true,
+    required: false,
   },
   jobs: {
     type: Array,

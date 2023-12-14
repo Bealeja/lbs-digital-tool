@@ -1,7 +1,8 @@
 //Package Imports
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import "./App.scss";
-import React from "react";
+import { React, useState, useEffect } from "react";
+// import { getRequest } from "./utility/fetch.js";
 
 // Scene Imports
 import HomePage from "./scenes/Public/homePage/homePage";
@@ -23,13 +24,33 @@ const userName = "Jack";
 const socket = io.connect("http://localhost:3002");
 
 function App() {
+  const [user, setUser] = useState([]);
+
+  useEffect(() => {
+    const getProfile = async () => {
+      try {
+        const response = fetch(
+          `http://localhost:3001/user/userprofile?username=Jack`
+        );
+        const responseJSON = await response.json();
+        setUser(responseJSON);
+      } catch (error) {
+        console.error(
+          `Error in getRequest for route with params: ${error.message}`
+        );
+      }
+    };
+
+    getProfile();
+  }, []);
+
   return (
     <div className="App">
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Layout />}>
             <Route path="Home" element={<HomePage />} />
-            <Route path="Events" element={<EventsPage />} />
+            <Route path="Events" element={<EventsPage user={userName} />} />
             <Route
               path="Messages"
               element={<MessagePage userName={userName} socket={socket} />}
