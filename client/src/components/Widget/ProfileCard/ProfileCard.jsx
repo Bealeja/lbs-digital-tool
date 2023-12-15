@@ -1,15 +1,9 @@
 import { useState, useEffect } from "react";
-import { Box, Typography, Avatar } from "@mui/material";
+import { Box, Typography, Avatar, Divider } from "@mui/material";
 import PlaceOutlinedIcon from "@mui/icons-material/PlaceOutlined";
+import BadgeOutlinedIcon from "@mui/icons-material/BadgeOutlined";
 
-const ProfileCard = () => {
-  const profileAttributes = [
-    "Make it Rain",
-    "Shindig Sorcerer",
-    "Job Juggler",
-    "Best Friends",
-    "Giving Guru",
-  ];
+const ProfileCard = ({ username, badges, photo, location }) => {
   return (
     <>
       <Box
@@ -20,26 +14,56 @@ const ProfileCard = () => {
           borderRadius: "8px",
           padding: "10px",
           display: "flex",
+          flexDirection: "row",
         }}
       >
-        <Box sx={{ padding: "10px", width: "50%" }}>
+        <Box
+          sx={{
+            padding: "10px",
+            width: "50%",
+            height: "100%",
+            display: "flex",
+            flexDirection: "column",
+            justifyContent: "space-between",
+          }}
+        >
           <Avatar
+            src={`http://localhost:3001/assets/userprofilephotos/${photo}`}
             alt="Profile Photo"
             variant="rounded"
-            sx={{ height: "50px", width: "50px" }}
+            sx={{
+              height: "60%",
+              width: "fit-content",
+              boxShadow: "0px 2px 4px rgba(0, 0, 0, 0.5)",
+              justifySelf: "centre",
+              alignSelf: "center",
+              border: "0.1px solid #000",
+            }}
           />
-          <Box>
-            <Typography
-              sx={{
-                color: "#a99ed1",
-                fontFamily: "sans-serif",
-                fontWeight: "bold",
-                textShadow: "0.5px 0.5px 0px rgba(0, 0, 0, 0.5)",
-              }}
-            >
-              Name
-            </Typography>
+          <Box
+            sx={{
+              boxShadow: "0px 2px 4px rgba(0, 0, 0, 0.5)",
+              borderRadius: "4px",
+              display: "flex",
+              flexDirection: "column",
+              border: "0.1px solid #000",
+            }}
+          >
             <Box sx={{ display: "flex" }}>
+              <BadgeOutlinedIcon />
+              <Typography
+                sx={{
+                  color: "#a99ed1",
+                  fontFamily: "sans-serif",
+                  fontWeight: "bold",
+                  textShadow: "0.5px 0.5px 0px rgba(0, 0, 0, 0.5)",
+                  paddingLeft: "5px",
+                }}
+              >
+                {username}
+              </Typography>
+            </Box>
+            <Box sx={{ display: "flex", flexDirection: "row" }}>
               <PlaceOutlinedIcon sx={{ color: "black" }} />
               <Typography
                 sx={{
@@ -47,9 +71,10 @@ const ProfileCard = () => {
                   fontFamily: "sans-serif",
                   fontWeight: "bold",
                   textShadow: "0.5px 0.5px 0px rgba(0, 0, 0, 0.5)",
+                  paddingLeft: "5px",
                 }}
               >
-                Location
+                {location}
               </Typography>
             </Box>
           </Box>
@@ -63,7 +88,7 @@ const ProfileCard = () => {
             height: "100%",
           }}
         >
-          {profileAttributes.map((status, i) => {
+          {badges?.map((status, i) => {
             return (
               <Box
                 key={i}

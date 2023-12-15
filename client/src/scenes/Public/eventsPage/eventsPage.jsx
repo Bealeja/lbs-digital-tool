@@ -15,9 +15,8 @@ import MyFundRaiserContainer from "../../../components/Widget/MyFundraiserContai
 import { FundraisersContainer } from "../../../components/Widget";
 
 const EventsPage = ({ user }) => {
+  const { username, badges, photo, location } = user.length > 0 ? user[0] : {};
   const suburbLatLong = ["-37.840935", "144.946457"];
-  const username = "Jack";
-  const badges = [];
 
   return (
     <>
@@ -44,7 +43,12 @@ const EventsPage = ({ user }) => {
 
         {/* Menu Filter */}
         <Grid item sx={{ width: "30%" }}>
-          <ProfileCard username={username} badges={badges} />
+          <ProfileCard
+            username={username}
+            badges={badges}
+            photo={photo}
+            location={location}
+          />
           <MyFundRaiserContainer username={username} />
         </Grid>
       </Grid>

@@ -1,6 +1,5 @@
 import { useState, useEffect } from "react";
 import { Avatar, Box, Typography, LinearProgress } from "@mui/material";
-import DonationPhoto from "../../../assets/child.png";
 
 const MyFundraiser = ({ eventname, photo, date, moneyraised, goal }) => {
   const [sumProgressBar, setSumProgressBar] = useState(null);
@@ -78,7 +77,7 @@ const MyFundraiser = ({ eventname, photo, date, moneyraised, goal }) => {
         </Box>
         <Box sx={{ display: "flex", paddingBottom: "10px" }}>
           <Avatar
-            src={`http://localhost:3001/assets/${photo}`}
+            src={`http://localhost:3001/assets/eventcoverphotos/${photo}`}
             alt="Profile Photo"
             variant="rounded"
             sx={{ height: "50px", width: "50px" }}

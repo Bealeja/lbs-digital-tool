@@ -14,12 +14,14 @@ const MyFundRaiserContainer = ({ username }) => {
         const responseJSON = await response.json();
         setMyFundraisers(responseJSON);
       } catch (error) {
-        console.log(`Error caught when fetching Fundraisers: ${error.message}`);
+        console.log(
+          `Error caught when fetching myFundraisers: ${error.message}`
+        );
       }
     };
 
     getMyFundraiserEvents();
-  }, []);
+  }, [username]);
 
   return (
     <>

@@ -33,6 +33,10 @@ const userSchema = mongoose.Schema({
     type: Number,
     required: true,
   },
+  photo: {
+    type: String,
+    required: true,
+  },
 });
 
 const User = mongoose.model("users", userSchema);

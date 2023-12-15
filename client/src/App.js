@@ -29,9 +29,13 @@ function App() {
   useEffect(() => {
     const getProfile = async () => {
       try {
-        const response = fetch(
+        const response = await fetch(
           `http://localhost:3001/user/userprofile?username=Jack`
         );
+        if (!response.ok)
+          console.error(
+            "There was an issue with the response from user profile"
+          );
         const responseJSON = await response.json();
         setUser(responseJSON);
       } catch (error) {
@@ -49,15 +53,13 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Layout />}>
-            <Route path="Home" element={<HomePage />} />
-            <Route path="Events" element={<EventsPage user={userName} />} />
+            <Route path="Events" element={<EventsPage user={user} />} />
             <Route
               path="Messages"
               element={<MessagePage userName={userName} socket={socket} />}
             />
             <Route path="Jobs" element={<StatisticsPage />} />
             <Route path="About Us" element={<StatisticsPage />} />
-            <Route path="Settings" element={<StatisticsPage />} />
             <Route path="Fundraiser" element={<ActiveFundraiserPage />} />
           </Route>
         </Routes>

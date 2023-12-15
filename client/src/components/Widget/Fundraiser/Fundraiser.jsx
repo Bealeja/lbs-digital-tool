@@ -47,7 +47,7 @@ const Fundraiser = ({ eventname, description, photo }) => {
       </Box>
       <Box
         sx={{
-          backgroundImage: `url(http://localhost:3001/assets/${photo})`,
+          backgroundImage: `url(http://localhost:3001/assets/eventcoverphotos/${photo})`,
           backgroundRepeat: "no-repeat",
           backgroundSize: "cover",
           borderRadius: "8pt",

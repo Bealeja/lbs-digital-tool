@@ -25,14 +25,7 @@ import StatisticsPage from "../../../scenes/Public/statisticsPage/statisticsPage
 
 const drawerWidth = 240;
 
-const PageLinks = [
-  "Home",
-  "Events",
-  "Messages",
-  "Jobs",
-  "About Us",
-  "Settings",
-];
+const PageLinks = ["Events", "Messages", "Jobs", "About Us"];
 
 const openedMixin = (theme) => ({
   width: drawerWidth,
@@ -150,32 +143,30 @@ export default function MiniDrawer() {
 
         <Divider />
         <List>
-          {["Home", "Events", "Messages", "Jobs", "About Us", "Settings"].map(
-            (text, index) => (
-              <ListItem key={text} disablePadding sx={{ display: "block" }}>
-                <ListItemButton
+          {["Events", "Messages", "Jobs", "About Us"].map((text, index) => (
+            <ListItem key={text} disablePadding sx={{ display: "block" }}>
+              <ListItemButton
+                sx={{
+                  minHeight: 48,
+                  justifyContent: open ? "initial" : "center",
+                  px: 2.5,
+                }}
+                component={Link}
+                to={`/${PageLinks[index]}`}
+              >
+                <ListItemIcon
                   sx={{
-                    minHeight: 48,
-                    justifyContent: open ? "initial" : "center",
-                    px: 2.5,
+                    minWidth: 0,
+                    mr: open ? 3 : "auto",
+                    justifyContent: "center",
                   }}
-                  component={Link}
-                  to={`/${PageLinks[index]}`}
                 >
-                  <ListItemIcon
-                    sx={{
-                      minWidth: 0,
-                      mr: open ? 3 : "auto",
-                      justifyContent: "center",
-                    }}
-                  >
-                    {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-                  </ListItemIcon>
-                  <ListItemText primary={text} sx={{ opacity: open ? 1 : 0 }} />
-                </ListItemButton>
-              </ListItem>
-            )
-          )}
+                  {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
+                </ListItemIcon>
+                <ListItemText primary={text} sx={{ opacity: open ? 1 : 0 }} />
+              </ListItemButton>
+            </ListItem>
+          ))}
         </List>
       </Drawer>
       <Box

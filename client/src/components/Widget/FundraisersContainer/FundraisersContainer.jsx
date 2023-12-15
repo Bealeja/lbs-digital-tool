@@ -7,7 +7,7 @@ import Fundraiser from "../Fundraiser/Fundraiser";
 
 const FundraisersContainer = ({ latitude, longitude }) => {
   const [fetchedFundraisers, setFetchedFundraisers] = useState([]);
-  const [filter, setFilter] = useState("");
+  const [filter, setFilter] = useState("5km");
 
   const updateFilterState = (newValue) => {
     setFilter(newValue);
