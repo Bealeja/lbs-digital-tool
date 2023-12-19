@@ -27,7 +27,8 @@ const EventsPage = ({ user }) => {
             sx={{
               backgroundImage: `url(${BannerImage})`,
               backgroundRepeat: "no-repeat",
-              backgroundSize: "cover",
+              backgroundSize: "contain",
+              backgroundColor: "#7E5DC5",
               boxShadow: "0px 4px 10px rgba(0, 0, 0, 0.5)",
               height: "200px",
               width: "100%",
