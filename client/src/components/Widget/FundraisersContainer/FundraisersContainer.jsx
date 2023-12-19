@@ -92,8 +92,9 @@ const FundraisersContainer = ({ latitude, longitude }) => {
           <>
             {fetchedFundraisers
               .slice(0, 3)
-              .map(({ eventname, description, photo }, i) => (
+              .map(({ _id, eventname, description, photo }, i) => (
                 <Fundraiser
+                  id={_id}
                   eventname={eventname}
                   description={description}
                   photo={photo}

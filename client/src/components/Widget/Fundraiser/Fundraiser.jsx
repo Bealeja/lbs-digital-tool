@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import "../../../App.scss";
 import { Typography, Box, Button } from "@mui/material";
 
-const Fundraiser = ({ eventname, description, photo }) => {
+const Fundraiser = ({ _id, eventname, description, photo }) => {
   return (
     <Box
       sx={{
@@ -100,6 +100,7 @@ const Fundraiser = ({ eventname, description, photo }) => {
           }}
           component={Link}
           to={`/Fundraiser`}
+          state={{ id: _id }}
         >
           View
         </Button>
