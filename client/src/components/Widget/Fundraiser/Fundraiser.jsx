@@ -2,7 +2,20 @@ import { Link } from "react-router-dom";
 import "../../../App.scss";
 import { Typography, Box, Button } from "@mui/material";
 
-const Fundraiser = ({ _id, eventname, description, photo }) => {
+const Fundraiser = ({
+  _id,
+  eventname,
+  description,
+  photo,
+  members,
+  jobs,
+  suburb,
+  owner,
+  goal,
+  moneyraised,
+  date,
+}) => {
+  console.log(`This is the output: ${JSON.stringify(jobs)}`);
   return (
     <Box
       sx={{
@@ -100,7 +113,19 @@ const Fundraiser = ({ _id, eventname, description, photo }) => {
           }}
           component={Link}
           to={`/Fundraiser`}
-          state={{ id: _id }}
+          state={{
+            id: _id,
+            eventname: eventname,
+            description: description,
+            photo: photo,
+            members: members,
+            jobs: jobs,
+            suburb: suburb,
+            owner: owner,
+            goal: goal,
+            moneyraised: moneyraised,
+            date: date,
+          }}
         >
           View
         </Button>

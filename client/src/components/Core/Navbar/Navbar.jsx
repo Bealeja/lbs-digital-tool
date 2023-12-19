@@ -25,7 +25,7 @@ import StatisticsPage from "../../../scenes/Public/statisticsPage/statisticsPage
 
 const drawerWidth = 240;
 
-const PageLinks = ["Events", "Messages", "Jobs", "About Us"];
+const PageLinks = ["Events", "Messages", "About Us"];
 
 const openedMixin = (theme) => ({
   width: drawerWidth,
@@ -143,7 +143,7 @@ export default function MiniDrawer() {
 
         <Divider />
         <List>
-          {["Events", "Messages", "Jobs", "About Us"].map((text, index) => (
+          {["Events", "Messages", "About Us"].map((text, index) => (
             <ListItem key={text} disablePadding sx={{ display: "block" }}>
               <ListItemButton
                 sx={{

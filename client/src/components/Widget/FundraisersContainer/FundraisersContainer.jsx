@@ -92,15 +92,39 @@ const FundraisersContainer = ({ latitude, longitude }) => {
           <>
             {fetchedFundraisers
               .slice(0, 3)
-              .map(({ _id, eventname, description, photo }, i) => (
-                <Fundraiser
-                  id={_id}
-                  eventname={eventname}
-                  description={description}
-                  photo={photo}
-                  key={i}
-                />
-              ))}
+              .map(
+                (
+                  {
+                    _id,
+                    eventname,
+                    description,
+                    photo,
+                    members,
+                    suburb,
+                    jobs,
+                    owner,
+                    goal,
+                    moneyraised,
+                    date,
+                  },
+                  i
+                ) => (
+                  <Fundraiser
+                    id={_id}
+                    eventname={eventname}
+                    description={description}
+                    photo={photo}
+                    members={members}
+                    suburb={suburb}
+                    jobs={jobs}
+                    owner={owner}
+                    goal={goal}
+                    moneyraised={moneyraised}
+                    date={date}
+                    key={i}
+                  />
+                )
+              )}
           </>
         )}
       </Box>

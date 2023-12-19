@@ -16,6 +16,9 @@ const fundraiserSchema = mongoose.Schema({
   members: {
     type: Array,
   },
+  jobs: {
+    type: Object,
+  },
   suburb: {
     type: String,
   },

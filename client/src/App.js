@@ -58,7 +58,6 @@ function App() {
               path="Messages"
               element={<MessagePage userName={userName} socket={socket} />}
             />
-            <Route path="Jobs" element={<StatisticsPage />} />
             <Route path="About Us" element={<StatisticsPage />} />
             <Route path="Fundraiser" element={<ActiveFundraiserPage />} />
           </Route>
