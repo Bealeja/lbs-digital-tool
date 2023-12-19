@@ -4,6 +4,14 @@ import PlaceOutlinedIcon from "@mui/icons-material/PlaceOutlined";
 import BadgeOutlinedIcon from "@mui/icons-material/BadgeOutlined";
 
 const ProfileCard = ({ username, badges, photo, location }) => {
+  const displayBadges = [
+    "Make it Rain",
+    "Shindig Sorcerer",
+    "Job Juggler",
+    "Best Friends",
+    "Giving Guru",
+  ];
+
   return (
     <>
       <Box
@@ -88,8 +96,8 @@ const ProfileCard = ({ username, badges, photo, location }) => {
             height: "100%",
           }}
         >
-          {badges?.map((status, i) => {
-            return (
+          {displayBadges?.map((badge, i) =>
+            badges?.includes(badge) ? (
               <Box
                 key={i}
                 sx={{
@@ -111,11 +119,36 @@ const ProfileCard = ({ username, badges, photo, location }) => {
                     padding: "2px",
                   }}
                 >
-                  {status}
+                  {badge}
                 </Typography>
               </Box>
-            );
-          })}
+            ) : (
+              <Box
+                key={i}
+                sx={{
+                  width: "100%",
+                  backgroundColor: "lightgrey",
+                  borderRadius: "8px",
+                  boxShadow: "0px 2px 2px rgba(0, 0, 0, 0.5)",
+                  borderColor: "black",
+                  border: "0.1px solid #000",
+                  paddingLeft: "10px",
+                }}
+              >
+                <Typography
+                  sx={{
+                    color: "grey",
+                    fontFamily: "sans-serif",
+                    fontWeight: "bold",
+                    textShadow: "0.5px 0.5px 0px rgba(0, 0, 0, 0.5)",
+                    padding: "2px",
+                  }}
+                >
+                  {badge}
+                </Typography>
+              </Box>
+            )
+          )}
         </Box>
       </Box>
     </>
