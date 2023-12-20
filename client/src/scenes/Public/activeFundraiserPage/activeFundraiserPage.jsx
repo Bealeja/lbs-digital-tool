@@ -1,5 +1,14 @@
-import { Avatar, Box, Grid, Typography } from "@mui/material";
+import {
+  Button,
+  Avatar,
+  Box,
+  Divider,
+  Grid,
+  Typography,
+  LinearProgress,
+} from "@mui/material";
 import { useLocation } from "react-router-dom";
+import Carousel from "../../../components/Widget/Carousel/Carousel";
 
 const ActiveFundraiserPage = () => {
   const { state } = useLocation(); // Use useLocation to get the state
@@ -19,6 +28,21 @@ const ActiveFundraiserPage = () => {
     date,
   } = state;
 
+  const slides = [
+    {
+      src: "https://picsum.photos/seed/img1/600/400",
+      alt: "Image 1 for carousel",
+    },
+    {
+      src: "https://picsum.photos/seed/img2/600/400",
+      alt: "Image 2 for carousel",
+    },
+    {
+      src: "https://picsum.photos/seed/img3/600/400",
+      alt: "Image 3 for carousel",
+    },
+  ];
+  const sumProgressBar = (moneyraised / goal) * 100;
   return (
     <>
       <Grid container spacing={3}>
@@ -26,8 +50,7 @@ const ActiveFundraiserPage = () => {
           item
           sx={{
             width: "70%",
-            height: "fit-content",
-            backgroundColor: "red",
+            height: "88vh",
             alignItems: "center",
             justifyContent: "center",
           }}
@@ -37,10 +60,11 @@ const ActiveFundraiserPage = () => {
               display: "flex",
               flexDirection: "column",
               width: "100%",
-              height: "50vh",
+              height: "350px",
               backgroundColor: "white",
               boxShadow: "0px 4px 10px rgba(0, 0, 0, 0.5)",
               borderRadius: "8pt",
+              marginBottom: "10px",
             }}
           >
             <Box
@@ -53,50 +77,165 @@ const ActiveFundraiserPage = () => {
                 borderRadius: "8pt 8pt 0pt 0pt",
               }}
             ></Box>
-            <Box sx={{ display: "flex", padding: "20px" }}>
+            <Box
+              sx={{
+                display: "flex",
+                padding: "20px",
+                alignItems: "flex-end",
+              }}
+            >
               <Box
                 sx={{
                   backgroundImage: `url(http://localhost:3001/assets/eventcoverphotos/${photo})`,
                   backgroundRepeat: "no-repeat",
                   backgroundSize: "cover",
                   borderRadius: "8pt",
-                  width: "200px",
-                  height: "150px",
+                  width: "12%",
+                  height: "18%",
                   alignSelf: "center",
                   position: "absolute",
-                  top: "220px",
-
+                  top: "22%",
                   boxShadow: "0px 4px 10px rgba(0, 0, 0, 0.5)",
                 }}
               ></Box>
 
-              <Box sx={{ paddingLeft: "250px" }}>
+              {/* Owner */}
+              <Box sx={{ paddingTop: "90px", width: "25%", height: "100%" }}>
+                <Avatar
+                  src={`http://localhost:3001/assets/eventcoverphotos/${photo}`}
+                  alt="Profile Photo"
+                  variant="rounded"
+                  sx={{ height: "50px", width: "50px" }}
+                ></Avatar>
                 <Typography
                   sx={{
                     color: "#b2b2b2",
-                    fontSize: "20pt",
+                    fontSize: "15pt",
                     fontFamily: "sans-serif",
                     fontWeight: "bold",
                     marginRight: "10px",
                     textShadow: "0.5px 0.5px 0px rgba(0, 0, 0, 0.5)",
                   }}
                 >
-                  {eventname}
-                </Typography>
-                <Typography
-                  sx={{
-                    color: "#b2b2b2",
-                    fontSize: "10pt",
-                    fontFamily: "sans-serif",
-                    fontWeight: "bold",
-                    marginRight: "10px",
-                    textShadow: "0.5px 0.5px 0px rgba(0, 0, 0, 0.5)",
-                  }}
-                >
-                  {description}
+                  Host: {owner}
                 </Typography>
               </Box>
+              <Box
+                sx={{
+                  width: "70%",
+                  height: "100%",
+                  paddingRight: "20px",
+                  display: "flex",
+                  flexDirection: "column",
+                  justifyContent: "space-between",
+                }}
+              >
+                <Box>
+                  <Typography
+                    sx={{
+                      color: "#b2b2b2",
+                      fontSize: "20pt",
+                      fontFamily: "sans-serif",
+                      fontWeight: "bold",
+                      marginRight: "10px",
+                      textShadow: "0.5px 0.5px 0px rgba(0, 0, 0, 0.5)",
+                    }}
+                  >
+                    {eventname}
+                  </Typography>
+                  <Typography
+                    sx={{
+                      color: "#b2b2b2",
+                      fontSize: "10pt",
+                      fontFamily: "sans-serif",
+                      fontWeight: "bold",
+                      marginRight: "10px",
+                      textShadow: "0.5px 0.5px 0px rgba(0, 0, 0, 0.5)",
+                    }}
+                  >
+                    {description}
+                  </Typography>
+                </Box>
+                <Box sx={{ width: "100%", height: "20px" }}>
+                  <LinearProgress
+                    value={sumProgressBar}
+                    variant="determinate"
+                    sx={{
+                      height: "10px",
+                      borderRadius: "5px",
+                      backgroundColor: "#b2b2b2",
+                    }}
+                  />
+                </Box>
+              </Box>
+              <Box sx={{ width: "20%" }}>
+                <Typography
+                  sx={{
+                    color: "#b2b2b2",
+                    fontSize: "15pt",
+                    fontFamily: "sans-serif",
+                    fontWeight: "bold",
+                    marginRight: "10px",
+                    textShadow: "0.5px 0.5px 0px rgba(0, 0, 0, 0.5)",
+                  }}
+                >
+                  Raised: ${moneyraised}
+                </Typography>
+                <Divider
+                  sx={{
+                    borderColor: "#9eb9d1",
+                    borderWidth: "2px",
+                    borderRadius: "8px",
+                  }}
+                />
+                <Typography
+                  sx={{
+                    color: "#9ed1a9",
+                    fontSize: "15pt",
+                    fontFamily: "sans-serif",
+                    fontWeight: "bold",
+                    marginRight: "10px",
+                    textShadow: "0.5px 0.5px 0px rgba(0, 0, 0, 0.5)",
+                  }}
+                >
+                  Goal: ${goal}
+                </Typography>
+                <Button
+                  sx={{
+                    marginTop: "10px",
+                    borderRadius: "8pt",
+                    width: "fit-content",
+                    height: "20px",
+                    alignSelf: "center",
+                    padding: "20px",
+                    backgroundColor: "#a99ed1",
+                    boxShadow: "0px 4px 10px rgba(0, 0, 0, 0.5)",
+                  }}
+                >
+                  <Typography
+                    sx={{
+                      color: "white",
+                      fontFamily: "sans-serif",
+                      fontWeight: "bold",
+                      fontSize: "18pt",
+                      padding: "10px",
+                      textShadow: "0.5px 0.5px 0px rgba(0, 0, 0, 0.5)",
+                    }}
+                  >
+                    Donate
+                  </Typography>
+                </Button>
+              </Box>
             </Box>
+          </Box>
+          <Box
+            sx={{
+              display: "flex",
+              justifyContent: "flex-start",
+              height: "50%",
+            }}
+          >
+            <Carousel data={slides} />
           </Box>
         </Grid>
 
