@@ -24,6 +24,8 @@ const userName = "Jack";
 const socket = io.connect("http://localhost:3002");
 
 function App() {
+  const app = initializeApp(firebaseConfig);
+  const analytics = getAnalytics(app);
   const [user, setUser] = useState([]);
 
   useEffect(() => {

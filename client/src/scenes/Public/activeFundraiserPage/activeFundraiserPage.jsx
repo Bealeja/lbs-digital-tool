@@ -9,6 +9,7 @@ import {
 } from "@mui/material";
 import { useLocation } from "react-router-dom";
 import Carousel from "../../../components/Widget/Carousel/Carousel";
+import { LineChart } from "@mui/x-charts/LineChart";
 
 const ActiveFundraiserPage = () => {
   const { state } = useLocation(); // Use useLocation to get the state
@@ -60,7 +61,7 @@ const ActiveFundraiserPage = () => {
               display: "flex",
               flexDirection: "column",
               width: "100%",
-              height: "350px",
+              height: "50%",
               backgroundColor: "white",
               boxShadow: "0px 4px 10px rgba(0, 0, 0, 0.5)",
               borderRadius: "8pt",
@@ -128,6 +129,7 @@ const ActiveFundraiserPage = () => {
                   display: "flex",
                   flexDirection: "column",
                   justifyContent: "space-between",
+                  paddingLeft: "20px",
                 }}
               >
                 <Box>
@@ -156,14 +158,21 @@ const ActiveFundraiserPage = () => {
                     {description}
                   </Typography>
                 </Box>
-                <Box sx={{ width: "100%", height: "20px" }}>
+                <Box sx={{ width: "100%", height: "fit-content" }}>
                   <LinearProgress
                     value={sumProgressBar}
                     variant="determinate"
                     sx={{
-                      height: "10px",
+                      "& .MuiLinearProgress-bar": {
+                        backgroundColor: "#a99ed1",
+                        border: "black 1px solid",
+                      },
+                      border: "black 1px solid",
+                      boxShadow: "2px 2px 0px rgba(0, 0, 0, 0.5)",
+                      height: "20px",
                       borderRadius: "5px",
-                      backgroundColor: "#b2b2b2",
+                      backgroundColor: "white",
+                      marginBottom: "10px",
                     }}
                   />
                 </Box>
@@ -172,7 +181,7 @@ const ActiveFundraiserPage = () => {
                 <Typography
                   sx={{
                     color: "#b2b2b2",
-                    fontSize: "15pt",
+                    fontSize: "18pt",
                     fontFamily: "sans-serif",
                     fontWeight: "bold",
                     marginRight: "10px",
@@ -191,7 +200,7 @@ const ActiveFundraiserPage = () => {
                 <Typography
                   sx={{
                     color: "#9ed1a9",
-                    fontSize: "15pt",
+                    fontSize: "18pt",
                     fontFamily: "sans-serif",
                     fontWeight: "bold",
                     marginRight: "10px",
@@ -231,11 +240,38 @@ const ActiveFundraiserPage = () => {
           <Box
             sx={{
               display: "flex",
-              justifyContent: "flex-start",
               height: "50%",
+              width: "100%",
+              borderRadius: "8px",
             }}
           >
-            <Carousel data={slides} />
+            <Box
+              sx={{
+                height: "100%",
+                width: "100%",
+                marginRight: "10px",
+              }}
+            >
+              <Carousel data={slides} />
+            </Box>
+            <Box
+              sx={{
+                width: "100%",
+                height: "100%",
+                boxShadow: "0px 4px 10px rgba(0, 0, 0, 0.5)",
+                borderRadius: "8px",
+              }}
+            >
+              <LineChart
+                xAxis={[{ data: [1, 2, 3, 5, 8, 10] }]}
+                series={[
+                  {
+                    data: [2, 5.5, 2, 8.5, 1.5, 5],
+                    area: false,
+                  },
+                ]}
+              />
+            </Box>
           </Box>
         </Grid>
 
