@@ -2,19 +2,12 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import "./App.scss";
 import { React, useState, useEffect } from "react";
-// import { getRequest } from "./utility/fetch.js";
+import { AuthProvider } from "./contexts/AuthContext";
 
-// Scene Imports
-import HomePage from "./scenes/Public/homePage/homePage";
 import MessagePage from "./scenes/Public/messagePage/messagePage";
 import EventsPage from "./scenes/Public/eventsPage/eventsPage";
 import StatisticsPage from "./scenes/Public/statisticsPage/statisticsPage";
-import DonationsPage from "./scenes/Public/donationsPage/donationsPage";
-// import HostApplication from "./scenes/hostApplicationPage";
-import FundraiserPublicPage from "./scenes/Public/fundraiserPublicPage/fundraiserPublicPage";
 import ActiveFundraiserPage from "./scenes/Public/activeFundraiserPage/activeFundraiserPage";
-// import AdminHostPage from "./scenes/Admin/adminHomePage";
-// import AdminFundraiserPage from "./scenes/Admin/adminFundraiserPage";
 import LoginPage from "./scenes/Public/loginPage/loginPage";
 import Layout from "./scenes/Public/Layout/Layout";
 
@@ -24,8 +17,6 @@ const userName = "Jack";
 const socket = io.connect("http://localhost:3002");
 
 function App() {
-  const app = initializeApp(firebaseConfig);
-  const analytics = getAnalytics(app);
   const [user, setUser] = useState([]);
 
   useEffect(() => {
@@ -53,8 +44,9 @@ function App() {
   return (
     <div className="App">
       <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<Layout />}>
+        <AuthProvider>
+          <Routes>
+            <PrivateRoute exact path="/" element={<Layout />} />
             <Route path="Events" element={<EventsPage user={user} />} />
             <Route
               path="Messages"
@@ -62,8 +54,9 @@ function App() {
             />
             <Route path="About Us" element={<StatisticsPage />} />
             <Route path="Fundraiser" element={<ActiveFundraiserPage />} />
-          </Route>
-        </Routes>
+            <Route path="Login" element={<LoginPage />} />
+          </Routes>
+        </AuthProvider>
       </BrowserRouter>
     </div>
   );
