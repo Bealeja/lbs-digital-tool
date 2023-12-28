@@ -10,6 +10,7 @@ import StatisticsPage from "./scenes/Public/statisticsPage/statisticsPage";
 import ActiveFundraiserPage from "./scenes/Public/activeFundraiserPage/activeFundraiserPage";
 import LoginPage from "./scenes/Public/loginPage/loginPage";
 import Layout from "./scenes/Public/Layout/Layout";
+import PrivateRoute from "./PrivateRoute";
 
 import io from "socket.io-client";
 
@@ -46,7 +47,11 @@ function App() {
       <BrowserRouter>
         <AuthProvider>
           <Routes>
-            <PrivateRoute exact path="/" element={<Layout />} />
+            <Route
+              exact
+              path="/"
+              element={<PrivateRoute component={Layout} />}
+            />
             <Route path="Events" element={<EventsPage user={user} />} />
             <Route
               path="Messages"
