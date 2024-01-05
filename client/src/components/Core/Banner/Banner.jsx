@@ -1,4 +1,4 @@
-import banner from "../../../assets/banner.png";
+import banner from "../../../assets/banner1.png";
 import Box from "@mui/material/Box";
 
 const Banner = () => {

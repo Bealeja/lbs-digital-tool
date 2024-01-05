@@ -6,7 +6,7 @@ const PrivateRoute = ({ component: Component, ...rest }) => {
   const { currentUser } = useAuth();
 
   return currentUser ? (
-    <Component {...props} />
+    <Component {...rest} />
   ) : (
     <Navigate to="/Login" replace />
   );

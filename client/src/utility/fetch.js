@@ -8,7 +8,6 @@ async function getRequest(route, params) {
       throw new Error(`Request failed with status: ${response.status}`);
 
     const responseJSON = await response.json();
-
     return responseJSON;
   } catch (error) {
     console.error(
