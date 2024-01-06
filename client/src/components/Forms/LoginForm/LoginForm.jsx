@@ -52,7 +52,7 @@ const Form = () => {
 
 const SignUpFields = ({ setFormType, FormType }) => {
   const setForm = (state) => {
-    setFormType(state);
+    setFormType(state); // Allows Form to Change Between Login and Sign Up on Link Click
   };
 
   return (

@@ -3,13 +3,13 @@ import "firebase/compat/auth";
 import "firebase/compat/firestore";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyCxlm6pPwrkhq3TBu2QMlUmKlBQdaQPDNg",
-  authDomain: "lbs-authentication.firebaseapp.com",
-  projectId: "lbs-authentication",
-  storageBucket: "lbs-authentication.appspot.com",
-  messagingSenderId: "74047171546",
-  appId: "1:74047171546:web:4cebc7b3d16bd616152ee3",
-  measurementId: "G-20GEVLVJ4W",
+  apiKey: process.env.apiKey,
+  authDomain: process.env.authDomain,
+  projectId: process.env.projectId,
+  storageBucket: process.env.storageBucket,
+  messagingSenderId: process.env.messagingSenderId,
+  appId: process.env.appId,
+  measurementId: process.env.measurementId,
 };
 
 const app = firebase.initializeApp(firebaseConfig);
